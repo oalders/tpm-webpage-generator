@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
+[% BLOCK display_section %]
+<!-- begin section -->
+<h2><a name="[% section.name | uri %]">[% section.name | html %]</a></h2>
+[% section.content %]
+<!-- end section -->
+[% END %]
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta name="generator" content=
@@ -67,9 +74,9 @@
                 <td></td>
 
                 <td><span class="c4">
-                [% FOR section IN sections %]
+                [%- FOR section IN sections %]
 &nbsp;<a class="side" href="#[% section.name | uri %]">[% section.name | html %]</a><br />
-                [% END %]
+                [% END -%]
                 &nbsp;<a class="side" href=
                 "#Contact">Contact</a><br />
                 &nbsp;<a class="side" href="#Mailing%20List">Mailing
@@ -112,6 +119,10 @@
           <p>The Toronto Perl Mongers is a group of Perl programmers and
           hackers of all levels who get together to talk about Perl.<br />
           &nbsp;</p>
+
+          [%- FOR section IN sections %]
+            [%- PROCESS display_section section=section -%]
+          [%- END %]
         </td>
       </tr>
 
