@@ -12,7 +12,7 @@ use Data::Dumper;
 use Template;
 
 my $sections = get_sections('../sections');
-my $template = Template->new({RELATIVE => 1});
+my $template = Template->new( { RELATIVE => 1 } );
 
 $template->process( '../templates/index.tt', { sections => $sections, } )
     || die $template->error();
@@ -24,7 +24,9 @@ sub get_sections {
     Readonly my $SECTION_SUFFIX => '.html';
     my @sections;
 
-    for my $entry ( grep /\Q$SECTION_SUFFIX\E\z/, dir($frag_dir)->children ) {
+    for my $entry ( sort grep /\Q$SECTION_SUFFIX\E\z/,
+        dir($frag_dir)->children )
+    {
         push @sections,
             {
             name    => basename( $entry, $SECTION_SUFFIX ),
