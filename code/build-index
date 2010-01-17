@@ -1,0 +1,36 @@
+#!/usr/bin/env perl
+#
+# Program to build Toronto Perl Mongers index page
+
+use strict;
+use warnings;
+
+use Path::Class;
+use File::Basename;
+use Readonly;
+use Data::Dumper;
+use Template;
+
+my $sections = get_sections('../sections');
+my $template = Template->new({RELATIVE => 1});
+
+$template->process( '../templates/index.tt', { sections => $sections, } )
+    || die $template->error();
+
+exit 0;
+
+sub get_sections {
+    my ($frag_dir) = @_;
+    Readonly my $SECTION_SUFFIX => '.html';
+    my @sections;
+
+    for my $entry ( grep /\Q$SECTION_SUFFIX\E\z/, dir($frag_dir)->children ) {
+        push @sections,
+            {
+            name    => basename( $entry, $SECTION_SUFFIX ),
+            content => file($entry)->slurp,
+            };
+    }
+
+    return \@sections;
+}
