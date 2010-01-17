@@ -2,20 +2,24 @@
 #
 # Program to build Toronto Perl Mongers index page
 
-use strict;
-use warnings;
+## no critic (RequireUseStrict, RequireUseWarnings)
+# Modert::Perl turns on strict and warnings.
+
+use Modern::Perl;
 
 use Path::Class;
 use File::Basename;
 use Readonly;
 use Data::Dumper;
+use English '-no_match_vars';
 use Template;
+use Carp;
 
 my $sections = get_sections('../sections');
 my $template = Template->new( { RELATIVE => 1 } );
 
 $template->process( '../templates/index.tt', { sections => $sections, } )
-    || die $template->error();
+    || croak $template->error();
 
 exit 0;
 
@@ -24,9 +28,10 @@ sub get_sections {
     Readonly my $SECTION_SUFFIX => '.html';
     my @sections;
 
-    for my $entry ( sort grep /\Q$SECTION_SUFFIX\E\z/,
+    for my $entry ( sort grep {/\Q$SECTION_SUFFIX\E\z/xms},
         dir($frag_dir)->children )
     {
+        local $RS = undef;
         push @sections,
             {
             name    => basename( $entry, $SECTION_SUFFIX ),
