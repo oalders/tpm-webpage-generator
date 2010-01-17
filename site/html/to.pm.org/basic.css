@@ -1,0 +1,75 @@
+BODY {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 100%
+}
+H1 {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 150%
+}
+H2 {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 130%
+}
+H3 {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 120%
+}
+H4 {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 100%
+}
+LI {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 100%
+}
+UL {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 100%
+}
+OL {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 100%
+}
+P {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 100%
+}
+DIV {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 100%
+}
+P.moddate {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 100%
+}
+BLOCKQUOTE {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 100%
+}
+TD {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 100%
+}
+TD.side {
+	BACKGROUND-COLOR: #0087d9; COLOR: #ffffff; FONT-FAMILY: sans-serif; FONT-SIZE: 110%; VERTICAL-ALIGN: text-top
+}
+TD.venue {
+	BACKGROUND-COLOR: #ffffff; COLOR: #000000; FONT-FAMILY: sans-serif; FONT-SIZE: 120%; TEXT-ALIGN: center
+}
+TD.header {
+	FONT-SIZE: 140%
+}
+A {
+	COLOR: #0000ff; TEXT-DECORATION: underline
+}
+A:visited {
+	COLOR: #ff00ff; TEXT-DECORATION: underline
+}
+A:hover {
+	COLOR: #0000ff; TEXT-DECORATION: underline
+}
+A.side {
+	COLOR: #ffffff; FONT-FAMILY: sans-serif; FONT-SIZE: 100%; TEXT-DECORATION: underline
+}
+A.side:visited {
+	COLOR: #ffffcc; FONT-FAMILY: sans-serif; FONT-SIZE: 100%; TEXT-DECORATION: underline
+}
+A.side:hover {
+	COLOR: #ffffff; FONT-FAMILY: sans-serif; FONT-SIZE: 100%; TEXT-DECORATION: underline
+}
+A.sidehead {
+	COLOR: #ffffff; FONT-FAMILY: sans-serif; FONT-SIZE: 110%; FONT-WEIGHT: bold; TEXT-DECORATION: underline
+}
+A.sidehead:visited {
+	COLOR: #ffccff; FONT-FAMILY: sans-serif; FONT-SIZE: 110%; FONT-WEIGHT: bold; TEXT-DECORATION: underline
+}
+A.sidehead:hover {
+	COLOR: #ffffff; FONT-FAMILY: sans-serif; FONT-SIZE: 110%; FONT-WEIGHT: bold; TEXT-DECORATION: underline
+}
