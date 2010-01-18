@@ -15,20 +15,32 @@ use English '-no_match_vars';
 use Template;
 use Carp;
 
-my $sections = get_sections('../sections');
+# These should be generated one day...
+my $sections_dir = '../sections';
+my $template_dir = '../templates';
+
+my $sections = get_sections($sections_dir);
 my $template = Template->new( { RELATIVE => 1 } );
 
-$template->process( '../templates/index.tt', { sections => $sections, } )
+$template->process( file( $template_dir, 'index.tt' )->stringify,
+    { sections => $sections, generated_at => scalar localtime, } )
     || croak $template->error();
 
 exit 0;
 
+# in:
+#   directory under which sections live in separate html files
+# out:
+#   sorted list of sections { name => ..., content => ... }
+#
+# File names determine the section names, the files are assumed to
+# contain valid HTML.
 sub get_sections {
     my ($frag_dir) = @_;
     Readonly my $SECTION_SUFFIX => '.html';
     my @sections;
 
-    for my $entry ( sort grep {/\Q$SECTION_SUFFIX\E\z/xms},
+    for my $entry ( sort grep {/\Q$SECTION_SUFFIX\E\z/xms}
         dir($frag_dir)->children )
     {
         local $RS = undef;

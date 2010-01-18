@@ -74,27 +74,29 @@
                 <td></td>
 
                 <td><span class="c4">
+                &nbsp;<a class="side" href="#Schedule">Schedule</a><br />
                 [%- FOR section IN sections %]
 &nbsp;<a class="side" href="#[% section.name | uri %]">[% section.name | html %]</a><br />
                 [% END -%]
-                &nbsp;<a class="side" href=
-                "#Contact">Contact</a><br />
-                &nbsp;<a class="side" href="#Mailing%20List">Mailing
-                List</a><br />
+              </tr>
+              <tr>
+                <td class="c2">&nbsp;</td>
+
+                <td width="100%">&nbsp;<b><span class="sidehead">Pages</span></b></td>
+              </tr>
+
+              <tr>
+                <td></td>
+
+                <td><span class="c4">
                 &nbsp;<a class="side" href="sponsors.html">Sponsors</a><br />
-                &nbsp;<a class="side" href="#Meetings">Meetings</a><br />
-                &nbsp;<a class="side" href="#Schedule">Schedule</a><br />
-                &nbsp;<a class="side" href="#Audio%20Archives">Audio
-                Archives</a><br />
                 &nbsp;<a class="side" href="index-2009.html">2009 Index
                 Page</a><br /></span></td>
               </tr>
             </tbody>
           </table>
-
           <p>&nbsp;</p>
         </td>
-
         <td valign="top">
           <table border="0" cellpadding="2" cellspacing="0" width="100%">
             <tbody>
@@ -134,8 +136,7 @@
         <td valign="baseline">
           <br />
 
-          <p class="moddate"><small>Last modified on Nov 28 2009 - 7:42 by
-          Mike Stok</small></p>
+          <p class="moddate"><small>Generated at [% generated_at | html %]</small></p>
         </td>
       </tr>
     </tbody>
