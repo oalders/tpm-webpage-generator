@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 #
-# Program to build Toronto Perl Mongers index page
+# Program to build Toronto Perl Mongers index page.
 
 ## no critic (RequireUseStrict, RequireUseWarnings)
 # Modert::Perl turns on strict and warnings.
@@ -53,3 +53,36 @@ sub get_sections {
 
     return \@sections;
 }
+
+__END__
+
+=pod
+
+=head1 NAME
+
+build-index - a program to build TPM's index page.
+
+=head1 SYNOPSIS
+
+  build-index
+
+=head1 DESCRIPTION
+
+This program assembles the Toronto Perl Mongers' home page out of bits and 
+pieces.
+
+=head1 ASSUMPTIONS
+
+=over 4
+
+=item *
+
+One event per day
+
+=item *
+
+People have JavaScript turned on.  This is the 21st century!
+
+=back
+
+=cut
