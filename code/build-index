@@ -2,6 +2,8 @@
 #
 # Program to build Toronto Perl Mongers index page.
 
+use 5.010_001;    # for say etc.
+
 ## no critic (RequireUseStrict, RequireUseWarnings)
 # Modert::Perl turns on strict and warnings.
 
@@ -14,17 +16,22 @@ use Data::Dumper;
 use English '-no_match_vars';
 use Template;
 use Carp;
+use File::Find::Rule;
 
 # These should be generated one day...
-my $sections_dir = '../sections';
-my $template_dir = '../templates';
+my $root = q{..};
 
-my $sections = get_sections($sections_dir);
+my $sections = get_sections( dir( $root, 'sections' ) );
+my $meetings = get_meetings( dir( $root, 'meetings' ) );
+
 my $template = Template->new( { RELATIVE => 1 } );
-
-$template->process( file( $template_dir, 'index.tt' )->stringify,
-    { sections => $sections, generated_at => scalar localtime, } )
-    || croak $template->error();
+$template->process(
+    file( $root, 'templates', 'index.tt' )->stringify,
+    {   sections     => $sections,
+        meetings     => $meetings,
+        generated_at => scalar localtime,
+    }
+) || croak $template->error();
 
 exit 0;
 
@@ -54,15 +61,45 @@ sub get_sections {
     return \@sections;
 }
 
+# in:
+#  directory for root of tree
+# out:
+#  sorted list of meetings
+sub get_meetings {
+    my ($meetings_dir) = @_;
+    my @meetings;
+
+FILE:
+    for my $file ( find( file => name => '*.html', in => $meetings_dir ) ) {
+        next FILE if !$file =~ m{ / (?<year>\d{4})
+                                     / (?<month>\d\d) - (?<date>\d\d)
+                                     / (?<title>[^/]+) \.html
+                                     \z
+                                   }xms;
+        my %meeting = %+;
+        $meeting{content} = file($file)->slurp;
+        push @meetings, \%meeting;
+    }
+
+    return [
+        sort {
+                   $a->{year} <=> $b->{year}
+                || $a->{month} <=> $b->{month}
+                || $a->{day} <=> $b->{day}
+                || $a->{title} cmp $b->{title}
+            } @meetings
+    ];
+}
+
 __END__
 
 =pod
 
 =head1 NAME
 
-build-index - a program to build TPM's index page.
+build-index - a program to build Toronto Perl Mongers' index page.
 
-=head1 SYNOPSIS
+=head1 USAGE
 
   build-index
 
@@ -71,7 +108,27 @@ build-index - a program to build TPM's index page.
 This program assembles the Toronto Perl Mongers' home page out of bits and 
 pieces.
 
-=head1 ASSUMPTIONS
+=head1 REQUIRED ARGUMENTS
+
+None
+
+=head1 OPTIONS
+
+=head1 DIAGNOSTICS
+
+=head1 EXIT STATUS
+
+0 for success, something else otherwise.
+
+=head1 CONFIGURATION
+
+=head1 DEPENDENCIES
+
+=head1 INCOMPATIBILITIES
+
+=head1 BUGS AND LIMITATIONS
+
+=head2 Assumptions
 
 =over 4
 
@@ -81,8 +138,12 @@ One event per day
 
 =item *
 
-People have JavaScript turned on.  This is the 21st century!
+People have Java Script turned on.  This is the 21st century!
 
 =back
+
+=head1 AUTHOR
+
+=head1 LICENSE AND COPYRIGHT
 
 =cut
