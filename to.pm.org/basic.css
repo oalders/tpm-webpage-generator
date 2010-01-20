@@ -73,3 +73,7 @@ A.sidehead:visited {
 A.sidehead:hover {
 	COLOR: #ffffff; FONT-FAMILY: sans-serif; FONT-SIZE: 110%; FONT-WEIGHT: bold; TEXT-DECORATION: underline
 }
+
+.label {
+  font-weight: bold;
+}

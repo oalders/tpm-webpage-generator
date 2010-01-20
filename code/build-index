@@ -17,19 +17,22 @@ use English '-no_match_vars';
 use Template;
 use Carp;
 use File::Find::Rule;
+use Date::Parse;
+use POSIX 'strftime';
 
 # These should be generated one day...
 my $root = q{..};
 
 my $sections = get_sections( dir( $root, 'sections' ) );
-my $meetings = get_meetings( dir( $root, 'meetings' ) );
+my $years_meetings
+    = group_meetings_by_year( get_meetings( dir( $root, 'meetings' ) ) );
 
 my $template = Template->new( { RELATIVE => 1 } );
 $template->process(
     file( $root, 'templates', 'index.tt' )->stringify,
-    {   sections     => $sections,
-        meetings     => $meetings,
-        generated_at => scalar localtime,
+    {   sections       => $sections,
+        years_meetings => $years_meetings,
+        generated_at   => scalar localtime,
     }
 ) || croak $template->error();
 
@@ -54,7 +57,7 @@ sub get_sections {
         push @sections,
             {
             name    => basename( $entry, $SECTION_SUFFIX ),
-            content => file($entry)->slurp,
+            content => scalar file($entry)->slurp,
             };
     }
 
@@ -64,31 +67,75 @@ sub get_sections {
 # in:
 #  directory for root of tree
 # out:
-#  sorted list of meetings
+#  list of meetings (currently a hash)
+#
+# Meeting files are stored under (roughly):
+#
+#  .../$meetings_dir/yyyy/mm-dd/title.html
+#
+# TODO maybe one day get rid of the path separator in the regex, which
+# kind of defeates the goodness of the Path::Class stuff.
 sub get_meetings {
     my ($meetings_dir) = @_;
     my @meetings;
 
 FILE:
     for my $file ( find( file => name => '*.html', in => $meetings_dir ) ) {
-        next FILE if !$file =~ m{ / (?<year>\d{4})
-                                     / (?<month>\d\d) - (?<date>\d\d)
-                                     / (?<title>[^/]+) \.html
-                                     \z
-                                   }xms;
-        my %meeting = %+;
-        $meeting{content} = file($file)->slurp;
-        push @meetings, \%meeting;
+
+        # TODO figure out how to let perlcritic safely let me do
+        #
+        # next FILE unless $file =~ m{ ... };
+        #
+        # and then use the matched chunks.
+        if ($file =~ m{ / (?<year>\d{4})
+                        / (?<month>\d\d) - (?<date>\d\d)
+                        / (?<title>[^/]+) \.html
+                        \z
+                      }xms
+            )
+        {
+            my $date      = "$+{year}-$+{month}-$+{date}";
+            my $title     = $LAST_PAREN_MATCH{title};
+            my $timestamp = str2time($date);
+
+            push @meetings,
+                {
+                timestamp => $timestamp,
+                date      => strftime( '%c', localtime $timestamp ),
+                title     => $title,
+                content   => scalar file($file)->slurp,
+                };
+        }
     }
 
-    return [
-        sort {
-                   $a->{year} <=> $b->{year}
-                || $a->{month} <=> $b->{month}
-                || $a->{day} <=> $b->{day}
-                || $a->{title} cmp $b->{title}
-            } @meetings
-    ];
+    return \@meetings;
+}
+
+# in:
+#   ref to unordered list of meetings
+# out:
+#   ref to list of hashes { year => yyyy, meetings => [ ... ] }
+sub group_meetings_by_year {
+    my ($unordered_list) = @_;
+    my @list = sort {
+               $a->{timestamp} <=> $b->{timestamp}
+            || $a->{title} cmp $b->{title}
+    } @{$unordered_list};
+
+    my @year_groups;
+    for my $meeting (@list) {
+        my $year = strftime( '%Y', localtime $meeting->{timestamp} );
+
+        if (   @year_groups == 0
+            || $year != $year_groups[-1]{year} )
+        {
+            push @year_groups, { year => $year, meetings => [] };
+        }
+
+        push @{ $year_groups[-1]{meetings} }, $meeting;
+    }
+
+    return \@year_groups;
 }
 
 __END__

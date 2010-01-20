@@ -1,17 +1,31 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 
+[% BLOCK section_heading %]
+<h2><a name="section-[% name | uri %]"></a>[% name | html %]</h2>
+[% END %]
+
 [% BLOCK display_section %]
 <!-- begin section -->
-<h2><a name="[% section.name | uri %]">[% section.name | html %]</a></h2>
+[% PROCESS section_heading name=section.name %]
 [% section.content %]
 <!-- end section -->
 [% END %]
 
+[% BLOCK display_meeting %]
+<!-- begin meeting -->
+<span class="label">Date:</span> 
+[% IF anchor %]
+<a name="meeting-[% meeting.date | uri %][% meeting.title | uri %]"></a>
+[% END %]
+[% meeting.date | html %]<br />
+<span class="label">Title:</span> [% meeting.title | html %]<br />
+<span class="label">Description:</span> <br />
+[% meeting.content %]
+<!-- end meeting -->
+[% END %]
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta name="generator" content=
-  "HTML Tidy for Linux/x86 (vers 7 December 2008), see www.w3.org" />
-
   <title>Toronto Perl Mongers Home Page</title>
   <!-- BASE HREF="http://to.pm.org/" -->
   <link href="basic.css" rel="stylesheet" title="basic" type="text/css" />
@@ -74,10 +88,10 @@
                 <td></td>
 
                 <td><span class="c4">
-                &nbsp;<a class="side" href="#Schedule">Schedule</a><br />
                 [%- FOR section IN sections %]
-&nbsp;<a class="side" href="#[% section.name | uri %]">[% section.name | html %]</a><br />
+&nbsp;<a class="side" href="#section-[% section.name | uri %]">[% section.name | html %]</a><br />
                 [% END -%]
+&nbsp;<a class="side" href="#section-Schedule">Schedule</a><br />
               </tr>
               <tr>
                 <td class="c2">&nbsp;</td>
@@ -122,9 +136,36 @@
           hackers of all levels who get together to talk about Perl.<br />
           &nbsp;</p>
 
+          <h2>Next or Most Recent Meeting</h2>
+
+          [% PROCESS display_meeting
+                     meeting=years_meetings.last.meetings.last
+                     anchor=0
+           %]
+
           [%- FOR section IN sections %]
             [%- PROCESS display_section section=section -%]
           [%- END %]
+
+          [% PROCESS section_heading name='Schedule' %]
+
+          <!-- each year's meeting links -->
+          <ul>
+            [% FOR year IN years_meetings %]
+            <li>
+              [% FOR meeting IN year.meetings %]
+                [%- meeting.date | html -%] 
+              [% END %]
+            </li>           
+            [% END %]
+          </ul>
+
+          <!-- meetings in order -->
+          [% FOR year IN years_meetings %]
+            [% FOR meeting IN year.meetings %]
+              [%- PROCESS display_meeting meeting=meeting anchor=1 -%] 
+            [% END %]
+          [% END %]
         </td>
       </tr>
 
