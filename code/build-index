@@ -89,21 +89,22 @@ FILE:
         # and then use the matched chunks.
         if ($file =~ m{ / (?<year>\d{4})
                         / (?<month>\d\d) - (?<date>\d\d)
+                          T (?<hour>\d\d) : (?<minute>\d\d)
                         / (?<title>[^/]+) \.html
                         \z
                       }xms
             )
         {
-            my $date      = "$+{year}-$+{month}-$+{date}";
+            my $date      = "$+{year}-$+{month}-$+{date} $+{hour}:$+{minute}";
             my $title     = $LAST_PAREN_MATCH{title};
             my $timestamp = str2time($date);
 
             push @meetings,
                 {
                 timestamp => $timestamp,
-                date      => strftime( '%c', localtime $timestamp ),
-                title     => $title,
-                content   => scalar file($file)->slurp,
+                date => strftime( '%a %e %b %Y %R %Z', localtime $timestamp ),
+                title   => $title,
+                content => scalar file($file)->slurp,
                 };
         }
     }
