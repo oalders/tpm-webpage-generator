@@ -14,9 +14,9 @@
 [% BLOCK display_meeting %]
 <!-- begin meeting -->
 <span class="label">Date:</span> 
-[% IF anchor %]
-<a name="meeting-[% meeting.date | uri %][% meeting.title | uri %]"></a>
-[% END %]
+[%- IF anchor -%]
+<a name="meeting-[% meeting.date | uri %]-[% meeting.title | uri %]"></a>
+[%- END -%]
 [% meeting.date | html %]<br />
 <span class="label">Title:</span> [% meeting.title | html %]<br />
 <span class="label">Description:</span> <br />
@@ -150,15 +150,15 @@
           [% PROCESS section_heading name='Schedule' %]
 
           <!-- each year's meeting links -->
-          <ul>
-            [% FOR year IN years_meetings %]
+          [% FOR year IN years_meetings %]
+            [% "<ul>" IF loop.first %]
             <li>
               [% FOR meeting IN year.meetings %]
-                [%- meeting.date | html -%] 
+                <a href="#meeting-[% meeting.date | uri %]-[% meeting.title | uri %]">[% meeting.date | html %]</a>[% ", " IF NOT loop.last %]
               [% END %]
             </li>           
-            [% END %]
-          </ul>
+            [% "</ul>" IF loop.last %]
+          [% END %]
 
           <!-- meetings in order -->
           [% FOR year IN years_meetings %]
