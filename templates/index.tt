@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 [% BLOCK section_heading %]
-<h2><a name="section-[% name | uri %]"></a>[% name | html %]</h2>
+<h2><a name="section-[% name | replace('\s+', '-') | html %]"></a>[% name | html %]</h2>
 [% END %]
 
 [% BLOCK display_section %]
@@ -15,7 +19,7 @@
 <!-- begin meeting -->
 <span class="label">Date:</span> 
 [%- IF anchor -%]
-<a name="meeting-[% meeting.date | uri %]-[% meeting.title | uri %]"></a>
+<a name="meeting-[% meeting.date | replace('\s+', '-') | html %]-[% meeting.title | replace('\s+', '-') | html %]"></a>
 [%- END -%]
 [% meeting.date | html %]<br />
 <span class="label">Title:</span> [% meeting.title | html %]<br />
@@ -24,7 +28,6 @@
 <!-- end meeting -->
 [% END %]
 
-<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <title>Toronto Perl Mongers Home Page</title>
   <!-- BASE HREF="http://to.pm.org/" -->
@@ -46,22 +49,22 @@
   </style>
 </head>
 
-<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<body>
   <table border="0" cellpadding="6" cellspacing="0" width="100%">
     <tbody>
       <tr>
-        <td class="side c5" valign="top" width="120">
+        <td class="side c5" valign="top">
           <table border="0" cellpadding="2" cellspacing="0">
             <tbody>
               <tr>
                 <td class="c2">
-                  <table align="center" border="0" cellpadding="6"
+                  <table border="0" cellpadding="6"
                   cellspacing="0">
                     <tbody>
                       <tr>
-                        <td align="middle" class="venue c1"><a href=
+                        <td class="venue c1"><a href=
                         "http://to.pm.org/index.html"><img alt="Perl Mongers"
-                        border="0" src="tpm_logo.jpg" width="150" height=
+                        src="tpm_logo.jpg" width="150" height=
                         "175" /></a></td>
                       </tr>
                     </tbody>
@@ -80,7 +83,7 @@
               <tr>
                 <td class="c2">&nbsp;</td>
 
-                <td width="100%">&nbsp;<b><a class="sidehead" href=
+                <td>&nbsp;<b><a class="sidehead" href=
                 "/">Home</a></b></td>
               </tr>
 
@@ -89,14 +92,15 @@
 
                 <td><span class="c4">
                 [%- FOR section IN sections %]
-&nbsp;<a class="side" href="#section-[% section.name | uri %]">[% section.name | html %]</a><br />
+&nbsp;<a class="side" href="#section-[% section.name | replace('\s+', '-') | html %]">[% section.name | html %]</a><br />
                 [% END -%]
 &nbsp;<a class="side" href="#section-Schedule">Schedule</a><br />
+                </span></td>
               </tr>
               <tr>
                 <td class="c2">&nbsp;</td>
 
-                <td width="100%">&nbsp;<b><span class="sidehead">Pages</span></b></td>
+                <td>&nbsp;<b><span class="sidehead">Pages</span></b></td>
               </tr>
 
               <tr>
@@ -120,7 +124,7 @@
                   "100%">
                     <tbody>
                       <tr>
-                        <td align="left" class="header c7" width="100%">
+                        <td align="left" class="header c7">
                         <span class="c6">Toronto Perl Mongers</span></td>
                       </tr>
                     </tbody>
@@ -154,7 +158,7 @@
             [% "<ul>" IF loop.first %]
             <li>
               [% FOR meeting IN year.meetings %]
-                <a href="#meeting-[% meeting.date | uri %]-[% meeting.title | uri %]">[% meeting.date | html %]</a>[% ", " IF NOT loop.last %]
+                <a href="#meeting-[% meeting.date | replace('\s+', '-') | html %]-[% meeting.title | replace('\s+', '-') | html %]">[% meeting.date | html %]</a>[% ", " IF NOT loop.last %]
               [% END %]
             </li>           
             [% "</ul>" IF loop.last %]
@@ -170,7 +174,7 @@
       </tr>
 
       <tr>
-        <td class="side c7" width="120"><br />
+        <td class="side c7"><br />
         <br />
         &nbsp;</td>
 
