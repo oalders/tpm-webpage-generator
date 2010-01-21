@@ -8,4 +8,4 @@ clean:
 	rm -f to.pm.org/index.html
 
 install:
-	scp to.pm.org/index.html tpm@to.pm.org:httpdocs/
+	scp to.pm.org/index.html to.pm.org/basic.css tpm@to.pm.org:httpdocs/
