@@ -177,7 +177,9 @@
         <td valign="baseline">
           <br />
 
-          <p class="moddate"><small>Generated at [% generated_at | html %]</small></p>
+          <p><small>Generated at [% generated_at | html %] 
+            <a href="http://validator.w3.org/check?uri=http%3A%2F%2Fto.pm.org%2F">Validate</a>
+          </small></p>
         </td>
       </tr>
     </tbody>
