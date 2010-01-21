@@ -31,7 +31,7 @@
 <head>
   <title>Toronto Perl Mongers Home Page</title>
   <!-- BASE HREF="http://to.pm.org/" -->
-  <link href="basic.css" rel="stylesheet" title="basic" type="text/css" />
+  <link href="tpm.css" rel="stylesheet" title="basic" type="text/css" />
   <style type="text/css">
 /*<![CDATA[*/
   :link { color: #000099 }

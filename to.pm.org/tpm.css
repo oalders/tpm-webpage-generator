@@ -1,0 +1,67 @@
+body {
+  font-family: "MS Verdana", "MS Arial", Helvetica, sans-serif;
+  font-size: 100%;
+  color: #000000;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+h1 { font-size: 150%; }
+h2 { font-size: 130%; }
+h3 { font-size: 120%; }
+h4 { font-size: 100%; }
+
+li,ul,ol,p,div,blockquote,td { font-size: 100%; }
+
+td.side {
+  background-color: #0087d9;
+  color: #ffffff;
+  font-size: 110%;
+  vertical-align: text-top;
+}
+
+td.venue {
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 120%;
+  text-align: center;
+}
+
+td.header { font-size: 140%; }
+
+A {
+	COLOR: #0000ff; TEXT-DECORATION: underline
+}
+A:visited {
+	COLOR: #ff00ff; TEXT-DECORATION: underline
+}
+A:hover {
+	COLOR: #0000ff; TEXT-DECORATION: underline
+}
+A.side {
+	COLOR: #ffffff; FONT-FAMILY: sans-serif; FONT-SIZE: 100%; TEXT-DECORATION: underline
+}
+A.side:visited {
+	COLOR: #ffffcc; FONT-FAMILY: sans-serif; FONT-SIZE: 100%; TEXT-DECORATION: underline
+}
+A.side:hover {
+	COLOR: #ffffff; FONT-FAMILY: sans-serif; FONT-SIZE: 100%; TEXT-DECORATION: underline
+}
+A.sidehead {
+	COLOR: #ffffff; FONT-FAMILY: sans-serif; FONT-SIZE: 110%; FONT-WEIGHT: bold; TEXT-DECORATION: underline
+}
+A.sidehead:visited {
+	COLOR: #ffccff; FONT-FAMILY: sans-serif; FONT-SIZE: 110%; FONT-WEIGHT: bold; TEXT-DECORATION: underline
+}
+A.sidehead:hover {
+	COLOR: #ffffff; FONT-FAMILY: sans-serif; FONT-SIZE: 110%; FONT-WEIGHT: bold; TEXT-DECORATION: underline
+}
+
+.label {
+  font-weight: bold;
+}
+
+.borderless {
+  border: 0;
+}

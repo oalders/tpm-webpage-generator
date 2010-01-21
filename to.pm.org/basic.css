@@ -1,12 +1,6 @@
-body {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 100%;
-  color: #000000;
-  background-color: #ffffff;
-  margin: 0;
-  padding: 0;
+BODY {
+	FONT-FAMILY: sans-serif; FONT-SIZE: 100%
 }
-
 H1 {
 	FONT-FAMILY: sans-serif; FONT-SIZE: 150%
 }
@@ -78,12 +72,4 @@ A.sidehead:visited {
 }
 A.sidehead:hover {
 	COLOR: #ffffff; FONT-FAMILY: sans-serif; FONT-SIZE: 110%; FONT-WEIGHT: bold; TEXT-DECORATION: underline
-}
-
-.label {
-  font-weight: bold;
-}
-
-.borderless {
-  border: 0;
 }
