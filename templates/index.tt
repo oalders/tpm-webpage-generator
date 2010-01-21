@@ -34,10 +34,6 @@
   <link href="basic.css" rel="stylesheet" title="basic" type="text/css" />
   <style type="text/css">
 /*<![CDATA[*/
-  body {
-  background-color: #FFFFFF;
-  color: #000000;
-  }
   :link { color: #000099 }
   td.c7 {background-color: #0087D9}
   span.c6 {color: #FFFFFF; font-size: 150%; font-weight: bold}
@@ -64,8 +60,8 @@
                       <tr>
                         <td class="venue c1"><a href=
                         "http://to.pm.org/index.html"><img alt="Perl Mongers"
-                        src="tpm_logo.jpg" width="150" height=
-                        "175" /></a></td>
+                        src="tpm_logo.jpg" width="150" height="175"
+                        class="borderless" /></a></td>
                       </tr>
                     </tbody>
                   </table>

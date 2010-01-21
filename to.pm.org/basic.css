@@ -1,6 +1,12 @@
-BODY {
-	FONT-FAMILY: sans-serif; FONT-SIZE: 100%
+body {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 100%;
+  color: #000000;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
 }
+
 H1 {
 	FONT-FAMILY: sans-serif; FONT-SIZE: 150%
 }
@@ -76,4 +82,8 @@ A.sidehead:hover {
 
 .label {
   font-weight: bold;
+}
+
+.borderless {
+  border: 0;
 }
