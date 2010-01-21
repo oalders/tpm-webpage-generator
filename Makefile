@@ -6,3 +6,6 @@ critic:
 
 clean:
 	rm -f to.pm.org/index.html
+
+install:
+	scp to.pm.org/index.html tpm@to.pm.org:httpdocs/
