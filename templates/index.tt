@@ -23,6 +23,7 @@
 [%- END -%]
 [% meeting.date | html %]<br />
 <span class="label">Title:</span> [% meeting.title | html %]<br />
+<span class="label">Venue:</span> [% meeting.venue | html %]<br />
 <span class="label">Description:</span> <br />
 [% meeting.content %]
 <!-- end meeting -->

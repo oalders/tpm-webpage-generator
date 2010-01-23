@@ -41,6 +41,12 @@ sub title {
     return $self->{_title};
 }
 
+sub venue {
+    my $self = shift;
+    $self->_loaded_or_croak;
+    return $self->{_venue};
+}
+
 sub timestamp {
     my $self = shift;
     $self->_loaded_or_croak;
@@ -73,7 +79,7 @@ sub _stash_title {
 
 sub _stash_venue {
     my ( $self, $twig, $elt ) = @_;
-    $self->{_venue} = $elt->sprint;
+    $self->{_venue} = $elt->text;
     return;
 }
 
