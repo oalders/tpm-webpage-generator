@@ -91,10 +91,9 @@ sub get_meetings {
 #   ref to list of hashes { year => yyyy, meetings => [ ... ] }
 sub group_meetings_by_year {
     my ($unordered_list) = @_;
-    my @list = sort {
-               $a->timestamp <=> $b->timestamp
-            || $a->title cmp $b->title
-    } @{$unordered_list};
+    my @list
+        = sort { $a->timestamp <=> $b->timestamp || $a->title cmp $b->title }
+        @{$unordered_list};
 
     my @year_groups;
     for my $meeting (@list) {
