@@ -100,6 +100,9 @@ sub _stash_leader {
 sub _stash_description {
     my ( $self, $twig, $elt ) = @_;
     $self->{_content} = $elt->sprint;
+
+    # TODO find a better way to peel off outer tags.
+    $self->{_content} =~ s{</?description>}{}gxsm;
     return;
 }
 
