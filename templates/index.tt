@@ -136,12 +136,14 @@
           hackers of all levels who get together to talk about Perl.<br />
           &nbsp;</p>
 
-          <h2>Next or Most Recent Meeting</h2>
+          [% IF upcoming_or_recent %]
+            <h2>Next or Most Recent Meeting</h2>
 
-          [% PROCESS display_meeting
-                     meeting=years_meetings.last.meetings.last
-                     anchor=0
-           %]
+            [% PROCESS display_meeting
+                       meeting=upcoming_or_recent
+                       anchor=0
+             %]
+          [% END %]
 
           [%- FOR section IN sections %]
             [%- PROCESS display_section section=section -%]
@@ -162,6 +164,7 @@
 
           <!-- meetings in order -->
           [% FOR year IN years_meetings %]
+            <h3>[% year.year | html %]</h3>
             [% FOR meeting IN year.meetings %]
               [%- PROCESS display_meeting meeting=meeting anchor=1 -%] 
             [% END %]

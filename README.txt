@@ -1,9 +1,9 @@
 Simple program to generate TPM index page.
 
+  make critic # testing perl code
   make clean
-  make critic
   make
-  scp to.pm.org/index.html tpm@to.pm.org:httpdocs
+  make install
 
 Todo:
 

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<meeting>
+  <details>
+    <title>Modules and Tips</title>
+    <datetime>2010-01-28T18:45</datetime>
+    <venue>Nexient Learning</venue>
+    <leader label="Presenters">Various</leader>
+  </details>
+  <description>
+    <p class="synopsis">A series of quick talks covering various modules which
+      people have found useful or instructive.  Some are old standbys, some are
+      new.</p>
+    
+    <ul>
+      <li>Abram Hindle
+        <ul>
+          <li>Net::OpenID::Server</li>
+        </ul>
+      </li>
+      <li>Mike Stok
+        <ul>
+          <li>Path::Class</li>
+          <li>local::lib</li>
+          <li>Modern::Perl</li>
+        </ul>
+      </li>
+    </ul>
+  </description>
+</meeting>

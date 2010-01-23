@@ -17,22 +17,26 @@ use English '-no_match_vars';
 use Template;
 use Carp;
 use File::Find::Rule;
-use Date::Parse;
 use POSIX 'strftime';
+use TPM::Meeting;
 
 # These should be generated one day...
-my $root = q{..};
+my $root          = q{..};
+my $run_timestamp = time;    # Override for testing
 
 my $sections = get_sections( dir( $root, 'sections' ) );
 my $years_meetings
     = group_meetings_by_year( get_meetings( dir( $root, 'meetings' ) ) );
+my $upcoming_or_recent
+    = find_upcoming_or_recent( $years_meetings, $run_timestamp );
 
 my $template = Template->new( { RELATIVE => 1 } );
 $template->process(
     file( $root, 'templates', 'index.tt' )->stringify,
-    {   sections       => $sections,
-        years_meetings => $years_meetings,
-        generated_at   => scalar localtime,
+    {   sections           => $sections,
+        years_meetings     => $years_meetings,
+        upcoming_or_recent => $upcoming_or_recent,
+        generated_at       => scalar localtime $run_timestamp,
     }
 ) || croak $template->error();
 
@@ -67,46 +71,15 @@ sub get_sections {
 # in:
 #  directory for root of tree
 # out:
-#  list of meetings (currently a hash)
-#
-# Meeting files are stored under (roughly):
-#
-#  .../$meetings_dir/yyyy/mm-dd/title.html
-#
-# TODO maybe one day get rid of the path separator in the regex, which
-# kind of defeates the goodness of the Path::Class stuff.
+#  list of TPM::Meeting objects
 sub get_meetings {
     my ($meetings_dir) = @_;
     my @meetings;
 
-FILE:
-    for my $file ( find( file => name => '*.html', in => $meetings_dir ) ) {
-
-        # TODO figure out how to let perlcritic safely let me do
-        #
-        # next FILE unless $file =~ m{ ... };
-        #
-        # and then use the matched chunks.
-        if ($file =~ m{ / (?<year>\d{4})
-                        / (?<month>\d\d) - (?<date>\d\d)
-                          T (?<hour>\d\d) : (?<minute>\d\d)
-                        / (?<title>[^/]+) \.html
-                        \z
-                      }xms
-            )
-        {
-            my $date      = "$+{year}-$+{month}-$+{date} $+{hour}:$+{minute}";
-            my $title     = $LAST_PAREN_MATCH{title};
-            my $timestamp = str2time($date);
-
-            push @meetings,
-                {
-                timestamp => $timestamp,
-                date => strftime( '%a %e %b %Y %R %Z', localtime $timestamp ),
-                title   => $title,
-                content => scalar file($file)->slurp,
-                };
-        }
+    for my $file ( find( file => name => '*.xml', in => $meetings_dir ) ) {
+        my $meeting = TPM::Meeting->new;
+        $meeting->load_file($file);
+        push @meetings, $meeting;
     }
 
     return \@meetings;
@@ -119,13 +92,13 @@ FILE:
 sub group_meetings_by_year {
     my ($unordered_list) = @_;
     my @list = sort {
-               $a->{timestamp} <=> $b->{timestamp}
-            || $a->{title} cmp $b->{title}
+               $a->timestamp <=> $b->timestamp
+            || $a->title cmp $b->title
     } @{$unordered_list};
 
     my @year_groups;
     for my $meeting (@list) {
-        my $year = strftime( '%Y', localtime $meeting->{timestamp} );
+        my $year = strftime( '%Y', localtime $meeting->timestamp );
 
         if (   @year_groups == 0
             || $year != $year_groups[-1]{year} )
@@ -137,6 +110,40 @@ sub group_meetings_by_year {
     }
 
     return \@year_groups;
+}
+
+# in:
+#   return value from group_meetings_by_year
+#   timestamp for "now"
+# out:
+#   ref to a meeting or undef
+#
+# Hugely expensive O(n) lookup, but in 50 years there are only going to be
+# 600 meetings and I'll likely be dead.
+#
+# Go throuugh all the meetings in cronological order remembering the
+# last one seen.  If the timestamp of the meeting is in the future then
+# quit looping.  (Future relative to the timestamp passed in.)
+#
+# If there are no meetings undef will be returned.
+# If there are no meetings in the future then the last meeting will be returned.
+# If there meetings in the future then the closest meeting is returned.
+
+sub find_upcoming_or_recent {
+    my ( $years, $timestamp ) = @_;
+    my $return;
+
+YEAR_LOOP:
+    for my $year ( @{$years} ) {
+    MEETING_LOOP:
+
+        for my $meeting ( @{ $year->{meetings} } ) {
+            $return = $meeting;
+            last YEAR_LOOP if $meeting->timestamp > $timestamp;
+        }
+    }
+
+    return $return;
 }
 
 __END__
@@ -183,10 +190,6 @@ None
 =item *
 
 One event per day
-
-=item *
-
-People have Java Script turned on.  This is the 21st century!
 
 =back
 
