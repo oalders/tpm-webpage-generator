@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 [% BLOCK section_heading %]
-<h2><a name="section-[% name | replace('\s+', '-') | html %]"></a>[% name | html %]</h2>
+<h2><a name="[% name | replace('\s+', '-') | html %]"></a>[% name | html %]</h2>
 [% END %]
 
 [% BLOCK display_section %]
@@ -89,9 +89,9 @@
 
                 <td><span class="c4">
                 [%- FOR section IN sections %]
-&nbsp;<a class="side" href="#section-[% section.name | replace('\s+', '-') | html %]">[% section.name | html %]</a><br />
+&nbsp;<a class="side" href="#[% section.name | replace('\s+', '-') | html %]">[% section.name | html %]</a><br />
                 [% END -%]
-&nbsp;<a class="side" href="#section-Schedule">Schedule</a><br />
+&nbsp;<a class="side" href="#Schedule">Schedule</a><br />
                 </span></td>
               </tr>
               <tr>
