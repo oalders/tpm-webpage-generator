@@ -3,16 +3,12 @@
 # Program to build Toronto Perl Mongers index page.
 
 use 5.010_001;    # for say etc.
-
-## no critic (RequireUseStrict, RequireUseWarnings)
-# Modert::Perl turns on strict and warnings.
-
-use Modern::Perl;
+use strict;
+use warnings;
 
 use Path::Class;
 use File::Basename;
 use Readonly;
-use Data::Dumper;
 use English '-no_match_vars';
 use Template;
 use Carp;
