@@ -63,7 +63,7 @@ sub get_sections {
 # in:
 #  directory for root of tree
 # out:
-#  list of TPM::Meeting objects
+#  ref to list of TPM::Meeting objects
 sub get_meetings {
     my ($meetings_dir) = @_;
     my @meetings;
