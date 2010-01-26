@@ -46,22 +46,18 @@ exit 0;
 # File names determine the section names, the files are assumed to
 # contain valid HTML.
 sub get_sections {
-    my ($frag_dir) = @_;
+    my ($sections_dir) = @_;
     Readonly my $SECTION_SUFFIX => '.html';
-    my @sections;
 
-    for my $entry ( sort grep {/\Q$SECTION_SUFFIX\E\z/xms}
-        dir($frag_dir)->children )
-    {
-        local $RS = undef;
-        push @sections,
-            {
-            name    => basename( $entry, $SECTION_SUFFIX ),
-            content => scalar file($entry)->slurp,
-            };
-    }
-
-    return \@sections;
+    return [
+        map {
+            {   name    => basename( $_, $SECTION_SUFFIX ),
+                content => scalar file($_)->slurp,
+            }
+            }
+            sort
+            grep {/\Q$SECTION_SUFFIX\E\z/smox} dir($sections_dir)->children
+    ];
 }
 
 # in:
