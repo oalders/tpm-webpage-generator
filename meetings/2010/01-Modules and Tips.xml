@@ -12,15 +12,29 @@
       new.</p>
     
     <dl>
-       <dt>Abram Hindle</dt>
-       <dd><p>Net::OpenID::Server</p></dd>
-       <dt>Alan Rocker</dt>
-       <dd>
+      <dt>Abram Hindle</dt>
+      <dd><p>Net::OpenID::Server</p></dd>
+      <dt>Alan Rocker</dt>
+      <dd>
+       <p>
+         How I nearly used Perl for a job, then came to my senses.
+         <em>A short cautionary tale.</em>
+       </p>
+      </dd>
+      <dt>Alex Beamish</dt>
+			 <dd><p>
+					 SQL - abstraction,  injection,  etc.
+			 </p></dd>
+      <dt>Dave Doyle</dt>
+      <dd>
         <p>
-          How I nearly used Perl for a job, then came to my senses.
-          <em>A short cautionary tale.</em>
+          A couple of validation modules:
         </p>
-       </dd>
+        <ul>
+          <li>Data::Schema</li>
+          <li>Params::Validate</li>
+        </ul>
+      </dd>
       <dt>Mike Stok</dt>
       <dd>
         <p>
