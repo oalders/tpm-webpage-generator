@@ -39,10 +39,15 @@
       <dd>
         <p>
           Website updates, a chance to do some non-maintenance Perl.
+					Quick points from a handfull of modules and tools:
         </p>
         <ul>
-          <li>Path::Class</li>
           <li>local::lib</li>
+          <li>perlcritic</li>
+          <li>perltidy</li>
+          <li>Path::Class</li>
+          <li>Template</li>
+          <li>File::Find::Rule</li>
           <li>XML::Twig</li>
         </ul>
       </dd>
