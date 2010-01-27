@@ -75,9 +75,11 @@ sub _stash_text {
 
 sub _stash_datetime {
     my ( $self, $twig, $elt ) = @_;
-    my $text      = $self->{__date_time} = $elt->text;
-    my $timestamp = $self->{_timestamp}  = str2time($text);
-    $self->{_date} = strftime( '%a %e %b %Y %R %Z', localtime $timestamp );
+    my $text       = $elt->text;
+    my $epoch_secs = str2time($text);
+    defined $epoch_time or croak "failed to parse date time '$text'";
+    $self->{_timestamp} = $epoch_secs;
+    $self->{_date} = strftime( '%a %e %b %Y %R %Z', localtime $epoch_secs );
     return;
 }
 
