@@ -1,5 +1,9 @@
 package TPM::Meeting;
 
+# Use a blessed hash as my object, but prefix keys with _ so that doing
+# $o->{foo} will give me undef back in case there are any old hash style
+# accesses floating around.
+
 use strict;
 use warnings;
 
@@ -28,7 +32,8 @@ sub load_file {
         },
         pretty_print => 'indented',
     );
-    $t->safe_parsefile($file_name) or croak "failed to parse $file_name";
+    $t->safe_parsefile($file_name)
+        or croak "failed to parse and process $file_name ($EVAL_ERROR)";
 
     $self->{__loaded} = 1;
 
@@ -99,10 +104,7 @@ sub _stash_leader {
 
 sub _stash_description {
     my ( $self, $twig, $elt ) = @_;
-    $self->{_content} = $elt->sprint;
-
-    # TODO find a better way to peel off outer tags.
-    $self->{_content} =~ s{</?description>}{}gxsm;
+    $self->{_content} = join q{}, map { $_->sprint } $elt->children;
     return;
 }
 
