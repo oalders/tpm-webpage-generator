@@ -40,34 +40,20 @@ sub load_file {
     return;
 }
 
-sub title {
-    my $self = shift;
-    $self->_loaded_or_croak;
-    return $self->{_title};
-}
+# Set up the attribute accessors at compile time
 
-sub venue {
-    my $self = shift;
-    $self->_loaded_or_croak;
-    return $self->{_venue};
-}
+BEGIN {
+    my @ATTRIBUTES = qw/ title venue timestamp date content /;
 
-sub timestamp {
-    my $self = shift;
-    $self->_loaded_or_croak;
-    return $self->{_timestamp};
-}
-
-sub date {
-    my $self = shift;
-    $self->_loaded_or_croak;
-    return $self->{_date};
-}
-
-sub content {
-    my $self = shift;
-    $self->_loaded_or_croak;
-    return $self->{_content};
+    for my $attr (@ATTRIBUTES) {
+        ## no critic 'TestingAndDebugging::ProhibitNoStrict'
+        no strict 'refs';
+        *{ __PACKAGE__ . q{::} . $attr } = sub {
+            my $self = shift;
+            $self->_loaded_or_croak;
+            return $self->{"_$attr"};
+        };
+    }
 }
 
 sub _loaded_or_croak {
