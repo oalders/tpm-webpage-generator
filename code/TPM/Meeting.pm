@@ -24,10 +24,13 @@ sub load_file {
 
     my $t = XML::Twig->new(
         twig_roots => {
-            'meeting/details/title'    => sub { $self->_stash_title(@_); },
-            'meeting/details/venue'    => sub { $self->_stash_venue(@_); },
+            'meeting/details/title' =>
+                sub { $self->_stash_text( @_, 'title' ); },
+            'meeting/details/venue' =>
+                sub { $self->_stash_text( @_, 'venue' ); },
+            'meeting/details/leader' =>
+                sub { $self->_stash_text( @_, 'leader' ); },
             'meeting/details/datetime' => sub { $self->_stash_datetime(@_); },
-            'meeting/details/leader'   => sub { $self->_stash_leader(@_); },
             'meeting/description' => sub { $self->_stash_description(@_); },
         },
         pretty_print => 'indented',
@@ -62,15 +65,11 @@ sub _loaded_or_croak {
     return;
 }
 
-sub _stash_title {
-    my ( $self, $twig, $elt ) = @_;
-    $self->{_title} = $elt->text;
-    return;
-}
-
-sub _stash_venue {
-    my ( $self, $twig, $elt ) = @_;
-    $self->{_venue} = $elt->text;
+# General purpose stash routine called as a twig root handler to stash
+# attributes which are simple copies of the element's text content.
+sub _stash_text {
+    my ( $self, $twig, $elt, $attr ) = @_;
+    $self->{"_$attr"} = $elt->text;
     return;
 }
 
@@ -79,12 +78,6 @@ sub _stash_datetime {
     my $text      = $self->{__date_time} = $elt->text;
     my $timestamp = $self->{_timestamp}  = str2time($text);
     $self->{_date} = strftime( '%a %e %b %Y %R %Z', localtime $timestamp );
-    return;
-}
-
-sub _stash_leader {
-    my ( $self, $twig, $elt ) = @_;
-    $self->{_leader} = $elt->text;
     return;
 }
 
