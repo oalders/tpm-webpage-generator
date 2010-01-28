@@ -4,10 +4,13 @@
     <title>Lightning Talks</title>
     <datetime>2010-09-30T18:45</datetime>
     <venue>TBA</venue>
-    <leader label="Presenters">Various</leader>
+    <leader label="Emcee">TBA</leader>
+		<description>
+			<p>
+				Short, 5 to 15 minute talks from a variety of people, on any
+				subject as long as it's got at least a tangent to Perl.
+			</p>
+		</description>
+		<!-- talks... -->
   </details>
-  <description>
-    <p class="synopsis">Short, 5 to 15 minute talks from a variety of people,
-    on any subject as long as it's got at least a tangent to Perl.</p>
-  </description>
 </meeting>
