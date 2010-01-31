@@ -33,6 +33,7 @@ sub load_file {
             'meeting/details/datetime' => sub { $self->_stash_datetime(@_); },
             'meeting/details/synopsis' =>
                 sub { $self->_stash_xhtml( @_, 'synopsis' ); },
+            'meeting/talk' => sub { $self->_add_talk(@_); },
         },
         pretty_print => 'indented',
     );
@@ -47,7 +48,7 @@ sub load_file {
 # Set up the attribute accessors at compile time
 
 BEGIN {
-    my @ATTRIBUTES = qw/ title venue timestamp date synopsis /;
+    my @ATTRIBUTES = qw/ title venue timestamp date synopsis talks /;
 
     for my $attr (@ATTRIBUTES) {
         ## no critic 'TestingAndDebugging::ProhibitNoStrict'
@@ -87,6 +88,16 @@ sub _stash_datetime {
 sub _stash_xhtml {
     my ( $self, $twig, $elt, $attr ) = @_;
     $self->{"_$attr"} = join q{}, map { $_->sprint } $elt->children;
+    return;
+}
+
+sub _add_talk {
+    my ( $self, $twig, $elt ) = @_;
+    my $talk = {
+        speaker => scalar $elt->first_child('speaker')->text,
+        title   => scalar $elt->first_child('title')->text,
+    };
+    push @{ $self->{_talks} }, $talk;
     return;
 }
 

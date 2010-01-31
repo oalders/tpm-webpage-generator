@@ -25,7 +25,15 @@
 <span class="label">Title:</span> [% meeting.title | html %]<br />
 <span class="label">Venue:</span> [% meeting.venue | html %]<br />
 <span class="label">Description:</span> <br />
-[% meeting.synopsis %]
+[% meeting.synopsis %] <br />
+[% FOR talk IN meeting.talks %]
+[% IF loop.first; "<dl>"; END %]
+<dt>[% talk.speaker | html %]: [% talk.title | html %]</dt>
+<dd>
+</dd>
+[% IF loop.last; "</dl>"; END %]
+[% END %]
+<br />
 <!-- end meeting -->
 [% END %]
 
