@@ -32,9 +32,12 @@
 [% END %]
 [% FOR talk IN meeting.talks %]
 [% IF loop.first; "<dl>"; END %]
-<dt>[% talk.speaker | html %]: [% talk.title | html %]</dt>
+<!-- begin talk -->
+<dt class="label">[% talk.speaker | html %]: [% talk.title | html %]</dt>
 <dd>
+	[% IF talk.description; talk.description; END %]
 </dd>
+<!-- end talk -->
 [% IF loop.last; "</dl>"; END %]
 [% END %]
 <br />
