@@ -48,33 +48,22 @@
   <title>Toronto Perl Mongers Home Page</title>
   <!-- BASE HREF="http://to.pm.org/" -->
   <link href="tpm.css" rel="stylesheet" title="basic" type="text/css" />
-  <style type="text/css">
-/*<![CDATA[*/
-  :link { color: #000099 }
-  td.c7 {background-color: #0087D9}
-  span.c6 {color: #FFFFFF; font-size: 150%; font-weight: bold}
-  td.c5 {background-color: #0087D9; vertical-align: top}
-  span.c4 {font-size: 80%}
-  td.c2 {background-color: #000000}
-  td.c1 {background-color: #FFFFFF}
-  /*]]>*/
-  </style>
 </head>
 
 <body>
   <table border="0" cellpadding="6" cellspacing="0" width="100%">
     <tbody>
       <tr>
-        <td class="side c5" valign="top">
+        <td class="side" valign="top">
           <table border="0" cellpadding="2" cellspacing="0">
             <tbody>
               <tr>
-                <td class="c2">
+                <td class="black-background">
                   <table border="0" cellpadding="6"
                   cellspacing="0">
                     <tbody>
                       <tr>
-                        <td class="venue c1"><a href=
+                        <td class="venue"><a href=
                         "http://to.pm.org/index.html"><img alt="Perl Mongers"
                         src="tpm_logo.jpg" width="150" height="175"
                         class="borderless" /></a></td>
@@ -93,7 +82,7 @@
               </tr>
 
               <tr>
-                <td class="c2">&nbsp;</td>
+                <td class="black-background">&nbsp;</td>
 
                 <td>&nbsp;<b><a class="sidehead" href=
                 "/">Home</a></b></td>
@@ -102,7 +91,7 @@
               <tr>
                 <td></td>
 
-                <td><span class="c4">
+                <td><span class="sidebar-link">
                 [%- FOR section IN sections %]
 &nbsp;<a class="side" href="#[% section.name | replace('\s+', '-') | html %]">[% section.name | html %]</a><br />
                 [% END -%]
@@ -110,7 +99,7 @@
                 </span></td>
               </tr>
               <tr>
-                <td class="c2">&nbsp;</td>
+                <td class="black-background">&nbsp;</td>
 
                 <td>&nbsp;<b><span class="sidehead">Pages</span></b></td>
               </tr>
@@ -118,7 +107,7 @@
               <tr>
                 <td></td>
 
-                <td><span class="c4">
+                <td><span class="sidebar-link">
                 &nbsp;<a class="side" href="sponsors.html">Sponsors</a><br />
                 &nbsp;<a class="side" href="index-2009.html">2009 Index
                 Page</a><br /></span></td>
@@ -150,13 +139,12 @@
           <table border="0" cellpadding="2" cellspacing="0" width="100%">
             <tbody>
               <tr>
-                <td class="c2">
+                <td class="black-background">
                   <table border="0" cellpadding="4" cellspacing="0" width=
                   "100%">
                     <tbody>
                       <tr>
-                        <td align="left" class="header c7">
-                        <span class="c6">Toronto Perl Mongers</span></td>
+                        <td align="left" class="header">Toronto Perl Mongers</td>
                       </tr>
                     </tbody>
                   </table>
@@ -208,7 +196,7 @@
       </tr>
 
       <tr>
-        <td class="side c7"><br />
+        <td class="side"><br />
         <br />
         &nbsp;</td>
 

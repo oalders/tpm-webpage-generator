@@ -28,7 +28,11 @@ td.venue {
   text-align: center;
 }
 
-td.header { font-size: 140%; }
+td.header {
+	font-size: 140%;
+	font-weight: bold;
+	background-color: #0087d9;
+}
 
 A {
 	COLOR: #0000ff; TEXT-DECORATION: underline
@@ -65,3 +69,9 @@ A.sidehead:hover {
 .borderless {
   border: 0;
 }
+
+:link { color: #000099; }
+
+.sidebar-link { font-size: 80%; }
+
+.black-background { background-color: #000000; }
