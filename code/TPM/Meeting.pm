@@ -24,8 +24,8 @@ sub load_file {
 
     my $t = XML::Twig->new(
         twig_roots => {
-            'meeting/details/title' =>
-                sub { $self->_stash_text( @_, 'title' ); },
+            'meeting/details/topic' =>
+                sub { $self->_stash_text( @_, 'topic' ); },
             'meeting/details/venue' =>
                 sub { $self->_stash_text( @_, 'venue' ); },
             'meeting/details/leader' =>
@@ -48,7 +48,7 @@ sub load_file {
 # Set up the attribute accessors at compile time
 
 BEGIN {
-    my @ATTRIBUTES = qw/ title venue timestamp date synopsis talks /;
+    my @ATTRIBUTES = qw/ topic venue timestamp date synopsis talks /;
 
     for my $attr (@ATTRIBUTES) {
         ## no critic 'TestingAndDebugging::ProhibitNoStrict'

@@ -22,10 +22,14 @@
 <a name="meeting-[% meeting.date | replace('\s+', '-') | html %]-[% meeting.title | replace('\s+', '-') | html %]"></a>
 [%- END -%]
 [% meeting.date | html %]<br />
-<span class="label">Title:</span> [% meeting.title | html %]<br />
 <span class="label">Venue:</span> [% meeting.venue | html %]<br />
-<span class="label">Description:</span> <br />
-[% meeting.synopsis %] <br />
+[% IF meeting.topic %]
+<span class="label">Topic:</span> [% meeting.topic | html %]<br />
+[% END %]
+[% IF meeting.synopsis %]
+<span class="label">Synopsis:</span>
+[% meeting.synopsis %]
+[% END %]
 [% FOR talk IN meeting.talks %]
 [% IF loop.first; "<dl>"; END %]
 <dt>[% talk.speaker | html %]: [% talk.title | html %]</dt>

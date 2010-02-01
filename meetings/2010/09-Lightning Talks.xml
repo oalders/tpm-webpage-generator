@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <meeting>
   <details>
-    <title>Lightning Talks</title>
+    <topic>Lightning Talks</topic>
     <datetime>2010-09-30T18:45</datetime>
     <venue>TBA</venue>
     <leader label="Emcee">TBA</leader>
