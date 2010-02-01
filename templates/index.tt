@@ -31,14 +31,14 @@
 [% meeting.synopsis %]
 [% END %]
 [% FOR talk IN meeting.talks %]
-[% IF loop.first; "<dl>"; END %]
 <!-- begin talk -->
+<dl>
 <dt class="label">[% talk.speaker | html %]: [% talk.title | html %]</dt>
 <dd>
 	[% IF talk.description; talk.description; END %]
 </dd>
+</dl>
 <!-- end talk -->
-[% IF loop.last; "</dl>"; END %]
 [% END %]
 <br />
 <!-- end meeting -->
