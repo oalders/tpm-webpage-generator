@@ -2,7 +2,6 @@
 #
 # Program to build Toronto Perl Mongers index page.
 
-use 5.010_001;    # for say etc.
 use strict;
 use warnings;
 
