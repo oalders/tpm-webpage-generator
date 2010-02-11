@@ -87,13 +87,7 @@ sub _stash_datetime {
 
 sub _stash_xhtml {
     my ( $self, $twig, $elt, $attr ) = @_;
-    $self->_stash_xhtml_in_hash_element( $elt, $self, "_$attr" );
-    return;
-}
-
-sub _stash_xhtml_in_hash_element {
-    my ( $self, $elt, $hash, $key ) = @_;
-    $hash->{$key} = join q{}, map { $_->sprint } $elt->children;
+	$self->{"_$attr"} = $elt->inner_xml;
     return;
 }
 
@@ -104,9 +98,7 @@ sub _add_talk {
         title   => scalar $elt->first_child('title')->text,
     };
     my $description = $elt->first_child('description');
-    $description
-        && $self->_stash_xhtml_in_hash_element( $description, $talk,
-        'description' );
+	$description and $talk->{'description'} = $description->inner_xml;
     push @{ $self->{_talks} }, $talk;
     return;
 }
