@@ -1,10 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <meeting>
   <details>
-    <topic>TBA</topic>
+    <topic>Main Topic TBA</topic>
     <datetime>2010-03-25T18:45</datetime>
-    <venue>TBA</venue>
-    <leader label="Emcee">TBA</leader>
-		<!-- talks... -->
-  </details>
+    <venue>Nexient</venue>
+		<synopsis>
+			<p>
+				This month we have a couple of talks, the first is a 
+				quick introdcution to OPENapps, and the second is TBA.
+			</p>
+		</synopsis>
+	</details>
+	<talk>
+		<speaker>Kristan &quot;Krispy&quot; Uccello</speaker>
+		<title>An introduction to OPENapps</title>
+		<description>
+			<p>Imagine you create a web application and
+			had the ability to sell it to many web
+			site owners on the internet. Now imagine
+			you could sell it without giving up the
+			source code. OPENapps makes this happen.</p>
+
+			<p>OPENapps is a powerful language agnostic platform allowing you
+      to offer up web applications to a wide audience of website
+      owners. OPENapps takes care of the things that developers
+      typically find boring or repetitious such as billing and tracking;
+      while at the same time providing robust technology for integration
+			of your applications with content publishers sites.</p>
+
+			<p>OPENapps is offering a limited developer beta to web developers
+      who demonstrate that they have a killer app idea and a desire
+			to implement it.</p>
+		</description>
+	</talk>
+	<talk>
+		<speaker>TBA</speaker>
+		<title>TBA</title>
+		<description>
+		</description>
+	</talk>
 </meeting>
