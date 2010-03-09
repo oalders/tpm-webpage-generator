@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<meeting>
+  <details>
+    <topic>TBA</topic>
+    <datetime>2011-01-27T18:45</datetime>
+    <venue>TBA</venue>
+    <!-- leader label="Emcee">Some Dude</leader -->
+  </details>
+  <talk>
+    <speaker>TBA</speaker>
+    <title>Google Summer of Code</title>
+		<description>
+			<p>Preparation for participation in Google Summer of Code.</p>
+		</description>
+	</talk>
+</meeting>

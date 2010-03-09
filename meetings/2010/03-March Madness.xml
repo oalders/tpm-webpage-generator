@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <meeting>
   <details>
-    <topic>Main Topic TBA</topic>
+    <topic>March Madness</topic>
     <datetime>2010-03-25T18:45</datetime>
     <venue>Nexient</venue>
 		<synopsis>
 			<p>
 				This month we have a couple of talks, the first is a 
-				quick introdcution to OPENapps, and the second is TBA.
+				quick introdcution to OPENapps, and then a dose of
+				Perl maymen, and then...
 			</p>
 		</synopsis>
 	</details>
@@ -34,9 +35,11 @@
 		</description>
 	</talk>
 	<talk>
-		<speaker>TBA</speaker>
-		<title>TBA</title>
+		<speaker>Mark Jubenville</speaker>
+		<title>Perl Mayhem</title>
 		<description>
+			<p>A little delayed gratification from last year's Lightning 
+			Talks.</p>
 		</description>
 	</talk>
 </meeting>
