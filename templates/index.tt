@@ -179,7 +179,7 @@
             [% "<ul>" IF loop.first %]
             <li>
               [% FOR meeting IN year.meetings %]
-                <a href="#meeting-[% meeting.date | replace('\s+', '-') | html %]-[% meeting.title | replace('\s+', '-') | html %]">[% meeting.date | html %]</a>[% ", " IF NOT loop.last %]
+                <a href="#meeting-[% meeting.date | replace('\s+', '-') | html %]-[% meeting.title | replace('\s+', '-') | html %]">[% meeting.date | html | replace('\s+', '&nbsp;')%]</a>[% ", " IF NOT loop.last %]
               [% END %]
             </li>           
             [% "</ul>" IF loop.last %]
