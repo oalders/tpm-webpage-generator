@@ -42,4 +42,19 @@
 			Talks.</p>
 		</description>
 	</talk>
+	<talk>
+		<speaker>Richard Dice</speaker>
+		<title>Show &amp; Tell - Modules Richard is using</title>
+		<description>
+			<p>
+				A look at some of the things Richard is working with
+				these days, including
+				<a href="http://search.cpan.org/~mlehmann/Coro-5.21/Coro/Intro.pod"
+				>Coro</a>,
+			  <a
+				href="http://search.cpan.org/~mlehmann/AnyEvent-5.251/lib/AnyEvent/Intro.pod"
+				>AnyEvent</a> and the daemonization of Perl code.
+			</p>
+		</description>
+	</talk>
 </meeting>
