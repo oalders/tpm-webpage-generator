@@ -1,39 +1,20 @@
-body {
+/* * { margin: 0; padding: 0; border: 0; } */
+
+html, body {
   font-family: "MS Verdana", "MS Arial", Helvetica, sans-serif;
   font-size: 100%;
-  color: #000000;
-  background-color: #ffffff;
-  margin: 0;
-  padding: 0;
+  color: black;
+  background-color: red;
+	height: 100%;
+	border: 0;
+	margin: 0;
+	padding: 0;
 }
 
 h1 { font-size: 150%; }
 h2 { font-size: 130%; }
 h3 { font-size: 120%; }
 h4 { font-size: 100%; }
-
-li,ul,ol,p,div,blockquote,td { font-size: 100%; }
-
-td.side {
-  background-color: #0087d9;
-  color: #ffffff;
-  font-size: 110%;
-  vertical-align: text-top;
-}
-
-td.venue {
-  background-color: #ffffff;
-  color: #000000;
-  font-size: 120%;
-  text-align: center;
-}
-
-td.header {
-	font-size: 140%;
-	font-weight: bold;
-	background-color: #0087d9;
-	color: #ffffff;
-}
 
 A {
 	COLOR: #0000ff; TEXT-DECORATION: underline
@@ -79,7 +60,10 @@ A.sidehead:hover {
 
 /* attempt at new styling */
 
-#tpm-home-page {
+#columns {
+	margin: 0;
+	border: 0;
+	padding: 0;
 	background: #0087d9;
 }
 
@@ -88,38 +72,61 @@ A.sidehead:hover {
 	padding-top: 1em;
 	padding-bottom: 1em;
 	width: 13em;
+	margin: 0;
+	border: 0;
 }
 
 #logo {
 	text-align: center;
 }
 
+#main-menu {
+	padding-top: 1em;
+	padding-left: 1em;
+	font-size: 110%;
+	font-weight: bold;
+	color: white;
+}
+
+.black-on-black {
+	color: black;
+	background: black;
+}
+
 .sidebar-links {
 	padding-left: 1em;
 	font-size: 80%;
+	font-weight: normal;
 }
 
 #sponsor-links {
 	text-align: center;
 	padding-top: 2em;
-	padding-bottom 2em;
+	padding-bottom: 2em;
 }
+
 #main {
 	margin-left: 13em;
+	background: white;
 }
 
 #banner {
 	font-size: 150%;
 	font-weight: bold;
-	text-align: center;
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
+	padding-left: 1em;
+	color: white;
 	background: #0087d9;
-	border: 2px solid;
+	border: 2px solid black;
+	/* having a top margin causes the blue colour from the left hand
+	 * nav bar to spill over the top :-(  This is my first cut at cleaning
+	 * up the mess
+	 */
+	margin: 0px 4px 4px 4px;
 }
 
 #content {
-	background: #ffffff;
 	padding-top: 1em;
 	padding-bottom: 1em;
 	padding-left: 1em;
@@ -128,5 +135,4 @@ A.sidehead:hover {
 
 #footer {
 	font-size: 80%;
-	text-align: center;
 }

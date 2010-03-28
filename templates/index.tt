@@ -3,18 +3,15 @@
      PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-
 [% BLOCK section_heading %]
 <h2><a name="[% name | replace('\s+', '-') | html %]"></a>[% name | html %]</h2>
 [% END %]
-
 [% BLOCK display_section %]
 <!-- begin section -->
 [% PROCESS section_heading name=section.name %]
 [% section.content %]
 <!-- end section -->
 [% END %]
-
 [% BLOCK display_meeting %]
 <!-- begin meeting -->
 <span class="label">Date:</span> 
@@ -43,16 +40,12 @@
 <br />
 <!-- end meeting -->
 [% END %]
-
 <head>
   <title>Toronto Perl Mongers Home Page</title>
   <!-- BASE HREF="http://to.pm.org/" -->
   <link href="tpm.css" rel="stylesheet" title="basic" type="text/css" />
 </head>
-
-<body id="tpm-home-page">
-	<div id="columns">
-  	<div id="left-column">
+<body><div id="columns"><div id="left-column">
   		<div id="logo">
   		  <a href= "http://to.pm.org/index.html"><img
   		  		alt="Perl Mongers"
@@ -60,17 +53,19 @@
             class="borderless" /></a>
   		</div>
   		<div id="main-menu">
-				<a href="/">Home</a><br />
+				<span class="black-on-black">M</span><a
+					class="sidehead" href="/">Home</a><br />
 				<div class="sidebar-links">
           [%- FOR section IN sections %]
-				  <a href="#[% section.name | replace('\s+', '-') | html %]">[% section.name | html %]</a><br />
+				  <a class="side" href="#[% section.name | replace('\s+', '-') | html %]">[% section.name | html %]</a><br />
           [% END -%]
-				  <a href="#Schedule">Schedule</a><br />
+				  <a class="side" href="#Schedule">Schedule</a><br />
 			  </div>
-				Pages<br />
+				<span class="black-on-black">M</span><span
+					class="sidehead">Pages</span><br />
 				<div class="sidebar-links">
-				  <a href="sponsors.html">Sponsors</a><br />
-				  <a href="index-2009.html">2009 Index Page</a><br />
+				  <a class="side" href="sponsors.html">Sponsors</a><br />
+				  <a class="side" href="index-2009.html">2009 Index Page</a><br />
 			  </div>
   		</div>
   		<div id="sponsor-links">
@@ -83,7 +78,7 @@
 		<div id="main">
 			<div id="banner">
         Toronto Perl Mongers
-			</div>
+		  </div>
 			<div id="content">
         <p>Welcome to the home page of the Toronto Perl Mongers.</p>
 
@@ -126,9 +121,8 @@
 
 		  </div>
 			<div id="footer">
-        <p>Generated at [% generated_at | html %] 
+        Generated at [% generated_at | html %] 
           <a href="http://validator.w3.org/check?uri=http%3A%2F%2Fto.pm.org%2F">Validate</a>
-        </p>
 			</div>
 		</div>
 	</div>
