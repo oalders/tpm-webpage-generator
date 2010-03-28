@@ -76,3 +76,57 @@ A.sidehead:hover {
 .sidebar-link { font-size: 80%; }
 
 .black-background { background-color: #000000; }
+
+/* attempt at new styling */
+
+#tpm-home-page {
+	background: #0087d9;
+}
+
+#left-column {
+	float: left;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	width: 13em;
+}
+
+#logo {
+	text-align: center;
+}
+
+.sidebar-links {
+	padding-left: 1em;
+	font-size: 80%;
+}
+
+#sponsor-links {
+	text-align: center;
+	padding-top: 2em;
+	padding-bottom 2em;
+}
+#main {
+	margin-left: 13em;
+}
+
+#banner {
+	font-size: 150%;
+	font-weight: bold;
+	text-align: center;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	background: #0087d9;
+	border: 2px solid;
+}
+
+#content {
+	background: #ffffff;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+#footer {
+	font-size: 80%;
+	text-align: center;
+}
