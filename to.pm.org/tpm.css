@@ -60,7 +60,7 @@ A.sidehead:hover {
 
 /* attempt at new styling */
 
-#columns {
+#container {
 	margin: 0;
 	border: 0;
 	padding: 0;
@@ -80,7 +80,7 @@ A.sidehead:hover {
 	text-align: center;
 }
 
-#main-menu {
+#navigation {
 	padding-top: 1em;
 	padding-left: 1em;
 	font-size: 110%;
@@ -99,18 +99,18 @@ A.sidehead:hover {
 	font-weight: normal;
 }
 
-#sponsor-links {
+#oreilly {
 	text-align: center;
 	padding-top: 2em;
 	padding-bottom: 2em;
 }
 
-#main {
+#right-column {
 	margin-left: 13em;
 	background: white;
 }
 
-#banner {
+#page-heading {
 	font-size: 150%;
 	font-weight: bold;
 	padding-top: 0.5em;
@@ -126,13 +126,13 @@ A.sidehead:hover {
 	margin: 0px 4px 4px 4px;
 }
 
-#content {
+#page-content {
 	padding-top: 1em;
 	padding-bottom: 1em;
 	padding-left: 1em;
 	padding-right: 1em;
 }
 
-#footer {
+#page-footer {
 	font-size: 80%;
 }

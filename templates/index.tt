@@ -45,14 +45,16 @@
   <!-- BASE HREF="http://to.pm.org/" -->
   <link href="tpm.css" rel="stylesheet" title="basic" type="text/css" />
 </head>
-<body><div id="columns"><div id="left-column">
+<body>
+	<div id="container">
+		<div id="left-column">
   		<div id="logo">
   		  <a href= "http://to.pm.org/index.html"><img
   		  		alt="Perl Mongers"
             src="tpm_logo.jpg" width="150" height="175"
             class="borderless" /></a>
   		</div>
-  		<div id="main-menu">
+  		<div id="navigation">
 				<span class="black-on-black">M</span><a
 					class="sidehead" href="/">Home</a><br />
 				<div class="sidebar-links">
@@ -68,18 +70,18 @@
 				  <a class="side" href="index-2009.html">2009 Index Page</a><br />
 			  </div>
   		</div>
-  		<div id="sponsor-links">
+  		<div id="oreilly">
   			<a href="http://www.oreilly.com/"><img
   				alt="This User Group sponsored by O'Reilly"
   				src="images/ug_ad_125_camel.gif" width="125" height="125"
         /></a>
   	  </div>
     </div>
-		<div id="main">
-			<div id="banner">
+		<div id="right-column">
+			<div id="page-heading">
         Toronto Perl Mongers
 		  </div>
-			<div id="content">
+			<div id="page-content">
         <p>Welcome to the home page of the Toronto Perl Mongers.</p>
 
         <p>The Toronto Perl Mongers is a group of Perl programmers and
@@ -120,7 +122,7 @@
         [% END %]
 
 		  </div>
-			<div id="footer">
+			<div id="page-footer">
         Generated at [% generated_at | html %] 
           <a href="http://validator.w3.org/check?uri=http%3A%2F%2Fto.pm.org%2F">Validate</a>
 			</div>
