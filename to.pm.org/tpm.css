@@ -1,39 +1,20 @@
-body {
+/* * { margin: 0; padding: 0; border: 0; } */
+
+html, body {
   font-family: "MS Verdana", "MS Arial", Helvetica, sans-serif;
   font-size: 100%;
-  color: #000000;
-  background-color: #ffffff;
-  margin: 0;
-  padding: 0;
+  color: black;
+  background-color: red;
+	height: 100%;
+	border: 0;
+	margin: 0;
+	padding: 0;
 }
 
 h1 { font-size: 150%; }
 h2 { font-size: 130%; }
 h3 { font-size: 120%; }
 h4 { font-size: 100%; }
-
-li,ul,ol,p,div,blockquote,td { font-size: 100%; }
-
-td.side {
-  background-color: #0087d9;
-  color: #ffffff;
-  font-size: 110%;
-  vertical-align: text-top;
-}
-
-td.venue {
-  background-color: #ffffff;
-  color: #000000;
-  font-size: 120%;
-  text-align: center;
-}
-
-td.header {
-	font-size: 140%;
-	font-weight: bold;
-	background-color: #0087d9;
-	color: #ffffff;
-}
 
 A {
 	COLOR: #0000ff; TEXT-DECORATION: underline
@@ -76,3 +57,82 @@ A.sidehead:hover {
 .sidebar-link { font-size: 80%; }
 
 .black-background { background-color: #000000; }
+
+/* attempt at new styling */
+
+#container {
+	margin: 0;
+	border: 0;
+	padding: 0;
+	background: #0087d9;
+}
+
+#left-column {
+	float: left;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	width: 13em;
+	margin: 0;
+	border: 0;
+}
+
+#logo {
+	text-align: center;
+}
+
+#navigation {
+	padding-top: 1em;
+	padding-left: 1em;
+	font-size: 110%;
+	font-weight: bold;
+	color: white;
+}
+
+.black-on-black {
+	color: black;
+	background: black;
+}
+
+.sidebar-links {
+	padding-left: 1em;
+	font-size: 80%;
+	font-weight: normal;
+}
+
+#oreilly {
+	text-align: center;
+	padding-top: 2em;
+	padding-bottom: 2em;
+}
+
+#right-column {
+	margin-left: 13em;
+	background: white;
+}
+
+#page-heading {
+	font-size: 150%;
+	font-weight: bold;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	padding-left: 1em;
+	color: white;
+	background: #0087d9;
+	border: 2px solid black;
+	/* having a top margin causes the blue colour from the left hand
+	 * nav bar to spill over the top :-(  This is my first cut at cleaning
+	 * up the mess
+	 */
+	margin: 0px 4px 4px 4px;
+}
+
+#page-content {
+	padding-top: 1em;
+	padding-bottom: 1em;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+#page-footer {
+	font-size: 80%;
+}
