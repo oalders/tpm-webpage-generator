@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <meeting>
   <details>
-    <topic>April Meeting</topic>
+    <topic>KinoSearch - Free Text Search</topic>
     <datetime>2010-04-29T18:45</datetime>
     <venue>Nexient</venue>
+		<!--
 		<synopsis>
 			<p>
 				This month we have a couple of talks...
 			</p>
 		</synopsis>
+		-->
 	</details>
 	<talk>
 		<speaker>Stuart Watt</speaker>
