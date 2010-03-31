@@ -11,11 +11,6 @@ html, body {
 	padding: 0;
 }
 
-h1 { font-size: 150%; }
-h2 { font-size: 130%; }
-h3 { font-size: 120%; }
-h4 { font-size: 100%; }
-
 A {
 	COLOR: #0000ff; TEXT-DECORATION: underline
 }
@@ -88,9 +83,8 @@ A.sidehead:hover {
 	color: white;
 }
 
-.black-on-black {
-	color: black;
-	background: black;
+.sidebar-link-group {
+	padding-top: 1em;
 }
 
 .sidebar-links {
@@ -136,6 +130,13 @@ A.sidehead:hover {
 	padding-bottom: 1em;
 	padding-left: 1em;
 	padding-right: 1em;
+}
+
+.section-heading {
+	font-weight: bold;
+	font-size: 130%;
+	padding-bottom: 0.5em;
+	padding-top: 0.5em;
 }
 
 #page-footer {

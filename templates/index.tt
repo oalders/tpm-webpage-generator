@@ -4,16 +4,16 @@
      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 [% BLOCK section_heading %]
-<h2><a name="[% name | replace('\s+', '-') | html %]"></a>[% name | html %]</h2>
+<div class="section-heading"><a name="[% name | replace('\s+', '-') | html %]"></a>[% name | html %]</div>
 [% END %]
 [% BLOCK display_section %]
-<!-- begin section -->
+<div class="section">
 [% PROCESS section_heading name=section.name %]
 [% section.content %]
-<!-- end section -->
+</div>
 [% END %]
 [% BLOCK display_meeting %]
-<!-- begin meeting -->
+<div class="meeting">
 <span class="label">Date:</span> 
 [%- IF anchor -%]
 <a name="meeting-[% meeting.date | replace('\s+', '-') | html %]-[% meeting.title | replace('\s+', '-') | html %]"></a>
@@ -28,17 +28,17 @@
 [% meeting.synopsis %]
 [% END %]
 [% FOR talk IN meeting.talks %]
-<!-- begin talk -->
+<div class="talk">
 <dl>
 <dt class="label">[% talk.speaker | html %]: [% talk.title | html %]</dt>
 <dd>
 	[% IF talk.description; talk.description; END %]
 </dd>
 </dl>
-<!-- end talk -->
+</div>
 [% END %]
 <br />
-<!-- end meeting -->
+</div>
 [% END %]
 <head>
   <title>Toronto Perl Mongers Home Page</title>
@@ -55,21 +55,23 @@
             class="borderless" /></a>
   		</div>
   		<div id="navigation">
-				<span class="black-on-black">M</span><a
-					class="sidehead" href="/">Home</a><br />
-				<div class="sidebar-links">
-          [%- FOR section IN sections %]
-				  <a class="side" href="#[% section.name | replace('\s+', '-') | html %]">[% section.name | html %]</a><br />
-          [% END -%]
-				  <a class="side" href="#Schedule">Schedule</a><br />
-			  </div>
-				<span class="black-on-black">M</span><span
-					class="sidehead">Pages</span><br />
-				<div class="sidebar-links">
-				  <a class="side" href="sponsors.html">Sponsors</a><br />
-				  <a class="side" href="index-2009.html">2009 Index Page</a><br />
-			  </div>
-  		</div>
+				<div class="sidebar-link-group">
+				  &#x2023;<a class="sidehead" href="/">Home</a><br />
+				  <div class="sidebar-links">
+            [%- FOR section IN sections %]
+				    <a class="side" href="#[% section.name | replace('\s+', '-') | html %]">[% section.name | html %]</a><br />
+            [% END -%]
+				    <a class="side" href="#Schedule">Schedule</a><br />
+			    </div>
+				</div>
+				<div class="sidebar-link-group">
+				  &#x2023;<span class="sidehead">Pages</span><br />
+				  <div class="sidebar-links">
+				    <a class="side" href="sponsors.html">Sponsors</a><br />
+				    <a class="side" href="index-2009.html">2009 Index Page</a><br />
+			    </div>
+  		  </div>
+			</div>
   		<div id="oreilly">
   			<a href="http://www.oreilly.com/"><img
   				alt="This User Group sponsored by O'Reilly"
@@ -90,7 +92,7 @@
         hackers of all levels who get together to talk about Perl.</p>
 
         [% IF upcoming_or_recent %]
-          <h2>Next or Most Recent Meeting</h2>
+          <div class="section-heading">Next or Most Recent Meeting</div>
 
           [% PROCESS display_meeting
                      meeting=upcoming_or_recent
