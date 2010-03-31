@@ -110,6 +110,15 @@ A.sidehead:hover {
 	background: white;
 }
 
+/* Making the shim have any height allows the margin of the page-heading
+ * to be displayed without pushing the left column down.  This height is
+ * subtracted from the top margin of the page heading.
+ */
+
+#shim {
+	height: 1px;
+}
+
 #page-heading {
 	font-size: 150%;
 	font-weight: bold;
@@ -119,11 +128,7 @@ A.sidehead:hover {
 	color: white;
 	background: #0087d9;
 	border: 2px solid black;
-	/* having a top margin causes the blue colour from the left hand
-	 * nav bar to spill over the top :-(  This is my first cut at cleaning
-	 * up the mess
-	 */
-	margin: 0px 4px 4px 4px;
+	margin: 3px 4px 4px 4px;
 }
 
 #page-content {
@@ -134,5 +139,6 @@ A.sidehead:hover {
 }
 
 #page-footer {
+	padding-left: 1em;
 	font-size: 80%;
 }
