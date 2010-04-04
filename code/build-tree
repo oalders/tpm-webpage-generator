@@ -14,9 +14,11 @@ use Carp;
 use File::Find::Rule;
 use POSIX 'strftime';
 use TPM::Meeting;
+use FindBin;
 
 # These should be generated one day...
 my $root          = q{..};
+my $document_root = dir($root, 'to.pm.org');
 my $run_timestamp = time;    # Override for testing
 
 my $sections = get_sections( dir( $root, 'sections' ) );
@@ -25,14 +27,21 @@ my $years_meetings
 my $upcoming_or_recent
     = find_upcoming_or_recent( $years_meetings, $run_timestamp );
 
-my $template = Template->new( { RELATIVE => 1 } );
+my $template = Template->new(
+    {   RELATIVE => 1,
+        INCLUDE_PATH =>
+            [ dir( $FindBin::Bin, $root, 'templates' )->stringify ],
+    }
+);
+# generate the index page
 $template->process(
-    file( $root, 'templates', 'index.tt' )->stringify,
+    'index.tt',
     {   sections           => $sections,
         years_meetings     => $years_meetings,
         upcoming_or_recent => $upcoming_or_recent,
         generated_at       => scalar localtime $run_timestamp,
-    }
+    },
+	file($document_root, 'index.html')->stringify
 ) || croak $template->error();
 
 exit 0;

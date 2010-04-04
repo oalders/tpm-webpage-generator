@@ -12,6 +12,7 @@ use XML::Twig;
 use Date::Parse;
 use POSIX 'strftime';
 use English '-no_match_vars';
+use Path::Class;
 
 sub new {
     my ($class) = shift;
@@ -48,7 +49,7 @@ sub load_file {
 # Set up the attribute accessors at compile time
 
 BEGIN {
-    my @ATTRIBUTES = qw/ topic venue timestamp date synopsis talks /;
+    my @ATTRIBUTES = qw/ venue timestamp date synopsis talks /;
 
     for my $attr (@ATTRIBUTES) {
         ## no critic 'TestingAndDebugging::ProhibitNoStrict'
@@ -59,6 +60,40 @@ BEGIN {
             return $self->{"_$attr"};
         };
     }
+}
+
+# If there is a single talk then the topic probably isn't set.
+sub topic {
+    my ($self) = @_;
+
+    my $t = $self->{_topic};
+    if ( defined $t and length $t ) {
+        return $t;
+    }
+    if ( @{ $self->talks } ) {
+        $t = $self->talks->[0]{title};
+        if ( defined $t and length $t ) {
+            return $t;
+        }
+    }
+    return '(no topic set)';
+}
+
+sub filename {
+    my ($self) = @_;
+    $self->_loaded_or_croak;
+
+    ( my $filename = $self->topic ) =~ s/\W+/_/g;
+    $filename .= '.html';
+
+    my @localtime = localtime $self->timestamp;
+    my $year      = strftime( '%Y', @localtime );
+    my $month     = strftime( '%m', @localtime );
+    my $day       = strftime( '%d', @localtime );
+
+    # XXX As we are running on Linux the file function will generate
+    # a legitimate URL fragment.
+    return file( $year, $month, $day, $filename );
 }
 
 sub _loaded_or_croak {
@@ -87,7 +122,7 @@ sub _stash_datetime {
 
 sub _stash_xhtml {
     my ( $self, $twig, $elt, $attr ) = @_;
-	$self->{"_$attr"} = $elt->inner_xml;
+    $self->{"_$attr"} = $elt->inner_xml;
     return;
 }
 
@@ -98,7 +133,7 @@ sub _add_talk {
         title   => scalar $elt->first_child('title')->text,
     };
     my $description = $elt->first_child('description');
-	$description and $talk->{'description'} = $description->inner_xml;
+    $description and $talk->{'description'} = $description->inner_xml;
     push @{ $self->{_talks} }, $talk;
     return;
 }

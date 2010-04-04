@@ -1,5 +1,5 @@
 all:
-	cd code && ./build-index > ../to.pm.org/index.html
+	cd code && ./build-tree
 
 critic:
 	perlcritic --brutal code/build-index code/TPM/*.pm

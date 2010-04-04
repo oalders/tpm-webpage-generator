@@ -1,0 +1,4 @@
+<div class="section">
+[% PROCESS section_heading name=section.name %]
+[% section.content %]
+</div>
