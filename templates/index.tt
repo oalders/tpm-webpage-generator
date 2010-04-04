@@ -3,43 +3,6 @@
      PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-[% BLOCK section_heading %]
-<div class="section-heading"><a name="[% name | replace('\s+', '-') | html %]"></a>[% name | html %]</div>
-[% END %]
-[% BLOCK display_section %]
-<div class="section">
-[% PROCESS section_heading name=section.name %]
-[% section.content %]
-</div>
-[% END %]
-[% BLOCK display_meeting %]
-<div class="meeting">
-<span class="label">Date:</span> 
-[%- IF anchor -%]
-<a name="meeting-[% meeting.date | replace('\s+', '-') | html %]-[% meeting.title | replace('\s+', '-') | html %]"></a>
-[%- END -%]
-[% meeting.date | html %]<br />
-<span class="label">Venue:</span> [% meeting.venue | html %]<br />
-[% IF meeting.topic %]
-<span class="label">Topic:</span> [% meeting.topic | html %]<br />
-[% END %]
-[% IF meeting.synopsis %]
-<span class="label">Synopsis:</span>
-[% meeting.synopsis %]
-[% END %]
-[% FOR talk IN meeting.talks %]
-<div class="talk">
-<dl>
-<dt class="label">[% talk.speaker | html %]: [% talk.title | html %]</dt>
-<dd>
-	[% IF talk.description; talk.description; END %]
-</dd>
-</dl>
-</div>
-[% END %]
-<br />
-</div>
-[% END %]
 <head>
   <title>Toronto Perl Mongers Home Page</title>
   <!-- BASE HREF="http://to.pm.org/" -->
@@ -106,23 +69,22 @@
 
         [% PROCESS section_heading name='Schedule' %]
 
-        <!-- each year's meeting links -->
         [% FOR year IN years_meetings %]
           [% "<ul>" IF loop.first %]
-          <li>
-            [% FOR meeting IN year.meetings %]
-              <a href="#meeting-[% meeting.date | replace('\s+', '-') | html %]-[% meeting.title | replace('\s+', '-') | html %]">[% meeting.date | html | replace('\s+', '&nbsp;')%]</a>[% ", " IF NOT loop.last %]
-            [% END %]
-          </li>           
+            <li> [% year.year | html %]
+              [% FOR meeting IN year.meetings %]
+                [% "<ul>" IF loop.first %]
+									<li>
+										<a href="[% meeting.filename | html%]">[%-
+											meeting.topic | html | replace('\s+', '&nbsp;');
+											'&nbsp;-&nbsp;' ;
+											meeting.date | html | replace('\s+', '&nbsp;');
+											-%]</a>
+									</li>
+                [% "</ul>" IF loop.last %]
+              [% END %]
+            </li>           
           [% "</ul>" IF loop.last %]
-        [% END %]
-
-        <!-- meetings in order -->
-        [% FOR year IN years_meetings %]
-          <h3>[% year.year | html %]</h3>
-          [% FOR meeting IN year.meetings %]
-            [%- PROCESS display_meeting meeting=meeting anchor=1 -%] 
-          [% END %]
         [% END %]
 
 		  </div>

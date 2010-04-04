@@ -1,0 +1,1 @@
+<div class="section-heading"><a name="[% name | replace('\s+', '-') | html %]"></a>[% name | html %]</div>
