@@ -4,94 +4,36 @@
      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>Toronto Perl Mongers Home Page</title>
-  <!-- BASE HREF="http://to.pm.org/" -->
-  <link href="tpm.css" rel="stylesheet" title="basic" type="text/css" />
+  <title>TPM - [% meeting.topic | html %]</title>
+	<link href="../../../tpm.css" rel="stylesheet" title="basic" type="text/css" />
 </head>
 <body>
 	<div id="container">
 		<div id="left-column">
   		<div id="logo">
-  		  <a href= "http://to.pm.org/index.html"><img
+				<a href= "../../../index.html"><img
   		  		alt="Perl Mongers"
-            src="tpm_logo.jpg" width="150" height="175"
+						src="../../../tpm_logo.jpg" width="150" height="175"
             class="borderless" /></a>
   		</div>
   		<div id="navigation">
 				<div class="sidebar-link-group">
-				  &#x2023;<a class="sidehead" href="/">Home</a><br />
-				  <div class="sidebar-links">
-            [%- FOR section IN sections %]
-				    <a class="side" href="#[% section.name | replace('\s+', '-') | html %]">[% section.name | html %]</a><br />
-            [% END -%]
-				    <a class="side" href="#Schedule">Schedule</a><br />
-			    </div>
+					&#x2023;<a class="sidehead" href="../../..">Home</a><br />
 				</div>
-				<div class="sidebar-link-group">
-				  &#x2023;<span class="sidehead">Pages</span><br />
-				  <div class="sidebar-links">
-				    <a class="side" href="sponsors.html">Sponsors</a><br />
-				    <a class="side" href="index-2009.html">2009 Index Page</a><br />
-			    </div>
-  		  </div>
-			</div>
-  		<div id="oreilly">
-  			<a href="http://www.oreilly.com/"><img
-  				alt="This User Group sponsored by O'Reilly"
-  				src="images/ug_ad_125_camel.gif" width="125" height="125"
-        /></a>
   	  </div>
     </div>
 		<div id="right-column">
 			<div id="shim">
 		  </div>
 			<div id="page-heading">
-        Toronto Perl Mongers
+        [% meeting.topic | html %]
 		  </div>
 			<div id="page-content">
-        <p>Welcome to the home page of the Toronto Perl Mongers.</p>
-
-        <p>The Toronto Perl Mongers is a group of Perl programmers and
-        hackers of all levels who get together to talk about Perl.</p>
-
-        [% IF upcoming_or_recent %]
-          <div class="section-heading">Next or Most Recent Meeting</div>
-
-          [% PROCESS display_meeting
-                     meeting=upcoming_or_recent
-                     anchor=0
-           %]
-        [% END %]
-
-        [%- FOR section IN sections %]
-          [%- PROCESS display_section section=section -%]
-        [%- END %]
-
-        [% PROCESS section_heading name='Schedule' %]
-
-        <!-- each year's meeting links -->
-        [% FOR year IN years_meetings %]
-          [% "<ul>" IF loop.first %]
-          <li>
-            [% FOR meeting IN year.meetings %]
-              <a href="#meeting-[% meeting.date | replace('\s+', '-') | html %]-[% meeting.title | replace('\s+', '-') | html %]">[% meeting.date | html | replace('\s+', '&nbsp;')%]</a>[% ", " IF NOT loop.last %]
-            [% END %]
-          </li>           
-          [% "</ul>" IF loop.last %]
-        [% END %]
-
-        <!-- meetings in order -->
-        [% FOR year IN years_meetings %]
-          <h3>[% year.year | html %]</h3>
-          [% FOR meeting IN year.meetings %]
-            [%- PROCESS display_meeting meeting=meeting anchor=1 -%] 
-          [% END %]
-        [% END %]
-
+        [%- PROCESS display_meeting meeting=meeting -%] 
 		  </div>
 			<div id="page-footer">
         Generated at [% generated_at | html %] 
-          <a href="http://validator.w3.org/check?uri=http%3A%2F%2Fto.pm.org%2F">Validate</a>
+          <a href="http://validator.w3.org/check?uri=http%3A%2F%2Fto.pm.org%2F[% meeting.filename | html %]">Validate</a>
 			</div>
 		</div>
 	</div>

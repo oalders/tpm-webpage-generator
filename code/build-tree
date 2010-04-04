@@ -15,10 +15,10 @@ use File::Find::Rule;
 use POSIX 'strftime';
 use TPM::Meeting;
 use FindBin;
+use File::Path;
 
 # These should be generated one day...
 my $root          = q{..};
-my $document_root = dir($root, 'to.pm.org');
 my $run_timestamp = time;    # Override for testing
 
 my $sections = get_sections( dir( $root, 'sections' ) );
@@ -26,25 +26,51 @@ my $years_meetings
     = group_meetings_by_year( get_meetings( dir( $root, 'meetings' ) ) );
 my $upcoming_or_recent
     = find_upcoming_or_recent( $years_meetings, $run_timestamp );
-
+my $output_dir = dir( $FindBin::Bin, $root, 'to.pm.org' );
 my $template = Template->new(
     {   RELATIVE => 1,
         INCLUDE_PATH =>
             [ dir( $FindBin::Bin, $root, 'templates' )->stringify ],
+        OUTPUT_PATH => $output_dir->stringify,
     }
 );
+
+my $generated_at = scalar localtime $run_timestamp;
+
 # generate the index page
 $template->process(
     'index.tt',
     {   sections           => $sections,
         years_meetings     => $years_meetings,
         upcoming_or_recent => $upcoming_or_recent,
-        generated_at       => scalar localtime $run_timestamp,
+        generated_at       => $generated_at,
     },
-	file($document_root, 'index.html')->stringify
+    'index.html'
 ) || croak $template->error();
 
+generate_meetings( $template, $years_meetings, $generated_at, $output_dir );
+
 exit 0;
+
+sub generate_meetings {
+    my ( $template, $years_meetings, $generated_at, $output_dir ) = @_;
+
+    for my $year ( @{$years_meetings} ) {
+        for my $meeting ( @{ $year->{meetings} } ) {
+            my $dir = dir( $output_dir, $meeting->filename->dir );
+            File::Path::make_path( $dir->stringify );
+            $template->process(
+                'meeting.tt',
+                {   meeting      => $meeting,
+                    generated_at => $generated_at,
+                },
+                $meeting->filename->stringify
+            ) || croak $template->error;
+        }
+    }
+
+	return;
+}
 
 # in:
 #   directory under which sections live in separate html files
