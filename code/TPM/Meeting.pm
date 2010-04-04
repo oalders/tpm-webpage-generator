@@ -49,7 +49,7 @@ sub load_file {
 # Set up the attribute accessors at compile time
 
 BEGIN {
-    my @ATTRIBUTES = qw/ venue timestamp date synopsis talks /;
+    my @ATTRIBUTES = qw/ venue timestamp date short_date synopsis talks /;
 
     for my $attr (@ATTRIBUTES) {
         ## no critic 'TestingAndDebugging::ProhibitNoStrict'
@@ -117,6 +117,7 @@ sub _stash_datetime {
     defined $epoch_secs or croak "failed to parse date time '$text'";
     $self->{_timestamp} = $epoch_secs;
     $self->{_date} = strftime( '%a %e %b %Y %R %Z', localtime $epoch_secs );
+    $self->{_short_date} = strftime( '%e %b %Y', localtime $epoch_secs );
     return;
 }
 

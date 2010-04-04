@@ -4,7 +4,7 @@
      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-  <title>TPM - [% meeting.topic | html %]</title>
+  <title>TPM::[% meeting.short_date | html %] - [% meeting.topic | html %]</title>
 	<link href="../../../tpm.css" rel="stylesheet" title="basic" type="text/css" />
 </head>
 <body>
@@ -26,7 +26,7 @@
 			<div id="shim">
 		  </div>
 			<div id="page-heading">
-        [% meeting.topic | html %]
+        [% meeting.short_date | html %] - [% meeting.topic | html %]
 		  </div>
 			<div id="page-content">
         [%- PROCESS display_meeting meeting=meeting -%] 
