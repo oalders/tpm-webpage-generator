@@ -118,7 +118,7 @@ sub get_meetings {
 sub group_meetings_by_year {
     my ($unordered_list) = @_;
     my @list
-        = sort { $a->timestamp <=> $b->timestamp || $a->title cmp $b->title }
+        = sort { $a->timestamp <=> $b->timestamp || $a->topic cmp $b->topic }
         @{$unordered_list};
 
     my @year_groups;
