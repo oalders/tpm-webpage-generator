@@ -83,7 +83,7 @@ sub filename {
     my ($self) = @_;
     $self->_loaded_or_croak;
 
-    ( my $filename = $self->topic ) =~ s/\W+/_/g;
+    ( my $filename = $self->topic ) =~ s/\W+/_/smxg;
     $filename .= '.html';
 
     my @localtime = localtime $self->timestamp;

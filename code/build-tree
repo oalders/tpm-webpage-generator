@@ -22,10 +22,9 @@ my $root          = q{..};
 my $run_timestamp = time;    # Override for testing
 
 my $sections = get_sections( dir( $root, 'sections' ) );
-my $years_meetings
+my $meetings
     = group_meetings_by_year( get_meetings( dir( $root, 'meetings' ) ) );
-my $upcoming_or_recent
-    = find_upcoming_or_recent( $years_meetings, $run_timestamp );
+my $upcoming_or_recent = find_upcoming_or_recent( $meetings, $run_timestamp );
 my $output_dir = dir( $FindBin::Bin, $root, 'to.pm.org' );
 my $template = Template->new(
     {   RELATIVE => 1,
@@ -35,31 +34,32 @@ my $template = Template->new(
     }
 );
 
-my $generated_at = scalar localtime $run_timestamp;
+my $generated_timestamp = scalar localtime $run_timestamp;
 
 # generate the index page
 $template->process(
     'index.tt',
     {   sections           => $sections,
-        years_meetings     => $years_meetings,
+        years_meetings     => $meetings,
         upcoming_or_recent => $upcoming_or_recent,
-        generated_at       => $generated_at,
+        generated_at       => $generated_timestamp,
     },
     'index.html'
 ) || croak $template->error();
 
-generate_meetings( $template, $years_meetings, $generated_at, $output_dir );
+generate_meetings( $template, $meetings, $generated_timestamp, $output_dir );
 
 exit 0;
 
 sub generate_meetings {
-    my ( $template, $years_meetings, $generated_at, $output_dir ) = @_;
+    my ( $template_processor, $years_meetings, $generated_at, $root_dir )
+        = @_;
 
     for my $year ( @{$years_meetings} ) {
         for my $meeting ( @{ $year->{meetings} } ) {
-            my $dir = dir( $output_dir, $meeting->filename->dir );
+            my $dir = dir( $root_dir, $meeting->filename->dir );
             File::Path::make_path( $dir->stringify );
-            $template->process(
+            $template_processor->process(
                 'meeting.tt',
                 {   meeting      => $meeting,
                     generated_at => $generated_at,
