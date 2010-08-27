@@ -1,6 +1,9 @@
 all:
 	cd code && ./build-tree
 
+tidy:
+	perltidy -nst -nse -b code/build-tree
+
 critic:
 	perlcritic --brutal code/build-tree code/TPM/*.pm
 
