@@ -2,7 +2,7 @@ all:
 	cd code && ./build-tree
 
 critic:
-	perlcritic --brutal code/build-index code/TPM/*.pm
+	perlcritic --brutal code/build-tree code/TPM/*.pm
 
 clean:
 	rm -f to.pm.org/index.html
