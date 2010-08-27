@@ -5,6 +5,16 @@ Simple program to generate TPM index page.
   make
   make install
 
+Prerequisites:
+
+  Path::Class
+  Readonly
+  Template
+  File::Find::Rule
+  XML::Twig
+  Date::Parse
+  Perl::Critic (for make critic)
+
 Todo:
 
   add --src-root
