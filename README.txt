@@ -11,12 +11,7 @@ meant to be a "state of the art" web site generator...
 
 Prerequisites:
 
-  Path::Class
-  Readonly
-  Template
-  File::Find::Rule
-  XML::Twig
-  Date::Parse
+  (specified in module Makefile.PL)
   Perl::Critic (for make critic)
 
 Todo:
