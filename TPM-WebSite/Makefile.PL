@@ -3,10 +3,10 @@ use warnings;
 use ExtUtils::MakeMaker;
 
 WriteMakefile(
-    NAME                => 'TPM::WebSite::Calendar',
+    NAME                => 'TPM::WebSite::Builder',
     AUTHOR              => q{Mike Stok <mike@stok.ca>},
-    VERSION_FROM        => 'lib/TPM/WebSite/Calendar.pm',
-    ABSTRACT_FROM       => 'lib/TPM/WebSite/Calendar.pm',
+    VERSION_FROM        => 'lib/TPM/WebSite/Builder.pm',
+    ABSTRACT_FROM       => 'lib/TPM/WebSite/Builder.pm',
     ($ExtUtils::MakeMaker::VERSION >= 6.3002
       ? ('LICENSE'=> 'perl')
       : ()),
