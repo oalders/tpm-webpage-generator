@@ -1,0 +1,19 @@
+code/build-tree is used to turn XML files from the meetings directory
+and generate HTML under the to.pm.org directory.
+
+To decompose it into modules what would we need to model?
+
+A meeting has a start date/time.
+A meeting has a topic.
+A meeting has a venue.
+A meeting can have 0 or more leaders (think Fulko and Lightning Talks)
+A meeting can have a synopsis (containing some subset of XHTML)
+A meeting can have 0 or more talks.
+A meeting can have 0 or more events (future - think December social).
+
+
+A day can have 0 or more meetings (think Damian talk + social later).
+
+A talk has a speaker
+A talk has a title
+A talk can have a description (containing some subset of XHTML)
