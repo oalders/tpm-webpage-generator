@@ -17,3 +17,16 @@ A day can have 0 or more meetings (think Damian talk + social later).
 A talk has a speaker
 A talk has a title
 A talk can have a description (containing some subset of XHTML)
+
+Implementation:
+
+Think about classes to build:
+
+TPM::WebSite::Calendar contains TPM::WebSite::Meetings
+A TMP::WebSite::HTMLRenderer can render a TPM::WebSite::Calendar
+into TPM::Website::HTMLFiles files.
+
+These can all live in a TPM::WebSite module which will eventually
+contain the build-tree program which will be a wrapper around the
+TPM::WebSite::Builder module.
+

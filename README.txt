@@ -1,4 +1,8 @@
-Simple program to generate TPM index page.
+Simple programs & modules to generate TPM website pages.
+
+The objective of this is to have a go with some simple perl techniques
+so that I can do something simple with some new modules.  This is not
+meant to be a "state of the art" web site generator...
 
   make critic # testing perl code
   make clean
