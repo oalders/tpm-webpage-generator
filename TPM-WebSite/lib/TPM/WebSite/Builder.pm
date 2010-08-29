@@ -2,10 +2,6 @@ package TPM::WebSite::Builder;
 
 use common::sense;
 use Moose;
-
-has root_dir => ( is => 'ro' );
-has run_timestamp => ( is => 'ro', isa => 'Int' );
-
 use Path::Class;
 use File::Basename;
 use Readonly;
@@ -18,6 +14,65 @@ use TPM::WebSite::Meeting;
 use FindBin;
 use File::Path;
 
+=pod
+
+=head1 NAME
+
+TPM::WebSite::Builder - driver module to build TPM web pages.
+
+=head1 VERSION
+
+Version 0.01
+
+=cut
+
+our $VERSION = '0.01';
+
+=head1 SYNOPSIS
+
+This is the driver module which transforms XML meeting descriptions into
+web pages for the Toronto Perl Mongers web site.
+
+Perhaps a little code snippet.
+
+    use TPM::WebSite::Builder;
+
+    my $builder = TPM::WebSite::Builder->new(
+        root_dir => '..',
+        run_timestamp => time,
+    );
+    $builer->run();
+
+=head1 SUBROUTINES/METHODS
+
+=head2 new
+
+This is provided by Moose.  The attributes which can be set in this are:
+
+=over 4
+
+=item root_dir
+
+The root directory for the input and output trees.
+
+=item run_timestamp
+
+The seconds since Unix epoch used to mark the time the script was run.
+
+=back
+
+=cut
+
+has root_dir => ( is => 'ro' );
+has run_timestamp => ( is => 'ro', isa => 'Int' );
+
+=head2 run
+
+This causes the input XML files to be read, and the HTML files for the website
+to be generated.  If errors are detected then the method dies.
+
+=cut
+
 sub run {
     my $self = shift;
 
@@ -28,7 +83,7 @@ sub run {
     my $meetings
         = $self->_group_meetings_by_year( $self->_get_meetings( dir( $root, 'meetings' ) ) );
     my $upcoming_or_recent
-        = $self->find_upcoming_or_recent( $meetings, $run_timestamp );
+        = $self->_find_upcoming_or_recent( $meetings, $run_timestamp );
     my $output_dir = dir( $FindBin::Bin, $root, 'to.pm.org' );
     my $template = Template->new(
         {   RELATIVE => 1,
@@ -177,47 +232,6 @@ YEAR_LOOP:
     return $return;
 }
 
-=pod
-
-=head1 NAME
-
-TPM::WebSite::Builder - The great new TPM::WebSite::Builder!
-
-=head1 VERSION
-
-Version 0.01
-
-=cut
-
-our $VERSION = '0.01';
-
-=head1 SYNOPSIS
-
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
-    use TPM::WebSite::Builder;
-
-    my $foo = TPM::WebSite::Builder->new();
-    ...
-
-=head1 SUBROUTINES/METHODS
-
-=head2 function1
-
-=cut
-
-sub function1 {
-}
-
-=head2 function2
-
-=cut
-
-sub function2 {
-}
-
 =head1 AUTHOR
 
 Mike Stok, C<< <mike at stok.ca> >>
@@ -228,38 +242,11 @@ Please report any bugs or feature requests to C<bug-tpm::website at rt.cpan.org>
 the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=TPM::WebSite>.  I will be notified, and then you'll
 automatically be notified of progress on your bug as I make changes.
 
-
-
-
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
     perldoc TPM::WebSite::Builder
-
-
-You can also look for information at:
-
-=over 4
-
-=item * RT: CPAN's request tracker
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=TPM::WebSite>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/TPM::WebSite>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/TPM::WebSite>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/TPM::WebSite/>
-
-=back
-
 
 =head1 ACKNOWLEDGEMENTS
 
