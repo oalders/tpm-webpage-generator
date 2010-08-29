@@ -1,11 +1,32 @@
 package TPM::WebSite::Meeting;
 
-use warnings;
-use strict;
+use common::sense;  # This seems better than blind strict & warnings.
+use Carp;
+use XML::Twig;
+use Date::Parse;
+use POSIX 'strftime';
+use English '-no_match_vars';
+use Path::Class;
+
+# Set up the attribute accessors at compile time
+
+BEGIN {
+    my @ATTRIBUTES = qw/ venue timestamp date short_date synopsis talks /;
+
+    for my $attr (@ATTRIBUTES) {
+        ## no critic 'TestingAndDebugging::ProhibitNoStrict'
+        no strict 'refs';
+        *{ __PACKAGE__ . q{::} . $attr } = sub {
+            my $self = shift;
+            $self->_loaded_or_croak;
+            return $self->{"_$attr"};
+        };
+    }
+}
 
 =head1 NAME
 
-TPM::WebSite::Meeting - The great new TPM::WebSite::Meeting!
+TPM::WebSite::Meeting - Encapsulate the information about a TPM Meeting.
 
 =head1 VERSION
 
@@ -27,25 +48,124 @@ Perhaps a little code snippet.
     my $foo = TPM::WebSite::Meeting->new();
     ...
 
-=head1 EXPORT
-
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
-
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
+=head2 new
+
+Construct a new object.
 
 =cut
 
-sub function1 {
+sub new {
+    my ($class) = shift;
+    return bless { _loaded => 0 }, $class;
 }
 
-=head2 function2
+=head2 load_file
 
 =cut
 
-sub function2 {
+sub load_file {
+    my ( $self, $file_name ) = @_;
+    croak 'already loaded' if $self->{__loaded};
+
+    my $t = XML::Twig->new(
+        twig_roots => {
+            'meeting/details/topic' =>
+                sub { $self->_stash_text( @_, 'topic' ); },
+            'meeting/details/venue' =>
+                sub { $self->_stash_text( @_, 'venue' ); },
+            'meeting/details/leader' =>
+                sub { $self->_stash_text( @_, 'leader' ); },
+            'meeting/details/datetime' => sub { $self->_stash_datetime(@_); },
+            'meeting/details/synopsis' =>
+                sub { $self->_stash_xhtml( @_, 'synopsis' ); },
+            'meeting/talk' => sub { $self->_add_talk(@_); },
+        },
+        pretty_print => 'indented',
+    );
+    $t->safe_parsefile($file_name)
+        or croak "failed to parse and process $file_name ($EVAL_ERROR)";
+
+    $self->{__loaded} = 1;
+
+    return;
+}
+# If there is a single talk then the topic probably isn't set.
+sub topic {
+    my ($self) = @_;
+
+    my $t = $self->{_topic};
+    if ( defined $t and length $t ) {
+        return $t;
+    }
+    if ( @{ $self->talks } ) {
+        $t = $self->talks->[0]{title};
+        if ( defined $t and length $t ) {
+            return $t;
+        }
+    }
+    return '(no topic set)';
+}
+
+sub filename {
+    my ($self) = @_;
+    $self->_loaded_or_croak;
+
+    ( my $filename = $self->topic ) =~ s/\W+/_/smxg;
+    $filename .= '.html';
+
+    my @localtime = localtime $self->timestamp;
+    my $year      = strftime( '%Y', @localtime );
+    my $month     = strftime( '%m', @localtime );
+    my $day       = strftime( '%d', @localtime );
+
+    # XXX As we are running on Linux the file function will generate
+    # a legitimate URL fragment.
+    return file( $year, $month, $day, $filename );
+}
+
+sub _loaded_or_croak {
+    my $self = shift;
+    croak 'not loaded' if not $self->{__loaded};
+    return;
+}
+
+# General purpose stash routine called as a twig root handler to stash
+# attributes which are simple copies of the element's text content.
+sub _stash_text {
+    my ( $self, $twig, $elt, $attr ) = @_;
+    $self->{"_$attr"} = $elt->text;
+    return;
+}
+
+sub _stash_datetime {
+    my ( $self, $twig, $elt ) = @_;
+    my $text       = $elt->text;
+    my $epoch_secs = str2time($text);
+    defined $epoch_secs or croak "failed to parse date time '$text'";
+    $self->{_timestamp} = $epoch_secs;
+    $self->{_date} = strftime( '%a %e %b %Y %R %Z', localtime $epoch_secs );
+    $self->{_short_date} = strftime( '%e %b %Y', localtime $epoch_secs );
+    return;
+}
+
+sub _stash_xhtml {
+    my ( $self, $twig, $elt, $attr ) = @_;
+    $self->{"_$attr"} = $elt->inner_xml;
+    return;
+}
+
+sub _add_talk {
+    my ( $self, $twig, $elt ) = @_;
+    my $talk = {
+        speaker => scalar $elt->first_child('speaker')->text,
+        title   => scalar $elt->first_child('title')->text,
+    };
+    my $description = $elt->first_child('description');
+    $description and $talk->{'description'} = $description->inner_xml;
+    push @{ $self->{_talks} }, $talk;
+    return;
 }
 
 =head1 AUTHOR
@@ -54,42 +174,15 @@ Mike Stok, C<< <mike at stok.ca> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-tpm::website at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=TPM::WebSite>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-
-
+There are plenty, but it's good enough. For me. Use
+http://github.com/mikestok/tpm-webpage-generator/issues
+to report issues.
 
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
     perldoc TPM::WebSite::Meeting
-
-
-You can also look for information at:
-
-=over 4
-
-=item * RT: CPAN's request tracker
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=TPM::WebSite>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/TPM::WebSite>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/TPM::WebSite>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/TPM::WebSite/>
-
-=back
-
 
 =head1 ACKNOWLEDGEMENTS
 
