@@ -15,4 +15,4 @@ BEGIN {
 ";
 }
 
-diag( "Testing TPM::WebSite::Calendar $TPM::WebSite::Calendar::VERSION, Perl $], $^X" );
+diag( "Testing TPM::WebSite::Builder $TPM::WebSite::Builder::VERSION, Perl $], $^X" );
