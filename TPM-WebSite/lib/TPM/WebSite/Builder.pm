@@ -11,7 +11,6 @@ use Carp;
 use File::Find::Rule;
 use POSIX 'strftime';
 use TPM::WebSite::Meeting;
-use FindBin;
 use File::Path;
 
 =pod
@@ -84,11 +83,11 @@ sub run {
         = $self->_group_meetings_by_year( $self->_get_meetings( dir( $root, 'meetings' ) ) );
     my $upcoming_or_recent
         = $self->_find_upcoming_or_recent( $meetings, $run_timestamp );
-    my $output_dir = dir( $FindBin::Bin, $root, 'to.pm.org' );
+    my $output_dir = dir( $root, 'to.pm.org' );
     my $template = Template->new(
         {   RELATIVE => 1,
             INCLUDE_PATH =>
-                [ dir( $FindBin::Bin, $root, 'templates' )->stringify ],
+                [ dir( $root, 'templates' )->stringify ],
             OUTPUT_PATH => $output_dir->stringify,
         }
     );

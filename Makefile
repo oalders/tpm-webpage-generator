@@ -1,5 +1,5 @@
 all:
-	cd code && ./build-tree
+	build-tpm-site
 
 tidy:
 	perltidy -nst -nse -b code/build-tree

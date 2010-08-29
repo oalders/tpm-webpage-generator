@@ -8,6 +8,7 @@ lib/TPM/WebSite/Calendar.pm
 lib/TPM/WebSite/HTMLFile.pm
 lib/TPM/WebSite/HTMLRenderer.pm
 lib/TPM/WebSite/Meeting.pm
+bin/build-tpm-site
 t/00-load.t
 t/10-Meeting.t
 t/boilerplate.t
