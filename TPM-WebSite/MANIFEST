@@ -2,12 +2,16 @@ Changes
 MANIFEST
 Makefile.PL
 README
+ignore.txt
 lib/TPM/WebSite/Builder.pm
 lib/TPM/WebSite/Calendar.pm
 lib/TPM/WebSite/HTMLFile.pm
 lib/TPM/WebSite/HTMLRenderer.pm
 lib/TPM/WebSite/Meeting.pm
 t/00-load.t
+t/10-Meeting.t
+t/boilerplate.t
 t/manifest.t
 t/pod-coverage.t
 t/pod.t
+t/fixtures/10-Meeting-simple.xml
