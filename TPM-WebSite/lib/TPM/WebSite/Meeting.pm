@@ -61,7 +61,7 @@ sub new {
     return bless { _loaded => 0 }, $class;
 }
 
-=head2 load_file
+=head2 load_file($file_name)
 
 =cut
 
@@ -91,6 +91,13 @@ sub load_file {
 
     return;
 }
+
+=head2 topic
+
+Returns the topic of the meeting.
+
+=cut
+
 # If there is a single talk then the topic probably isn't set.
 sub topic {
     my ($self) = @_;
@@ -107,6 +114,12 @@ sub topic {
     }
     return '(no topic set)';
 }
+
+=head2 filename
+
+Returns the suggested file name for the meeting.
+
+=cut
 
 sub filename {
     my ($self) = @_;
