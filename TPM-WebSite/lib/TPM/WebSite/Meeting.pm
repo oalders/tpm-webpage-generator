@@ -137,6 +137,34 @@ sub filename {
     return file( $year, $month, $day, $filename );
 }
 
+=head2 date
+
+Returns a string representation of the C<$meeting->timestamp()> containing
+date and time.
+
+=head2 short_date
+
+Returns a string representation of the C<$meeting->timestamp()> containing
+date only.
+
+=head2 synopsis
+
+Returns the brief synopsis of the meeting (HTML).
+
+=head2 talks
+
+Returns a ref to a list of talks.
+
+=head2 timestamp
+
+Returns the seconds since epoch timestamp of the meeting.
+
+=head2 venue
+
+Returns the meeting's venue (HTML?).
+
+=cut
+
 sub _loaded_or_croak {
     my $self = shift;
     croak 'not loaded' if not $self->{__loaded};
