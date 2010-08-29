@@ -24,9 +24,9 @@ sub run {
     my $root          = $self->root_dir();
     my $run_timestamp = $self->run_timestamp();
 
-    my $sections = $self->get_sections( dir( $root, 'sections' ) );
+    my $sections = $self->_get_sections( dir( $root, 'sections' ) );
     my $meetings
-        = $self->group_meetings_by_year( $self->get_meetings( dir( $root, 'meetings' ) ) );
+        = $self->_group_meetings_by_year( $self->_get_meetings( dir( $root, 'meetings' ) ) );
     my $upcoming_or_recent
         = $self->find_upcoming_or_recent( $meetings, $run_timestamp );
     my $output_dir = dir( $FindBin::Bin, $root, 'to.pm.org' );
@@ -51,13 +51,13 @@ sub run {
         'index.html'
     ) || croak $template->error();
 
-    $self->generate_meetings( $template, $meetings, $generated_timestamp,
+    $self->_generate_meetings( $template, $meetings, $generated_timestamp,
         $output_dir );
 
     return;
 }
 
-sub generate_meetings {
+sub _generate_meetings {
     my ( $self, $template_processor, $years_meetings, $generated_at, $root_dir )
         = @_;
 
@@ -85,7 +85,7 @@ sub generate_meetings {
 #
 # File names determine the section names, the files are assumed to
 # contain valid HTML.
-sub get_sections {
+sub _get_sections {
     my ($self, $sections_dir) = @_;
     Readonly my $SECTION_SUFFIX => '.html';
 
@@ -104,7 +104,7 @@ sub get_sections {
 #  directory for root of tree
 # out:
 #  ref to list of TPM::WebSite::Meeting objects
-sub get_meetings {
+sub _get_meetings {
     my ($self, $meetings_dir) = @_;
     my @meetings;
 
@@ -121,7 +121,7 @@ sub get_meetings {
 #   ref to unordered list of meetings
 # out:
 #   ref to list of hashes { year => yyyy, meetings => [ ... ] }
-sub group_meetings_by_year {
+sub _group_meetings_by_year {
     my ($self, $unordered_list) = @_;
     my @list
         = sort { $a->timestamp <=> $b->timestamp || $a->topic cmp $b->topic }
@@ -160,7 +160,7 @@ sub group_meetings_by_year {
 # If there are no meetings in the future then the last meeting will be returned.
 # If there meetings in the future then the closest meeting is returned.
 
-sub find_upcoming_or_recent {
+sub _find_upcoming_or_recent {
     my ( $self, $years, $timestamp ) = @_;
     my $return;
 
