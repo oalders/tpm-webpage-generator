@@ -1,15 +1,13 @@
-all:
+# By default build the site from the files found under the current 
+# directory.
+default:
 	build-tpm-site
 
-tidy:
-	perltidy -nst -nse -b code/build-tree
-
-critic:
-	perlcritic --brutal code/build-tree
-
 clean:
-	rm -f to.pm.org/index.html
+	rm -rf to.pm.org/index.html to.pm.org/20??/*
 
+# Install the generated copies onto to.pm.org - you'll need the tpm
+# password to be able to do this.
 install:
 	scp -r to.pm.org/index.html \
 	       to.pm.org/tpm.css \
@@ -18,3 +16,9 @@ install:
 	       to.pm.org/reviews/ \
 	       to.pm.org/20?? \
 	       tpm@to.pm.org:httpdocs/
+
+# Install the TPM-Website module which contains the build-tpm-site program.
+# Note: this requires cpanm, which is probably a nice thing to have anyway -
+# it's easy to find on http://search.cpan.org/
+install-module:
+	cpanm ./TPM-WebSite
