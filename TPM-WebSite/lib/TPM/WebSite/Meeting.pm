@@ -1,6 +1,6 @@
 package TPM::WebSite::Meeting;
 
-use common::sense;  # This seems better than blind strict & warnings.
+use common::sense;    # This seems better than blind strict & warnings.
 use Carp;
 use XML::Twig;
 use Date::Parse;
@@ -35,7 +35,6 @@ Version 0.01
 =cut
 
 our $VERSION = '0.01';
-
 
 =head1 SYNOPSIS
 
@@ -213,4 +212,4 @@ See http://dev.perl.org/licenses/ for more information.
 
 =cut
 
-1; # End of TPM::WebSite::Meeting
+1;    # End of TPM::WebSite::Meeting
