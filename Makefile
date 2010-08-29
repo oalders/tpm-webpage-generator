@@ -5,7 +5,7 @@ tidy:
 	perltidy -nst -nse -b code/build-tree
 
 critic:
-	perlcritic --brutal code/build-tree code/TPM/*.pm
+	perlcritic --brutal code/build-tree
 
 clean:
 	rm -f to.pm.org/index.html
