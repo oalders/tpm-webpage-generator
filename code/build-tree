@@ -13,7 +13,7 @@ use Template;
 use Carp;
 use File::Find::Rule;
 use POSIX 'strftime';
-use TPM::Meeting;
+use TPM::WebSite::Meeting;
 use FindBin;
 use File::Path;
 
@@ -97,13 +97,13 @@ sub get_sections {
 # in:
 #  directory for root of tree
 # out:
-#  ref to list of TPM::Meeting objects
+#  ref to list of TPM::WebSite::Meeting objects
 sub get_meetings {
     my ($meetings_dir) = @_;
     my @meetings;
 
     for my $file ( find( file => name => '*.xml', in => $meetings_dir ) ) {
-        my $meeting = TPM::Meeting->new;
+        my $meeting = TPM::WebSite::Meeting->new;
         $meeting->load_file($file);
         push @meetings, $meeting;
     }
