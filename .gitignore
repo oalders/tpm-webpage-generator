@@ -4,3 +4,7 @@ to.pm.org/2010/
 to.pm.org/2011/
 # Ignore perltidy backup files
 *.bak
+# TPM-WebSite module's generated files
+TPM-WebSite/Makefile
+TPM-WebSite/blib/
+TPM-WebSite/pm_to_blib
