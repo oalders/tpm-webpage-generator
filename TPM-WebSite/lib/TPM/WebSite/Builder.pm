@@ -1,6 +1,10 @@
 package TPM::WebSite::Builder;
 
 use common::sense;
+use Moose;
+
+has root_dir => ( is => 'ro' );
+has run_timestamp => ( is => 'ro', isa => 'Int' );
 
 use Path::Class;
 use File::Basename;
@@ -15,16 +19,16 @@ use FindBin;
 use File::Path;
 
 sub run {
+    my $self = shift;
 
-    # These should be generated one day...
-    my $root          = q{..};
-    my $run_timestamp = time;    # Override for testing
+    my $root          = $self->root_dir();
+    my $run_timestamp = $self->run_timestamp();
 
-    my $sections = get_sections( dir( $root, 'sections' ) );
+    my $sections = $self->get_sections( dir( $root, 'sections' ) );
     my $meetings
-        = group_meetings_by_year( get_meetings( dir( $root, 'meetings' ) ) );
+        = $self->group_meetings_by_year( $self->get_meetings( dir( $root, 'meetings' ) ) );
     my $upcoming_or_recent
-        = find_upcoming_or_recent( $meetings, $run_timestamp );
+        = $self->find_upcoming_or_recent( $meetings, $run_timestamp );
     my $output_dir = dir( $FindBin::Bin, $root, 'to.pm.org' );
     my $template = Template->new(
         {   RELATIVE => 1,
@@ -47,14 +51,14 @@ sub run {
         'index.html'
     ) || croak $template->error();
 
-    generate_meetings( $template, $meetings, $generated_timestamp,
+    $self->generate_meetings( $template, $meetings, $generated_timestamp,
         $output_dir );
 
     return;
 }
 
 sub generate_meetings {
-    my ( $template_processor, $years_meetings, $generated_at, $root_dir )
+    my ( $self, $template_processor, $years_meetings, $generated_at, $root_dir )
         = @_;
 
     for my $year ( @{$years_meetings} ) {
@@ -82,7 +86,7 @@ sub generate_meetings {
 # File names determine the section names, the files are assumed to
 # contain valid HTML.
 sub get_sections {
-    my ($sections_dir) = @_;
+    my ($self, $sections_dir) = @_;
     Readonly my $SECTION_SUFFIX => '.html';
 
     return [
@@ -101,7 +105,7 @@ sub get_sections {
 # out:
 #  ref to list of TPM::WebSite::Meeting objects
 sub get_meetings {
-    my ($meetings_dir) = @_;
+    my ($self, $meetings_dir) = @_;
     my @meetings;
 
     for my $file ( find( file => name => '*.xml', in => $meetings_dir ) ) {
@@ -118,7 +122,7 @@ sub get_meetings {
 # out:
 #   ref to list of hashes { year => yyyy, meetings => [ ... ] }
 sub group_meetings_by_year {
-    my ($unordered_list) = @_;
+    my ($self, $unordered_list) = @_;
     my @list
         = sort { $a->timestamp <=> $b->timestamp || $a->topic cmp $b->topic }
         @{$unordered_list};
@@ -157,7 +161,7 @@ sub group_meetings_by_year {
 # If there meetings in the future then the closest meeting is returned.
 
 sub find_upcoming_or_recent {
-    my ( $years, $timestamp ) = @_;
+    my ( $self, $years, $timestamp ) = @_;
     my $return;
 
 YEAR_LOOP:
@@ -187,7 +191,6 @@ Version 0.01
 
 our $VERSION = '0.01';
 
-
 =head1 SYNOPSIS
 
 Quick summary of what the module does.
@@ -198,11 +201,6 @@ Perhaps a little code snippet.
 
     my $foo = TPM::WebSite::Builder->new();
     ...
-
-=head1 EXPORT
-
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
 
 =head1 SUBROUTINES/METHODS
 
@@ -279,4 +277,4 @@ See http://dev.perl.org/licenses/ for more information.
 
 =cut
 
-1; # End of TPM::WebSite::Builder
+1;    # End of TPM::WebSite::Builder

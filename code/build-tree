@@ -5,7 +5,13 @@
 use common::sense;
 use TPM::WebSite::Builder;
 
-TPM::WebSite::Builder::run;
+my $builder = TPM::WebSite::Builder->new(
+    root_dir      => '..',
+    run_timestamp => time,
+);
+
+$builder->run();
+exit 0;
 
 __END__
 
