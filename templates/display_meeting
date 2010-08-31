@@ -8,6 +8,9 @@
 [% IF meeting.topic %]
 <span class="label">Topic:</span> [% meeting.topic | html %]<br />
 [% END %]
+[% IF meeting.leader %]
+<span class="label">[% meeting.leader.label | html%]:</span> [% meeting.leader.name | html %]<br />
+[% END %]
 [% IF meeting.synopsis %]
 <span class="label">Synopsis:</span>
 [% meeting.synopsis %]
