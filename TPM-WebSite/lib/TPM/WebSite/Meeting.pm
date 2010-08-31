@@ -7,23 +7,18 @@ use Date::Parse;
 use POSIX 'strftime';
 use English '-no_match_vars';
 use Path::Class;
+use Moose;
 
-# Set up the attribute accessors at compile time
+has venue      => ( is => 'rw', isa => 'Str' );
+has timestamp  => ( is => 'rw', isa => 'Int' );
+has date       => ( is => 'rw', isa => 'Str' );
+has short_date => ( is => 'rw', isa => 'Str' );
+has synopsis   => ( is => 'rw', isa => 'Str' );
+has talks      => ( is => 'rw', isa => 'ArrayRef' );
+has leader     => ( is => 'rw', isa => 'TPM::WebSite::Meeting::Leader' );
 
-BEGIN {
-    my @ATTRIBUTES
-        = qw/ venue timestamp date short_date synopsis talks leader /;
-
-    for my $attr (@ATTRIBUTES) {
-        ## no critic 'TestingAndDebugging::ProhibitNoStrict'
-        no strict 'refs';
-        *{ __PACKAGE__ . q{::} . $attr } = sub {
-            my $self = shift;
-            $self->_loaded_or_croak;
-            return $self->{"_$attr"};
-        };
-    }
-}
+has _topic     => ( is => 'rw', isa => 'Str' );
+has _loaded    => ( is => 'rw', isa => 'Bool' );
 
 =head1 NAME
 
@@ -56,9 +51,9 @@ Construct a new object.
 
 =cut
 
-sub new {
-    my ($class) = shift;
-    return bless { _loaded => 0 }, $class;
+sub BUILD {
+    my $self = shift;
+    $self->talks( [] );
 }
 
 =head2 load_file($file_name)
@@ -67,12 +62,12 @@ sub new {
 
 sub load_file {
     my ( $self, $file_name ) = @_;
-    croak 'already loaded' if $self->{__loaded};
+    croak 'already loaded' if $self->_loaded();
 
     my $t = XML::Twig->new(
         twig_roots => {
             'meeting/details/topic' =>
-                sub { $self->_stash_text( @_, 'topic' ); },
+                sub { $self->_stash_text( @_, '_topic' ); },
             'meeting/details/venue' =>
                 sub { $self->_stash_text( @_, 'venue' ); },
             'meeting/details/leader'   => sub { $self->_stash_leader(@_); },
@@ -86,7 +81,7 @@ sub load_file {
     $t->safe_parsefile($file_name)
         or croak "failed to parse and process $file_name ($EVAL_ERROR)";
 
-    $self->{__loaded} = 1;
+    $self->_loaded(1);
 
     return;
 }
@@ -101,12 +96,12 @@ Returns the topic of the meeting.
 sub topic {
     my ($self) = @_;
 
-    my $t = $self->{_topic};
+    my $t = $self->_topic();
     if ( defined $t and length $t ) {
         return $t;
     }
-    if ( @{ $self->talks } ) {
-        $t = $self->talks->[0]{title};
+    if ( @{ $self->talks() } ) {
+        $t = $self->talks()->[0]{title};
         if ( defined $t and length $t ) {
             return $t;
         }
@@ -171,7 +166,7 @@ Returns a leader object, nothing if no leader was defined.
 
 sub _loaded_or_croak {
     my $self = shift;
-    croak 'not loaded' if not $self->{__loaded};
+    croak 'not loaded' if not $self->_loaded();
     return;
 }
 
@@ -179,16 +174,16 @@ sub _loaded_or_croak {
 # attributes which are simple copies of the element's text content.
 sub _stash_text {
     my ( $self, $twig, $elt, $attr ) = @_;
-    $self->{"_$attr"} = $elt->text;
+    $self->$attr($elt->text);
     return;
 }
 
 sub _stash_leader {
     my ( $self, $twig, $elt ) = @_;
-    $self->{'_leader'} = TPM::WebSite::Meeting::Leader->new(
+    $self->leader(TPM::WebSite::Meeting::Leader->new(
         name  => $elt->text(),
         label => $elt->att('label'),
-    );
+    ));
     return;
 }
 
@@ -197,15 +192,15 @@ sub _stash_datetime {
     my $text       = $elt->text;
     my $epoch_secs = str2time($text);
     defined $epoch_secs or croak "failed to parse date time '$text'";
-    $self->{_timestamp} = $epoch_secs;
-    $self->{_date} = strftime( '%a %e %b %Y %R %Z', localtime $epoch_secs );
-    $self->{_short_date} = strftime( '%e %b %Y', localtime $epoch_secs );
+    $self->timestamp($epoch_secs);
+    $self->date(strftime( '%a %e %b %Y %R %Z', localtime $epoch_secs ));
+    $self->short_date(strftime( '%e %b %Y', localtime $epoch_secs ));
     return;
 }
 
 sub _stash_xhtml {
     my ( $self, $twig, $elt, $attr ) = @_;
-    $self->{"_$attr"} = $elt->inner_xml;
+    $self->$attr($elt->inner_xml);
     return;
 }
 
@@ -217,7 +212,7 @@ sub _add_talk {
     };
     my $description = $elt->first_child('description');
     $description and $talk->{'description'} = $description->inner_xml;
-    push @{ $self->{_talks} }, $talk;
+    push @{ $self->talks() }, $talk;
     return;
 }
 
