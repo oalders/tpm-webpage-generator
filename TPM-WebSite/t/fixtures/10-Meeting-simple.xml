@@ -4,7 +4,7 @@
     <topic>Modules and Tips</topic>
     <datetime>2010-01-28T18:45</datetime>
     <venue>Nexient Learning; Room 15 on the 8th floor</venue>
-    <!-- leader label="Emcee">Some Dude</leader -->
+    <leader label="Emcee">Some Dude</leader>
 		<synopsis>
 			<p>
 				A series of quick talks covering various modules which people have

@@ -11,7 +11,8 @@ use Path::Class;
 # Set up the attribute accessors at compile time
 
 BEGIN {
-    my @ATTRIBUTES = qw/ venue timestamp date short_date synopsis talks /;
+    my @ATTRIBUTES
+        = qw/ venue timestamp date short_date synopsis talks leader /;
 
     for my $attr (@ATTRIBUTES) {
         ## no critic 'TestingAndDebugging::ProhibitNoStrict'
@@ -74,8 +75,7 @@ sub load_file {
                 sub { $self->_stash_text( @_, 'topic' ); },
             'meeting/details/venue' =>
                 sub { $self->_stash_text( @_, 'venue' ); },
-            'meeting/details/leader' =>
-                sub { $self->_stash_text( @_, 'leader' ); },
+            'meeting/details/leader'   => sub { $self->_stash_leader(@_); },
             'meeting/details/datetime' => sub { $self->_stash_datetime(@_); },
             'meeting/details/synopsis' =>
                 sub { $self->_stash_xhtml( @_, 'synopsis' ); },
@@ -163,6 +163,10 @@ Returns the seconds since epoch timestamp of the meeting.
 
 Returns the meeting's venue (HTML?).
 
+=head2 leader
+
+Returns a leader object, nothing if no leader was defined.
+
 =cut
 
 sub _loaded_or_croak {
@@ -176,6 +180,15 @@ sub _loaded_or_croak {
 sub _stash_text {
     my ( $self, $twig, $elt, $attr ) = @_;
     $self->{"_$attr"} = $elt->text;
+    return;
+}
+
+sub _stash_leader {
+    my ( $self, $twig, $elt ) = @_;
+    $self->{'_leader'} = TPM::WebSite::Meeting::Leader->new(
+        name  => $elt->text(),
+        label => $elt->att('label'),
+    );
     return;
 }
 
@@ -241,3 +254,11 @@ See http://dev.perl.org/licenses/ for more information.
 =cut
 
 1;    # End of TPM::WebSite::Meeting
+
+package TPM::WebSite::Meeting::Leader;
+use Moose;
+
+has name => ( is => 'ro', isa => 'Str' );
+has label => ( is  => 'ro', isa => 'Str' );
+
+1;

@@ -1,7 +1,7 @@
 #!perl -T
 
 use common::sense;
-use Test::More tests => 10;
+use Test::More tests => 13;
 
 BEGIN {
     use_ok('TPM::WebSite::Meeting') || print "Bail out!";
@@ -32,10 +32,15 @@ my $synopsis = $meeting->synopsis();
 like(
     $synopsis,
     qr/Some are old standbys, some are new\./,
-    "quick check of synopsis"
+    'quick check of synopsis'
 );
 
 my $talks = $meeting->talks();
-is( scalar @{$talks}, 5, "check the number of talks" );
+is( scalar @{$talks}, 5, 'check the number of talks' );
 
-is($talks->[-1]{title}, 'Odds & Ends', "Check last talk title with an &");
+is($talks->[-1]{title}, 'Odds & Ends', 'Check last talk title with an &');
+
+my $leader = $meeting->leader();
+ok($leader, 'meeting has a leader');
+is($leader->name(), 'Some Dude', 'Leader name correct');
+is($leader->label(), 'Emcee', 'Leader label correct');
