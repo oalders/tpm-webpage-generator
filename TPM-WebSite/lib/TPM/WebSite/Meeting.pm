@@ -7,6 +7,7 @@ use Date::Parse;
 use POSIX 'strftime';
 use English '-no_match_vars';
 use Path::Class;
+use File::stat;
 use Moose;
 
 has venue      => ( is => 'rw', isa => 'Str' );
@@ -16,9 +17,10 @@ has short_date => ( is => 'rw', isa => 'Str' );
 has synopsis   => ( is => 'rw', isa => 'Str' );
 has talks      => ( is => 'rw', isa => 'ArrayRef' );
 has leader     => ( is => 'rw', isa => 'TPM::WebSite::Meeting::Leader' );
+has updated_at => ( is => 'rw', isa => 'Int' );
 
-has _topic     => ( is => 'rw', isa => 'Str' );
-has _loaded    => ( is => 'rw', isa => 'Bool' );
+has _topic  => ( is => 'rw', isa => 'Str' );
+has _loaded => ( is => 'rw', isa => 'Bool' );
 
 =head1 NAME
 
@@ -78,6 +80,9 @@ sub load_file {
         },
         pretty_print => 'indented',
     );
+
+    $self->updated_at( stat($file_name)->mtime() );
+
     $t->safe_parsefile($file_name)
         or croak "failed to parse and process $file_name ($EVAL_ERROR)";
 
@@ -162,6 +167,11 @@ Returns the meeting's venue (HTML?).
 
 Returns a leader object, nothing if no leader was defined.
 
+=head2 updated_at
+
+THe seconds since Unix epoch timestamp when the meeting's
+XML source file was updated.
+
 =cut
 
 sub _loaded_or_croak {
@@ -174,16 +184,18 @@ sub _loaded_or_croak {
 # attributes which are simple copies of the element's text content.
 sub _stash_text {
     my ( $self, $twig, $elt, $attr ) = @_;
-    $self->$attr($elt->text);
+    $self->$attr( $elt->text );
     return;
 }
 
 sub _stash_leader {
     my ( $self, $twig, $elt ) = @_;
-    $self->leader(TPM::WebSite::Meeting::Leader->new(
-        name  => $elt->text(),
-        label => $elt->att('label'),
-    ));
+    $self->leader(
+        TPM::WebSite::Meeting::Leader->new(
+            name  => $elt->text(),
+            label => $elt->att('label'),
+        )
+    );
     return;
 }
 
@@ -193,14 +205,14 @@ sub _stash_datetime {
     my $epoch_secs = str2time($text);
     defined $epoch_secs or croak "failed to parse date time '$text'";
     $self->timestamp($epoch_secs);
-    $self->date(strftime( '%a %e %b %Y %R %Z', localtime $epoch_secs ));
-    $self->short_date(strftime( '%e %b %Y', localtime $epoch_secs ));
+    $self->date( strftime( '%a %e %b %Y %R %Z', localtime $epoch_secs ) );
+    $self->short_date( strftime( '%e %b %Y', localtime $epoch_secs ) );
     return;
 }
 
 sub _stash_xhtml {
     my ( $self, $twig, $elt, $attr ) = @_;
-    $self->$attr($elt->inner_xml);
+    $self->$attr( $elt->inner_xml );
     return;
 }
 
@@ -253,7 +265,7 @@ See http://dev.perl.org/licenses/ for more information.
 package TPM::WebSite::Meeting::Leader;
 use Moose;
 
-has name => ( is => 'ro', isa => 'Str' );
-has label => ( is  => 'ro', isa => 'Str' );
+has name  => ( is => 'ro', isa => 'Str' );
+has label => ( is => 'ro', isa => 'Str' );
 
 1;

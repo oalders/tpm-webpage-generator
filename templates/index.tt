@@ -9,6 +9,7 @@
   <link href="tpm.css" rel="stylesheet" title="basic" type="text/css" />
 </head>
 <body>
+  [% USE date %]
 	<div id="container">
 		<div id="left-column">
   		<div id="logo">
@@ -90,7 +91,7 @@
 
 		  </div>
 			<div id="page-footer">
-        Generated at [% generated_at | html %] 
+        HTML generated at [% date.format(generated_at, '%a %e %b %Y %R %Z') | html %].
           <a href="http://validator.w3.org/check?uri=http%3A%2F%2Fto.pm.org%2F">Validate</a>
 			</div>
 		</div>

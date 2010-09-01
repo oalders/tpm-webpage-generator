@@ -92,20 +92,18 @@ sub run {
         }
     );
 
-    my $generated_timestamp = scalar localtime $run_timestamp;
-
     # generate the index page
     $template->process(
         'index.tt',
         {   sections           => $sections,
             years_meetings     => $meetings,
             upcoming_or_recent => $upcoming_or_recent,
-            generated_at       => $generated_timestamp,
+            generated_at       => $run_timestamp,
         },
         'index.html'
     ) || croak $template->error();
 
-    $self->_generate_meetings( $template, $meetings, $generated_timestamp,
+    $self->_generate_meetings( $template, $meetings, $run_timestamp,
         $output_dir );
 
     return;

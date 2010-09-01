@@ -1,7 +1,7 @@
 #!perl -T
 
 use common::sense;
-use Test::More tests => 13;
+use Test::More tests => 14;
 
 BEGIN {
     use_ok('TPM::WebSite::Meeting') || print "Bail out!";
@@ -11,9 +11,14 @@ diag(
     "Testing TPM::WebSite::Meeting $TPM::WebSite::Meeting::VERSION, Perl $], $^X"
 );
 
-my $sample_meeting = 't/fixtures/10-Meeting-simple.xml';
+
+my $sample_meeting_file = 't/fixtures/10-Meeting-simple.xml';
+my $sample_utime = time - 12345;
+
+utime $sample_utime, $sample_utime, $sample_meeting_file;
 my $meeting        = TPM::WebSite::Meeting->new();
-$meeting->load_file($sample_meeting);
+
+$meeting->load_file($sample_meeting_file);
 
 my %simple_checks = (
     venue      => 'Nexient Learning; Room 15 on the 8th floor',
@@ -22,6 +27,7 @@ my %simple_checks = (
     timestamp  => 1264722300,
     date       => 'Thu 28 Jan 2010 18:45 EST',
     short_date => '28 Jan 2010',
+    updated_at => $sample_utime,
 );
 
 while ( my ( $method, $expected ) = each %simple_checks ) {
