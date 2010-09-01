@@ -24,4 +24,29 @@
     <speaker>Mike Stok</speaker>
     <title>Don't Quote Me On That</title>
   </talk>
+  <talk>
+    <speaker>Scott Elcomb</speaker>
+    <title>Perl &amp; Android - Getting GUI</title>
+    <description>
+      <p>
+        Recently the Android Scripting Environment (ASE) was renamed Scripting
+        Layer 4 Android.  The second release (SL4A r1) was just posted a
+        couple days ago which address several issues from my talk a couple
+        months back - including packaging scripts for distribution on the
+        Android Market and creating GUI's with a WebView.
+      </p>
+    </description>
+  </talk>
+  <talk>
+    <speaker>Scott Elcomb</speaker>
+    <title>Perl &amp; Android - Getting GUI</title>
+    <description>
+      <p>
+        Last year I described a bit about the Pirate Party of Canada and we
+        had some short discussion on IP &amp; Privacy matters.  There's been a lot
+        of activity in the last year and I'd be happy to talk a bit about what
+        we've been up to.
+      </p>
+    </description>
+  </talk>
 </meeting>
