@@ -22,46 +22,14 @@ has updated_at => ( is => 'rw', isa => 'Int' );
 has _topic  => ( is => 'rw', isa => 'Str' );
 has _loaded => ( is => 'rw', isa => 'Bool' );
 
-=head1 NAME
-
-TPM::WebSite::Meeting - Encapsulate the information about a TPM Meeting.
-
-=head1 VERSION
-
-Version 0.01
-
-=cut
-
 our $VERSION = '0.01';
-
-=head1 SYNOPSIS
-
-Quick summary of what the module does.
-
-Perhaps a little code snippet.
-
-    use TPM::WebSite::Meeting;
-
-    my $foo = TPM::WebSite::Meeting->new();
-    ...
-
-=head1 SUBROUTINES/METHODS
-
-=head2 new
-
-Construct a new object.
-
-=cut
 
 sub BUILD {
     my $self = shift;
     $self->talks( [] );
 }
 
-=head2 load_file($file_name)
-
-=cut
-
+# see POD
 sub load_file {
     my ( $self, $file_name ) = @_;
     croak 'already loaded' if $self->_loaded();
@@ -91,13 +59,7 @@ sub load_file {
     return;
 }
 
-=head2 topic
-
-Returns the topic of the meeting.
-
-=cut
-
-# If there is a single talk then the topic probably isn't set.
+# See POD
 sub topic {
     my ($self) = @_;
 
@@ -114,12 +76,7 @@ sub topic {
     return '(no topic set)';
 }
 
-=head2 filename
-
-Returns the suggested file name for the meeting.
-
-=cut
-
+# see POD
 sub filename {
     my ($self) = @_;
     $self->_loaded_or_croak;
@@ -137,42 +94,6 @@ sub filename {
     return file( $year, $month, $day, $filename );
 }
 
-=head2 date
-
-Returns a string representation of the C<$meeting->timestamp()> containing
-date and time.
-
-=head2 short_date
-
-Returns a string representation of the C<$meeting->timestamp()> containing
-date only.
-
-=head2 synopsis
-
-Returns the brief synopsis of the meeting (HTML).
-
-=head2 talks
-
-Returns a ref to a list of talks.
-
-=head2 timestamp
-
-Returns the seconds since epoch timestamp of the meeting.
-
-=head2 venue
-
-Returns the meeting's venue (HTML?).
-
-=head2 leader
-
-Returns a leader object, nothing if no leader was defined.
-
-=head2 updated_at
-
-THe seconds since Unix epoch timestamp when the meeting's
-XML source file was updated.
-
-=cut
 
 sub _loaded_or_croak {
     my $self = shift;
@@ -228,6 +149,89 @@ sub _add_talk {
     return;
 }
 
+package TPM::WebSite::Meeting::Leader;
+use Moose;
+
+has name  => ( is => 'ro', isa => 'Str' );
+has label => ( is => 'ro', isa => 'Str' );
+
+1;
+
+__END__
+
+=head1 NAME
+
+TPM::WebSite::Meeting - Encapsulate the information about a TPM Meeting.
+
+=head1 VERSION
+
+Version 0.01
+
+=head1 SYNOPSIS
+
+Quick summary of what the module does.
+
+Perhaps a little code snippet.
+
+    use TPM::WebSite::Meeting;
+
+    my $foo = TPM::WebSite::Meeting->new();
+    ...
+
+=head1 SUBROUTINES/METHODS
+
+=head2 new
+
+Construct a new object.
+
+=head2 load_file($file_name)
+
+=head2 topic
+
+Returns the topic of the meeting.
+
+If there is a single talk then the topic probably isn't set, so the talk's subject is used
+as the meeting's topic.
+
+=head2 filename
+
+Returns the suggested file name for the meeting.
+
+=head2 date
+
+Returns a string representation of the C<$meeting->timestamp()> containing
+date and time.
+
+=head2 short_date
+
+Returns a string representation of the C<$meeting->timestamp()> containing
+date only.
+
+=head2 synopsis
+
+Returns the brief synopsis of the meeting (HTML).
+
+=head2 talks
+
+Returns a ref to a list of talks.
+
+=head2 timestamp
+
+Returns the seconds since epoch timestamp of the meeting.
+
+=head2 venue
+
+Returns the meeting's venue (HTML?).
+
+=head2 leader
+
+Returns a leader object, nothing if no leader was defined.
+
+=head2 updated_at
+
+THe seconds since Unix epoch timestamp when the meeting's
+XML source file was updated.
+
 =head1 AUTHOR
 
 Mike Stok, C<< <mike at stok.ca> >>
@@ -260,12 +264,3 @@ See http://dev.perl.org/licenses/ for more information.
 
 =cut
 
-1;    # End of TPM::WebSite::Meeting
-
-package TPM::WebSite::Meeting::Leader;
-use Moose;
-
-has name  => ( is => 'ro', isa => 'Str' );
-has label => ( is => 'ro', isa => 'Str' );
-
-1;

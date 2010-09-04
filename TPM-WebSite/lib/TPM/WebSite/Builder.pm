@@ -13,65 +13,12 @@ use POSIX 'strftime';
 use TPM::WebSite::Meeting;
 use File::Path;
 
-=pod
-
-=head1 NAME
-
-TPM::WebSite::Builder - driver module to build TPM web pages.
-
-=head1 VERSION
-
-Version 0.01
-
-=cut
-
 our $VERSION = '0.01';
-
-=head1 SYNOPSIS
-
-This is the driver module which transforms XML meeting descriptions into
-web pages for the Toronto Perl Mongers web site.
-
-Perhaps a little code snippet.
-
-    use TPM::WebSite::Builder;
-
-    my $builder = TPM::WebSite::Builder->new(
-        root_dir => '..',
-        run_timestamp => time,
-    );
-    $builer->run();
-
-=head1 SUBROUTINES/METHODS
-
-=head2 new
-
-This is provided by Moose.  The attributes which can be set in this are:
-
-=over 4
-
-=item root_dir
-
-The root directory for the input and output trees.
-
-=item run_timestamp
-
-The seconds since Unix epoch used to mark the time the script was run.
-
-=back
-
-=cut
 
 has root_dir => ( is => 'ro' );
 has run_timestamp => ( is => 'ro', isa => 'Int' );
 
-=head2 run
-
-This causes the input XML files to be read, and the HTML files for the website
-to be generated.  If errors are detected then the method dies.
-
-=cut
-
+# see POD
 sub run {
     my $self = shift;
 
@@ -79,16 +26,15 @@ sub run {
     my $run_timestamp = $self->run_timestamp();
 
     my $sections = $self->_get_sections( dir( $root, 'sections' ) );
-    my $meetings
-        = $self->_group_meetings_by_year( $self->_get_meetings( dir( $root, 'meetings' ) ) );
+    my $meetings = $self->_group_meetings_by_year(
+        $self->_get_meetings( dir( $root, 'meetings' ) ) );
     my $upcoming_or_recent
         = $self->_find_upcoming_or_recent( $meetings, $run_timestamp );
     my $output_dir = dir( $root, 'to.pm.org' );
     my $template = Template->new(
-        {   RELATIVE => 1,
-            INCLUDE_PATH =>
-                [ dir( $root, 'templates' )->stringify ],
-            OUTPUT_PATH => $output_dir->stringify,
+        {   RELATIVE     => 1,
+            INCLUDE_PATH => [ dir( $root, 'templates' )->stringify ],
+            OUTPUT_PATH  => $output_dir->stringify,
         }
     );
 
@@ -110,7 +56,8 @@ sub run {
 }
 
 sub _generate_meetings {
-    my ( $self, $template_processor, $years_meetings, $generated_at, $root_dir )
+    my ( $self, $template_processor, $years_meetings, $generated_at,
+        $root_dir )
         = @_;
 
     for my $year ( @{$years_meetings} ) {
@@ -138,7 +85,7 @@ sub _generate_meetings {
 # File names determine the section names, the files are assumed to
 # contain valid HTML.
 sub _get_sections {
-    my ($self, $sections_dir) = @_;
+    my ( $self, $sections_dir ) = @_;
     Readonly my $SECTION_SUFFIX => '.html';
 
     return [
@@ -157,7 +104,7 @@ sub _get_sections {
 # out:
 #  ref to list of TPM::WebSite::Meeting objects
 sub _get_meetings {
-    my ($self, $meetings_dir) = @_;
+    my ( $self, $meetings_dir ) = @_;
     my @meetings;
 
     for my $file ( find( file => name => '*.xml', in => $meetings_dir ) ) {
@@ -174,7 +121,7 @@ sub _get_meetings {
 # out:
 #   ref to list of hashes { year => yyyy, meetings => [ ... ] }
 sub _group_meetings_by_year {
-    my ($self, $unordered_list) = @_;
+    my ( $self, $unordered_list ) = @_;
     my @list
         = sort { $a->timestamp <=> $b->timestamp || $a->topic cmp $b->topic }
         @{$unordered_list};
@@ -229,6 +176,58 @@ YEAR_LOOP:
     return $return;
 }
 
+1;
+
+__END__
+
+=pod
+
+=head1 NAME
+
+TPM::WebSite::Builder - driver module to build TPM web pages.
+
+=head1 VERSION
+
+Version 0.01
+
+=head1 SYNOPSIS
+
+This is the driver module which transforms XML meeting descriptions into
+web pages for the Toronto Perl Mongers web site.
+
+Perhaps a little code snippet.
+
+    use TPM::WebSite::Builder;
+
+    my $builder = TPM::WebSite::Builder->new(
+        root_dir => '..',
+        run_timestamp => time,
+    );
+    $builer->run();
+
+=head1 SUBROUTINES/METHODS
+
+=head2 new
+
+This is provided by Moose.  The attributes which can be set in this are:
+
+=over 4
+
+=item root_dir
+
+The root directory for the input and output trees.
+
+=item run_timestamp
+
+The seconds since Unix epoch used to mark the time the script was run.
+
+=back
+
+=head2 run
+
+This causes the input XML files to be read, and the HTML files for the website
+to be generated.  If errors are detected then the method dies.
+
 =head1 AUTHOR
 
 Mike Stok, C<< <mike at stok.ca> >>
@@ -260,5 +259,3 @@ See http://dev.perl.org/licenses/ for more information.
 
 
 =cut
-
-1;    # End of TPM::WebSite::Builder
