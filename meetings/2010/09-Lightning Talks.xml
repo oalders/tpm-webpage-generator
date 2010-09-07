@@ -49,4 +49,8 @@
       </p>
     </description>
   </talk>
+  <talk>
+    <speaker>Alan Rocker</speaker>
+    <title>Whats new in Perl 5.10 and 5.12</title>
+  </talk>
 </meeting>
