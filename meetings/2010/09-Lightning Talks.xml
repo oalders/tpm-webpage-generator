@@ -53,4 +53,12 @@
     <speaker>Alan Rocker</speaker>
     <title>Whats new in Perl 5.10 and 5.12</title>
   </talk>
+  <talk>
+    <speaker>Olaf Alders</speaker>
+    <title>Getting Started with Dist::Zilla</title>
+  </talk>
+  <talk>
+    <speaker>Olaf Alders</speaker>
+    <title>Mangling CPAN with Plack::App::Proxy</title>
+  </talk>
 </meeting>
