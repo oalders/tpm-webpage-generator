@@ -61,4 +61,8 @@
     <speaker>Olaf Alders</speaker>
     <title>Mangling CPAN with Plack::App::Proxy</title>
   </talk>
+  <talk>
+    <speaker>Tom Legrady</speaker>
+    <title>Lightning Perl 6</title>
+  </talk>
 </meeting>
