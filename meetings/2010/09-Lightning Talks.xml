@@ -65,4 +65,8 @@
     <speaker>Tom Legrady</speaker>
     <title>Lightning Perl 6</title>
   </talk>
+  <talk>
+    <speaker>Dave Doyle</speaker>
+    <title>Digging into CPAN</title>
+  </talk>
 </meeting>
