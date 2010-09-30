@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<meeting>
+  <details>
+    <topic>TBA</topic>
+    <datetime>2010-10-28T18:45</datetime>
+    <venue>TBA</venue>
+    <synopsis>
+      <p>
+        TBA
+      </p>
+    </synopsis>
+  </details>
+  <talk>
+    <speaker>Dave Doyle</speaker>
+    <title>Digging into CPAN</title>
+    <description>
+      <p>
+        Postponed Lightning Talk.
+      </p>
+    </description>
+  </talk>
+</meeting>
