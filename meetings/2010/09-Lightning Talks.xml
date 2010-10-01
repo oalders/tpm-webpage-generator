@@ -10,6 +10,9 @@
 		Short, 5 to 15 minute talks from a variety of people, on any
 		subject as long as it's got at least a tangent to Perl.
 	</p>
+        <p>
+                <a href="/presentations/2010-09/">Presentation materials</a>
+        </p>
     <p>
       The order of talks listed here does not imply any order of
       presentation.
@@ -23,31 +26,6 @@
   <talk>
     <speaker>Mike Stok</speaker>
     <title>Don't Quote Me On That</title>
-  </talk>
-  <talk>
-    <speaker>Scott Elcomb</speaker>
-    <title>Perl &amp; Android - Getting GUI</title>
-    <description>
-      <p>
-        Recently the Android Scripting Environment (ASE) was renamed Scripting
-        Layer 4 Android.  The second release (SL4A r1) was just posted a
-        couple days ago which address several issues from my talk a couple
-        months back - including packaging scripts for distribution on the
-        Android Market and creating GUI's with a WebView.
-      </p>
-    </description>
-  </talk>
-  <talk>
-    <speaker>Scott Elcomb</speaker>
-    <title>Pirate Party of Canada - One year on</title>
-    <description>
-      <p>
-        Last year I described a bit about the Pirate Party of Canada and we
-        had some short discussion on IP &amp; Privacy matters.  There's been a lot
-        of activity in the last year and I'd be happy to talk a bit about what
-        we've been up to.
-      </p>
-    </description>
   </talk>
   <talk>
     <speaker>Alan Rocker</speaker>
@@ -76,5 +54,9 @@
   <talk>
     <speaker>James E Keenan</speaker>
     <title>Wha' Do We Ain't Got?</title>
+  </talk>
+  <talk>
+    <speaker>Henry Baragar</speaker>
+    <title>Git as a Back Up Tool</title>
   </talk>
 </meeting>
