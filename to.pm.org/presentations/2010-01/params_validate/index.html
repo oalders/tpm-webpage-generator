@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<title>Data Validation</title>
+<!-- metadata -->
+<meta name="generator" content="S5" />
+<meta name="version" content="S5 1.1" />
+<meta name="presdate" content="20081127" />
+<meta name="author" content="Dave Doyle" />
+<meta name="company" content="Raybec Communications" />
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
+<!-- S5 JS -->
+<script src="ui/default/slides.js" type="text/javascript"></script>
+</head>
+<body>
+
+<div class="layout">
+<div id="controls"><!-- DO NOT EDIT --></div>
+<div id="currentSlide"><!-- DO NOT EDIT --></div>
+<div id="header"></div>
+<div id="footer">
+<h1>to.pm - 2010-01-27</h1>
+<h2>Data Validation - http://binmode.com/slides/validation/</h2>
+</div>
+
+</div>
+<!--
+
+Basic Attributes
+
+Advanced Attributes
+    - trigger
+    - lazy_build
+    - predicate
+    - reader/writer/clearer
+    - accessor
+    - handles
+Coercions
+BUILD
+DEMOLISH
+    -> DESTROY
+
+-->
+
+<div class="presentation">
+
+<div class="slide">
+    <h1>Data Validation</h1>
+    <!-- <img src='img/mona_moose.jpg' style='align: right; padding: 5px;' align='right' /> -->
+    <h3>Dave Doyle<br><span style='font-size: 50%'>dave.s.doyle@gmail.com</span></h3>
+    <h4>OANDA Corp.</h4>
+</div>
+
+<div class="slide">
+    <h1>Data Validation</h1>
+    <ul>
+        <li>We all do it at some point</li>
+        <li>We do it to different degrees</li>
+        <li>
+            Many options but I'll look at <del>two</del> one
+            <ul>
+                <li>Params::Validate</li>
+                <li><del>Data::Schema</del> -- I screwed up. I meant to write all this last night but got caught up in some last minute contract work. I can throw this before/after someone's talk next month if you like.</li>
+            </ul>
+        </li>
+        <li>
+            Other options like:
+            <ul>
+                <li>Data::FormValidator</li>
+                <li>HTML::FormFu</li>
+                <li>Moose + MooseX::Declare</li>
+        </li>
+    </ul>
+</div>
+<div class="slide">
+    <h1>Params::Validate</h1>
+    <ul>
+        <li>Meant to examine <code>@_</code> in a sub</li>
+        <li>by Dave Rolsky (prolific Perl Hacker)</li>
+        <li>positional and named params</li>
+        <li>basic type checks; regex checks; callback checks</li>
+        <li>class checks; interface checks</li>
+        <li>defaults values and optional params</li>
+        <li>Carp::confess() on failure</li>
+        <li>Not great for nested structs</li>
+        <li>Unless otherwise specified, all arguements are required</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h1>Params::Validate - Positional</h1>
+    <pre style='font-size: 50%; color: #000;'>
+use Params::Validate qw(:all);
+
+sub foo {
+    #my $self = shift; # shift $self off first if OO
+    my ($name, $age ) = validate_pos(@_,
+        {
+            type      => SCALAR,
+            callbacks => {
+                'min_length' => sub { return length($_[0]) >= 6;  },
+                'max_length' => sub { return length($_[0]) <= 12; },
+            },
+
+        },
+        { type => SCALAR, regex => qr/^\d+$/, optional => 1 },
+    );
+    print $name, '; $age ', (defined $age ? '' : 'not ' ), "defined.\n";
+}
+
+foo('yeehaw' );        #> yeehaw; age not defined
+foo('yeehaw', 1);      #> yeehaw; age defined
+foo("yaaaaay", 'i');   # fails regex check
+foo("short" );         # fails min_length check
+foo("looooooooooong"); # fails max_length check
+foo([]);               # fails type check
+foo(undef);            # fails type check
+    </pre>
+</div>
+
+<div class="slide">
+    <h1>Params::Validate - Named</h1>
+    <pre style='font-size: 60%; color: #000;'>
+use Params::Validate qw(:all);
+
+sub foo {
+    #my $self = shift; # shift $self off first if OO
+    my %args = validate(@_, {
+
+        name => { type => SCALAR, regex => qr/^.{6,12}$/s },
+        age  => { type => SCALAR, regex => qr/^\d+$/, optional => 1 },
+    });
+    print $args{name},
+        '; age ',
+        (defined $args{age} ? '' : 'not ' ),
+        "defined.\n";
+}
+
+foo( name => 'yeehaw' );               #> yeehaw; age not defined
+foo( name => 'yeehaw' );               #> yeehaw; age not defined
+# unrolls if passed a hashref
+foo( { name => 'yeehaw', age => 1 } ); #> yeehaw; age defined
+    </pre>
+</div>
+
+
+<div class="slide">
+    <h1>Params::Validate - basic checks</h1>
+    <ul>
+        <li><i>type</i> - can be SCALAR, ARRAYREF, HASHREF, CODEREF, GLOB, GLOBREF, SCALARREF, UNDEF, OBJECT, BOOLEAN, HANDLE</li>
+        <li>These types are exported with qw(:all) but you can specify a list</li>
+        <li>If you import these, you cannot use <code>Contextual::Return</code></li>
+        <li>You can OR them together to allow multiple types:</li>
+        <li>SCALAR | UNDEF (to allow for an undef value)</li>
+        <li>BOOLEAN is actually a shortcute for SCALAR | UNDEF</li>
+        <li>HANDLE is actually a shortcut for GLOB | GLOBREF</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h1>Params::Validate - types of checks</h1>
+    <ul>
+        <li><i>regex</i> - <code>regex => qr/^\d+$/</code> - compare value against regular expression</li>
+        <li><i>isa</i> - <code>isa => 'CGI::Application'</code> - class validation; verify that the parameter is a class or subclass of the supplied arguement; can also be an arrayref of names</li>
+        <li><i>can</i> - <code>can => 'bar'</code> - interface validation; verify that the parameter can perform a certain method; again, you can do an arrayref of method names</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h1>Params::Validate - types of checks</h1>
+    <ul>
+        <li><i>callbacks</i> - a hashref of key/anonymous subs; write a custom validator; the parameter is passed into <code>@_</code></li>
+        <li><i>untaint</i> - <code>untaint => 1</code> - for running in a tainted environment; untaint the data
+        <li><i>default</i> - provide a default value; if nothing passed in, will insert this value</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h1>Params::Validate - types of checks</h1>
+    <ul>
+        <li><i>optional</i> - <code>optional => 1</code> - by default, each parameter is considered required; this makes them optional (when using positional validation, optional parameters must be after all required parameters)</li>
+        <li>Note, that <code>type => SCALAR | UNDEF</code> is not the same as optional.</li>
+        <li>If you do not specify optional and don't pass in the parameter at all, despite the fact that it may be <code>undef</code>, it will fail validation because the element was not found at all</li>
+        <li>You would still have to explicitly pass the parameter</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h1>Params::Validate - types of checks</h1>
+    <ul>
+        <li><i>depends</i> - <code> depends => [qw/other parameter names/]</code> - dependancies</li>
+        <li>If you specify a paramater as being <code>optional => 1</code> but you wish it to become required if another optional parameter is entered, use this</li>
+        <li>If using <code>validate</code> (named parameters) you do this by providing a list of the names of the parameters it depends on</li>
+        <li>I've never used this using <code>validate_pos</code> although there is a way to do it; possibly by the index of the required element</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h1>Params::Validate - validate_with</h1>
+    <pre>
+  my %p =
+      validate_with
+          ( params => \@_,
+            spec   => { foo => { type => SCALAR },
+                        bar => { default => 10 } },
+            allow_extra => 1,
+            called => 'The Quux::Baz class constructor',
+          );
+
+  my @p =
+      validate_with
+          ( params => \@_,
+            spec   => [ { type => SCALAR },
+                        { default => 10 } ],
+            allow_extra => 1,
+            called => 'The Quux::Baz class constructor',
+          );
+    </pre>
+</div>
+
+
+<div class='slide'>
+	<img src='img/MooseCap.jpg' align='right' style='padding: 10px;' />
+    <p>Thank you.</p>
+</div>
+
+</div>
+</body>
+</html>
