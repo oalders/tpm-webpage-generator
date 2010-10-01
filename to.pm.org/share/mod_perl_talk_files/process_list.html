@@ -1,0 +1,27 @@
+<html>
+
+<head>
+<title>Apache process list</title>
+</head>
+
+<body>
+
+<font size=+2><b>
+<pre>
+tanru:/usr/local/apache/bin# ./apachectl start
+[Wed Mar 27 17:28:19 2002] [alert] httpd: Could not determine the server's
+fully qualified domain name, using 192.168.2.12 for ServerName
+./apachectl start: httpd started
+tanru:/usr/local/apache/bin# ps auxw | grep httpd
+USER       PID %CPU %MEM   VSZ  RSS TTY      STAT START   TIME COMMAND
+root       599  2.0  1.3  3920 2616 ?        S    17:28   0:00 /usr/local/apache/bin/httpd
+nobody     600  0.0  1.3  3932 2632 ?        S    17:28   0:00 /usr/local/apache/bin/httpd
+nobody     601  0.0  1.3  3932 2632 ?        S    17:28   0:00 /usr/local/apache/bin/httpd
+nobody     602  0.0  1.3  3932 2632 ?        S    17:28   0:00 /usr/local/apache/bin/httpd
+nobody     603  0.0  1.3  3932 2632 ?        S    17:28   0:00 /usr/local/apache/bin/httpd
+nobody     604  0.0  1.3  3932 2632 ?        S    17:28   0:00 /usr/local/apache/bin/httpd
+</pre>
+</b></font>
+
+</body>
+</html>

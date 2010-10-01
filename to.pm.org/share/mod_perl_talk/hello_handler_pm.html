@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/2000/REC-xhtml1-20000126/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>Code: hello_handler_pm</title>
+		<link rel="Stylesheet" href="styles.css" type="text/css">
+	</head>
+
+	<body class="codepage">
+		<blockquote>
+			<p class="codepage"><tt>package Apache::Hello;<br>
+			<br>
+			use strict;<br>
+			use Apache::Constants qw(:common);<br>
+			<br>
+			sub handler {<br>
+			<br>
+			&nbsp; &nbsp; my $r = shift; # &quot;response&quot; object, inherited from the mod_perl framework<br>
+			<br>
+			&nbsp; &nbsp; $r-&gt;content_type('text/html');<br>
+			&nbsp; &nbsp; $r-&gt;send_http_header;<br>
+			<br>
+			&nbsp; &nbsp; my $host = $r-&gt;get_remote_host;<br>
+			<br>
+			&nbsp; &nbsp; my $counter;<br>
+			<br>
+			&nbsp; &nbsp; $counter++;<br>
+			<br>
+			&nbsp; &nbsp; $r-&gt;print(&lt;&lt;&quot;END&quot;);<br>
+			&lt;HTML&gt;<br>
+			<br>
+			&lt;HEAD&gt;<br>
+			&lt;TITLE&gt;<br>
+			Hello There<br>
+			&lt;/TITLE<br>
+			&lt;/HEAD&gt;<br>
+			<br>
+			&lt;BODY&gt;<br>
+			&lt;H1&gt;Hello, $host&lt;/H1&gt;<br>
+			<br>
+			&lt;P&gt;<br>
+			Who would take my presentation seriously if its first example wasn't<br>
+			a Hello World?<br>
+			<br>
+			&lt;P&gt;<br>
+			P.S.&nbsp; This is mostly just lifted from the Eagle book.&nbsp; But don't<br>
+			tell anyone.<br>
+			<br>
+			&lt;P&gt;<br>
+			P.S.S.&nbsp; The value of counter is now: $counter<br>
+			<br>
+			&lt;/BODY&gt;<br>
+			<br>
+			&lt;/HTML&gt;<br>
+			END<br>
+			&nbsp; ;<br>
+			&nbsp; &nbsp; return OK;<br>
+			}<br>
+			<br>
+			1;&nbsp; # gotta return true, until Perl 6... *sigh*<br>
+			 </tt></p>
+		</blockquote>
+	</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/2000/REC-xhtml1-20000126/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>Code: closure_hello_handler_pm</title>
+		<link rel="Stylesheet" href="styles.css" type="text/css">
+	</head>
+
+	<body class="codepage">
+		<blockquote>
+			<p class="codepage"><tt>{&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; # beginning of block to form closure<br>
+			<br>
+			&nbsp; &nbsp; my $counter;&nbsp; &nbsp; &nbsp; &nbsp;# note that I'm not initializing it...<br>
+			<br>
+			&nbsp; &nbsp; package Apache::ClosureHello;<br>
+			<br>
+			&nbsp; &nbsp; use strict;<br>
+			&nbsp; &nbsp; use Apache::Constants qw(:common);<br>
+			<br>
+			&nbsp; &nbsp; sub handler {&nbsp; &nbsp; &nbsp; # beginning of subroutine block<br>
+			<br>
+			&nbsp; &nbsp; my $r = shift; # &quot;response&quot; object, inherited from the<br>
+			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;# mod_perl framework<br>
+			<br>
+			&nbsp; &nbsp; $r-&gt;content_type('text/html');<br>
+			&nbsp; &nbsp; $r-&gt;send_http_header;<br>
+			<br>
+			&nbsp; &nbsp; $counter++;<br>
+			<br>
+			&nbsp; &nbsp; $r-&gt;print(&lt;&lt;&quot;END&quot;);<br>
+			&lt;HTML&gt;<br>
+			<br>
+			&lt;HEAD&gt;<br>
+			&lt;TITLE&gt;<br>
+			Hello, I'm a counter<br>
+			&lt;/TITLE<br>
+			&lt;/HEAD&gt;<br>
+			<br>
+			&lt;BODY&gt;<br>
+			&lt;H1&gt;Hello, I'm a counter!&lt;/H1&gt;<br>
+			<br>
+			&lt;P&gt;<br>
+			My count is at: $counter<br>
+			<br>
+			&lt;P&gt;<br>
+			Aren't closures grand?<br>
+			<br>
+			&lt;/BODY&gt;<br>
+			<br>
+			&lt;/HTML&gt;<br>
+			END<br>
+			&nbsp; &nbsp; ;<br>
+			&nbsp; &nbsp; return OK;<br>
+			<br>
+			&nbsp; &nbsp; } # end of &quot;handler&quot; sub block<br>
+			<br>
+			}&nbsp; &nbsp; &nbsp;# end of closure block<br>
+			<br>
+			1;&nbsp; &nbsp; # gotta return true, until Perl 6... *sigh*<br>
+			 </tt></p>
+		</blockquote>
+	</body>
+
+</html>

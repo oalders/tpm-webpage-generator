@@ -1,0 +1,111 @@
+
+.sansa {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.sansb, .sansa small b, .sansa b small, small.sansa b, small b.sansa {
+    font-family: "Myriad Web", Verdana, Helvetica, Arial, sans-serif;
+}
+.serifa {
+    font-family: "Minion Web", Georgia, Palatino, "Times New Roman", serif;
+}
+ small.sansa,.sansa small {
+    font-family: Helvetica, sans-serif
+}
+ big.sansb,.sansb big {
+    font-family: "Myriad Web", Tahoma, Verdana, Helvetica, Arial, sans-serif;
+}
+.min {
+    font-size: 10px;
+}
+
+
+P {
+    font-family: "Times New Roman", "Times", serif;
+    font-size: 12pt;
+    color: black;
+    background-color: white;
+}
+
+P.snug {
+    margin: 8px 2px 2px 2px;
+}
+
+P.vspace {
+    margin: 5px 0px 0px 0px;
+}
+
+P.vspacesmall {
+    margin: 0px 0px 0px 0px;
+}
+
+TR.odd {
+    background-color: #dddddd;
+}
+
+DIV.sans {
+    margin: 0px 0px 0px 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    text-decoration: none;
+}
+
+.pickertext {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    color: #006633;
+    background-color: white;
+    text-decoration: none;
+}
+DIV.sans P {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    text-decoration: none;
+}
+
+
+DIV.sans STRONG {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10pt;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+}
+
+H1 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+H2 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+H3 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+TH {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    margin: 0px 0px 0px 0px;
+}
+
+TR.evenrow {
+    background-color: #cccccc;
+
+}
+TR.oddrow {
+    background-color: #dddddd;
+
+}
+
+TD.headingcell {
+    background-color: #d3dce3;
+    margin: 0px 0px 0px 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+
+TD.emptyheading {
+    background-color: #ffffff;
+}
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/2000/REC-xhtml1-20000126/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>An Introduction to Mod_perl - mod_perl benchmarks, debugging, status checking</title>
+		<base target="_top">
+		<link rel="Stylesheet" href="styles.css" type="text/css">
+		<link rev="Start" href="index.html" title="An Introduction to Mod_perl">
+		<link rev="Contents" href="toc.html" title="Table of Contents">
+		<link rev="Prev" href="slide033.html" title="Sessionning">
+		<link rev="Next" href="slide035.html" title="Usage of mod_perl">
+	</head>
+
+	<body>
+		<table height="100%" width="100%">
+			<tr>
+				<td valign="top" width="100%">
+					<h1>mod_perl benchmarks, debugging, status checking</h1>
+					<ul>
+						<li>Joshua Chamas' benchmarking project - <a href="http://www.chamas.com/bench/">http://www.chamas.com/bench/</a>
+						<ul>
+							<li>Architecture matters (e.g. XML/XSLT engines are dog-slow)
+							<li>Implementation matters (e.g. Apache::ASP vs. HTML::Embperl)
+							<li>Operating system, web server, language matter less
+						</ul>
+						<li>Debugging is much like Perl debugging
+						<ul>
+							<li>print STDERR Data::Dumper-&gt;Dump([...],[...]);
+							<li>use CGI::Carp qw(fatalsToBrowser); # works well for Apache::Registry scripts
+							<li>debugging via ptkdb didn't work the last time I tried (2 years ago) (this does work for CGI scripts!)
+						</ul>
+						<li>Status checks abound
+						<ul>
+							<li><a href="http://localhost/server-status">http://localhost/server-status</a> - intrinsic to Apache
+							<li><a href="http://localhost/perl-status">http://localhost/perl-status</a> - per Apache::Status, comes with mod_perl
+							<li><a href="http://localhost/extended-system-monitor">http://localhost/extended-system-monitor</a> - per Apache::VMonitor, more of an Apache than mod_perl check
+						</ul>
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</body>
+
+</html>

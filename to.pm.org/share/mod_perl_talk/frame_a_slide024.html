@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/2000/REC-xhtml1-20000126/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>An Introduction to Mod_perl - Apache::Registry Revisited</title>
+		<base target="_top">
+		<link rel="Stylesheet" href="styles.css" type="text/css">
+		<link rev="Start" href="index.html" title="An Introduction to Mod_perl">
+		<link rev="Contents" href="toc.html" title="Table of Contents">
+		<link rev="Prev" href="slide023.html" title="Custom PerlHandler: Apache::ClosureHello">
+		<link rev="Next" href="slide025.html" title="PerlTransHandler">
+	</head>
+
+	<body>
+		<table height="100%" width="100%">
+			<tr>
+				<td valign="top" width="100%">
+					<h1>Apache::Registry Revisited</h1>
+					<ul>
+						<li>The danger of closures comes from what Apache::Registry actually does in order to give your Perl/CGI script a CGI-like environment within mod_perl
+						<li>Basically, it wraps your file in a &quot;package&quot;, generates a namespace for it, and eval's its source, caching the eval return
+						<ul>
+							<li><a href="so_this.html">So this... </a>
+							<li><a href="becomes_this.html">...becomes this</a>
+						</ul>
+						<li>So, your script is no longer &quot;standalone&quot;
+						<ul>
+							<li>print __PACKAGE__
+							<li>variables retain their values via closures
+							<li>memory leaks can happen
+						</ul>
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</body>
+
+</html>

@@ -1,0 +1,6 @@
+APACHE_PREFIX=/usr/local/apache
+APACHE_SRC=../apache_1.3.24/src
+DO_HTTPD=1
+USE_APACI=1
+EVERYTHING=1
+ADD_MODULE=unique_id,info,status

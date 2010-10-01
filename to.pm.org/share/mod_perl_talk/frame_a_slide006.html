@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/2000/REC-xhtml1-20000126/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>An Introduction to Mod_perl - What is a CGI request?</title>
+		<base target="_top">
+		<link rel="Stylesheet" href="styles.css" type="text/css">
+		<link rev="Start" href="index.html" title="An Introduction to Mod_perl">
+		<link rev="Contents" href="toc.html" title="Table of Contents">
+		<link rev="Prev" href="slide005.html" title="The HTTP Request">
+		<link rev="Next" href="slide007.html" title="What's wrong with CGI?">
+	</head>
+
+	<body>
+		<table height="100%" width="100%">
+			<tr>
+				<td valign="top" width="100%">
+					<h1>What is a CGI request?</h1>
+					<ul>
+						<li>As people became more familiar with the web, they realized that web servers didn't have to restrict themselves to serving simple files that happened to exist on the hard drive
+						<li>CGI is the Common Gateway Interface -- it &quot;interfaces&quot; the http request and the web server to a program located at the site
+						<li>CGI defines a very simple set of programming conventions such that any program that follows them can be run through any web server that understands CGI
+						<ul>
+							<li>environment variables and STDIN as input
+							<li>STDOUT as output
+							<li>&quot;standard URL encoding&quot;, cookies, a few other things as part of input
+							<li>as output the program must produce an appropriate &quot;Content-type&quot; header and (probably) HTML
+						</ul>
+						<li><a href="../mod_perl_talk_files/simple_cgi_request.png">A simple CGI HTTP transaction diagram</a>
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</body>
+
+</html>

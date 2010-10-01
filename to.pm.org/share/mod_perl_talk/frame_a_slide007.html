@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/2000/REC-xhtml1-20000126/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>An Introduction to Mod_perl - What's wrong with CGI?</title>
+		<base target="_top">
+		<link rel="Stylesheet" href="styles.css" type="text/css">
+		<link rev="Start" href="index.html" title="An Introduction to Mod_perl">
+		<link rev="Contents" href="toc.html" title="Table of Contents">
+		<link rev="Prev" href="slide006.html" title="What is a CGI request?">
+		<link rev="Next" href="slide008.html" title="Web API Programming -- The Next Approach">
+	</head>
+
+	<body>
+		<table height="100%" width="100%">
+			<tr>
+				<td valign="top" width="100%">
+					<h1>What's wrong with CGI?</h1>
+					<ul>
+						<li>Plenty
+						<li>It's slow -- spawning new processes with each http hit
+						<ul>
+							<li>(Especially slow when you use an interpreted language like Perl, needing to start up a heavyweight interpreter first)
+						</ul>
+						<li>It's resource intensive -- again, spawning new processes
+						<li>It's subseptible to resource-usage &quot;spikes&quot; -- again, spawning processes
+						<li>It isn't &quot;close to the server&quot;, thus preventing it from doing certain types of things (more on this later)
+						<li>It doesn't actually help you create web applications -- it defines no techniques, it provides no libraries, etc.
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</body>
+
+</html>

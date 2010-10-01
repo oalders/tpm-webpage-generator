@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/2000/REC-xhtml1-20000126/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>An Introduction to Mod_perl - mod_perl handlers</title>
+		<base target="_top">
+		<link rel="Stylesheet" href="styles.css" type="text/css">
+		<link rev="Start" href="index.html" title="An Introduction to Mod_perl">
+		<link rev="Contents" href="toc.html" title="Table of Contents">
+		<link rev="Prev" href="slide015.html" title="The Apache Request Loop and API">
+		<link rev="Next" href="slide017.html" title="PerlHandler">
+	</head>
+
+	<body>
+		<table height="100%" width="100%">
+			<tr>
+				<td valign="top" width="100%">
+					<h1>mod_perl handlers</h1>
+					<ul>
+						<li>Essentially, for each step in the transaction look, there is a &quot;hook&quot; in the mod_perl API that ties into the Apache API, such that you can register a Perl module as the &quot;handler&quot; for that step in the loop!
+						<li>You perform this &quot;registration&quot; in the httpd.conf file
+						<li>Different handlers are responsible for creating &quot;responses&quot; to the Apache API that make sense at the particular stage at which the handler is registered
+						<ul>
+							<li>E.g. Reponse phase -&gt; PerlHandler directive
+							<li>URI Translation phase -&gt; PerlTransHandler
+						</ul>
+						<li>(The names PerlHandler and PerlTransHandler are configuration directives within httpd.conf... more later)
+						<li>The response codes are found in the Apache::Constants package (comes with mod_perl package)
+						<ul>
+							<li>A PerlHandler returns &quot;OK&quot; if it successfully &quot;does something&quot;
+							<li>It returns &quot;DONE&quot; if it does something and that should abort the rest of the loop processing
+							<li>It returns &quot;DECLINED&quot; if it doesn't want to handle the request
+							<li>It may return any one of a number of different error codes (SERVER_ERROR, UNAUTHORIZED, REDIRECT, NOT_FOUND, etc.)
+						</ul>
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</body>
+
+</html>

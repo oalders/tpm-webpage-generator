@@ -1,0 +1,577 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN"><html><head><link rel="stylesheet" type="text/css" href="tpmstyle.css">
+<title>YAPC::NA 2005: Toronto Bid Proposal</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><!-- <script src="javascript/Display.js"></script> --></head>
+
+<body>
+<table width="700"><tr>
+<td><img src="Images/yapc2005logo_scaled.png" align="middle"></td>
+<td align=center><h1>Toronto Perl Mongers<br>Proposal to Host<br>YAPC::NA 2005</h1></td></tr>
+<tr><td>&nbsp;</td><td align="center"><img width="500" src="Images/toronto.jpg"></td></tr>
+</table>
+<p>&nbsp;</p>
+
+<table  width="700"cellspacing="0" cellpadding="3">
+<tbody><tr>
+<td>
+<p>
+
+
+</p>
+
+
+<h2>Executive Summary</h2>
+<p>
+
+Toronto.pm is pleased to provide a bid for YAPC::NA 2005.  The crucial details are:
+</p>
+
+
+<h3>Date and Duration</h3>
+<ul>
+<li>3 days long, Wed 22 June - Fri 24 June 2005
+<ul>
+<li>Our research suggests that this conflicts with no other known Perl or significant other Open Source / IT events
+</li>
+<li>All facilities included in our proposal appear to be available in this time period
+</li>
+<li>Should The Perl Foundation point out that a better set of dates exists or should the facility "book up" in that time period in the immediate term future then alternative date sets exist (20-22 June, 27-29 June)
+</li>
+</ul>
+</li></ul>
+
+<h3>Venue</h3>
+
+<p>
+The TPM bid committee is happy to present The Perl Foundation with two
+possible venues, both at the downtown campus of the University of Toronto.
+
+<ul>
+<li>
+University of Toronto downtown (St. George) main campus, centred on the Medical Sciences building
+</li>
+<li>
+University of St. Michael's College, an affiliated university to the University of Toronto
+</li>
+</ul>
+
+<p>
+The reason why two venues are proposed is that the Medical Sciences venue 
+comes with some very very very minor strings attached.  However, we can 
+receive this venue for free, thus saving The Perl Foundation approximately
+US$6000 and essentially eliminating all fixed costs (and therefore budgetary
+risk) from the conference.  TPM strongly recommends this venue option
+However, we will present both options for TPF to choose from.
+
+<h4>University of Toronto Medical Sciences Building</h4>
+<ul>
+<li>
+Is provided to us for free by the sponsorship of the University of Toronto
+Computer Science Student Union (CSSU)
+</li>
+<li>
+The main lecture hall has a seating capacity of 500; we expect to have this booked on reserve for YAPC::NA 2005 in the next few days (or hours, or by the time you read this) -- http://www.osm.utoronto.ca/room_pics/MS-2158.html
+</li>
+<li>
+Many other rooms of the sizes needed for YAPC (e.g. 150 seats, 100 seats,
+20-30 seats) are in the same building and can be obtained for free by CSSU
+</li>
+<li>
+All rooms and facilities are of excellent quality and modern
+</li>
+<li>
+In the heart of the University of Toronto campus -- scenic 150 year old buildings, next to the Provincial Parliament, many nearby parks and green spaces
+</li>
+<li>
+Many nearby parking lots
+</li>
+<li>
+Pre-installed wireless networking (see green "MS" building near bottom-centre of map at <a href=http://wireless.utoronto.ca/stgeorgemap.gif>http://wireless.utoronto.ca/stgeorgemap.gif</a>
+</li>
+<li>
+<i>
+Strings attached:  U of T undergrad CS students admitted to the conference at
+a reduced price (equal to marginal/variable costs per person), CSSU can
+advertise the event to their students as a joint CSSU/TPF event (...like I
+said, very very very minor! -- see the details in the <a href=MoU_CSSU.pdf>Memoradum of Understanding with the CSSU</a>)
+</i>
+</li>
+</ul>
+
+<h4>University of St. Michael's College Venue synopsis</h4>
+<ul>
+<li>To be held at the University of St. Michael's College, an affiliated university to the University of Toronto.
+<ul>
+<li>It is an "Ivy League" style and calibre facility
+<ul>
+<li>An island of tranquillity and style in the heart of downtown Toronto...
+</li><li>... but with ultra-modern amenities
+</li></ul>
+</li></ul>
+</li><li>Capacity: 380 attendees (including speakers, conference helpers, YAS persons, etc.)
+</li><li>1 ballroom for assembly purposes (capacity 380) and 2 100-200 person lecture rooms for 3 parallel speaking tracks
+</li><li>Other planned venue facilities include side-rooms for speakers
+and conference organizers, terminal room, common area, registration
+area
+</li><li>Most venue rooms are in the same building, all are in buildings adjacent or near-adjacent to each other
+</li><li>All venue facilities are of excellent quality, both functionally and aesthetically
+</li><li>On-site parking for USD$4/day (includes overnight for dorm users)
+</li></ul>
+
+<h3>Accommodations</h3>
+<ul>
+<li>Dorm facilities available for as many attendees as needed in
+ultra-modern luxury dorm building adjacent (3 minute walk) to venue for
+approx. USD$40/night with both MedSci and St. Michael's venue options
+</li><li>Unlimited (~ 25,000) hotel rooms of all prices (USD$40-USD$200/night) within easy walking distance
+<ul><li>A "recommended" hotel nearby the conference will be identified and negotiated with for group rates closer to the date of the conference; some are already in mind</li></ul>
+</li></ul>
+<h3>Meals and Catering</h3>
+<ul>
+<li>On-site breakfast, lunch, morning and afternoon snacks for all attendees for all 3 days
+</li><li>Common (banquet) dinner for all attendees on Thursday evening
+<ul>
+<li>Hopefully this can be done on a boat cruise of Lake Ontario around the Toronto Harbour and Toronto Centre Islands -- very scenic! We are investigating this.
+</li></ul>
+</li></ul>
+<h3>Projected Budget</h3>
+
+<p>
+There are a large number of potential projected budgets, based on number of attendees estimated and the "scenario" chose:
+<ol>
+<li>
+Regular commercial purchase of the venue from the University of St. Michael's  College, University of Toronto (380 attendees maximum)
+</li>
+<li>
+Acceptance of US$6000 from LPI, regular commercial purchase of the venue from the University of St. Michael's  College, University of Toronto (380 attendees maximum)
+<ul>
+<li> Refer to the <a href=MoU_LPI.pdf>Memorandum of Understanding between TPM and the Linux Professional Institute</a> for details
+</li>
+<li>
+In short, LPI -- <a href=http://lpi.org>http://lpi.org/</a> -- is interested in developing a Perl certification exam, and they want an opportunity to interact with a good-sized chunk of 'the Perl community' to get their advice on how best to proceed with this goal
+</li>
+<li>
+TPF doesn't have to officially endorse LPI in this effort, but does need to mention what LPI is at the conference, thank them for their support, and invite YAPC attendees to interact with LPI over the duration of the conference
+</li>
+<li>
+LPI will have staff at the conference and may rent out an extra small room to open up a space for YAPC conference attendees to interact with them
+</li>
+<li>
+This seems to TPM to be a small, unobtrusive reciprocation, on the order of Apple's presence at YAPC::NA 2004 in Buffalo, and we fully support this arrangement
+</li>
+</ul>
+</li>
+<li>
+Acceptance of free venue from CSSU, use of MedSci building as venue from the University of Toronto (Main Campus) (500 attendees maximum)
+</li>
+<li>
+Acceptance of US$6000 from LPI and free venue from CSSU, use of MedSci building as venue from the University of Toronto (Main Campus) (500 attendees maximum)
+</li>
+</ol>
+
+<p>
+We project significant budget surpluses for each of these 4 scenarios with essentially any number of conference attendees (worst case: 232 for break-even for scenario #1, best case: 44 for break-even under scenario #4).  The "quality" of each conference increases as the scenario number increases -- we have allocated a part of the monetary gains for each scenario towards greater profit, and part towards improving the quality of the conference.
+
+<pre>
+
+For all scenarios:
+Admission: US$85.00
+USA attendees: 65%
+CDN attendees: 30%
+Other:          5%
+Number of speakers: 40 (non-paying attendees)
+
+
+Scenario #1 - Basic
+===================
+
+A minimum of 232 attendees will allow us to provide each day a morning
+and afternoon break (of coffee, tea or a soft drink) and lunch as well
+as an inexpensive $10 dinner on Thursday evening.
+
+250 attendees would generate a surplus of approximately $1,000.
+
+300 attendees would generate a surplus of approximately $3,800.
+
+350 attendees would generate a surplus of approximately $6,600.
+
+
+Scenario #2 - $6K Contribution
+==============================
+
+A minimum of 185 attendees will allow us to provide each day a morning
+and afternoon break (of coffee, tea or a soft drink) and lunch as well
+as a more expensive $30 dinner on Thursday evening.
+
+200 attendees would generate a surplus of approximately $560.
+
+250 attendees would generate a surplus of approximately $2,400.
+
+300 attendees would generate a surplus of approximately $4,300.
+
+350 attendees would generate a surplus of approximately $6,200.
+
+
+Scenario #3 - Free Facilities
+=============================
+
+A minimum of 165 attendees will allow us to provide each day a morning
+and afternoon break (of coffee, tea or a soft drink) and lunch as well
+as the more expensive $30 dinner on Thursday evening.
+
+200 attendees would generate a surplus of approximately $1,300.
+
+250 attendees would generate a surplus of approximately $3,200.
+
+300 attendees would generate a surplus of approximately $5,100.
+
+350 attendees would generate a surplus of approximately $7,000.
+
+
+Scenario #4 - $6K Contribution and Free Facilities
+==================================================
+
+This is the Cadillac of conditions!
+
+A minimum of only 44 attendees will allow us to provide breakfast each
+day, a morning and afternoon break (of coffee, tea or a soft drink) and
+lunch as well as the more expensive $30 dinner on Thursday evening.
+
+100 attendees would generate a surplus of approximately $1,600.
+
+150 attendees would generate a surplus of approximately $2,500.
+
+200 attendees would generate a surplus of approximately $3,500.
+
+250 attendees would generate a surplus of approximately $4,400.
+
+300 attendees would generate a surplus of approximately $5,300.
+
+350 attendees would generate a surplus of approximately $6,200.
+
+</pre>
+
+<p>
+There is significant room for modification to this budget as well.  For instance, scenarios which include the free venue courtesy of the CSSU are budgeted to have to pay for the A/V equipment.  This is not likely to be the case, but we have it in here just in case.  Several $1000 could be saved from this.  Also, we budgeted for a 1.25 USD$/CAD$ exchange rate, which is something of a worst-case scenario.  It is currently 1.31, which would provide over $1000 of surplus to the budget as stated.
+
+<p>
+The details of the budget, plus an Excel spreadsheet that you can play with, can be downloaded from here -- <a href=http://to.pm.org/BidSite2005/TorontoYAPC2005Budget.xls>http://to.pm.org/BidSite2005/TorontoYAPC2005Budget.xls</a>
+
+<h3>Toronto is a fantastic tourist city</h3>
+<ul>
+<li>Cheap
+</li><li>Easy to get around
+</li><li>More available to do than can possibly be done
+</li><li>Fantastic urban (and urbane) atmosphere
+</li><li>Safe, clean, friendly!
+</li><li>Highly and inexpensively accessible via car, bus, train and aeroplane
+</li></ul>
+<h3>Strong conference organizing committee</h3>
+<hr>
+<h1>The Bid In Detail</h1>
+<h2>Introduction</h2>
+<p>
+
+<img src="Images/city9a.jpg">
+</p>
+
+
+<p>The biggest selling point to a YAPC::NA in Toronto is Toronto
+itself. The Greater Toronto Area has a population of around 6 million,
+and for the past decade the United Nations has ranked Toronto as the
+most multicultural city on Earth. It is remarkably vibrant on every
+dimension: the financial district bustles as one of the world's
+financial capitals; the array of ethnic neighbourhoods make you feel
+like you're visiting a continent, not a city; the street-life --
+restaurants, shops, pedestrian concourses -- runs on for miles (well,
+kilometres); enough high culture and pop culture that you'd never run
+out.
+</p>
+
+
+<p>Both proposed facilities at the University of Toronto are
+located in the heart of downtown. A large variety of shops and
+restaurants are withing easy walking distance. Convenient and easy
+public transport to major attractions is available. Neither renting a car
+nor driving your own during the conference is not necessary.
+</p>
+
+
+<p>
+<a href="Images/webmap.png">Map</a> of University of Toronto downtown campus.
+
+<p>
+The large red circle on the right marks St. Michael's College.
+The medium-large blue circle (bottom-centre) is the MedSci building.
+
+<p>
+The <a href="http://oracle.osm.utoronto.ca/map/">U of T web site</a> allows you to click on the buildings for information.
+
+</p>
+
+<h2>Facilities</h2>
+
+<h4>At the University of St. Michael's College, University of Toronto</h4>
+
+<p>
+<ul>
+<li> Details regarding all of the below are to be found at <a href=http://www.utoronto.ca/stmikes/conferences/>http://www.utoronto.ca/stmikes/conferences/</a>
+<Li> Auditorium: Sam Sobara Room, seats 380 persons (250 in banquet mode)
+<li> Common Area: A common area outside Sam Sobara Room is available.
+<li> Meetings rooms: Theatre Alumni 100, 300 persons
+<li> Theatre Alumni 400, seats 200 persons.  Other rooms capable of holding 60 or 40 people are also available.
+<li> Terminal room: Available in the library, computers will be included
+<li> Storage room: Several classrooms are available including Brennan 203
+</ul>
+</p>
+
+<h4>At the Medical Science Building, University of Toronto Main Campus</h4>
+
+<p>
+<ul>
+<li> Details regarding all MedSci rooms can be found at <a href=http://www.osm.utoronto.ca/cgi-bin/class_spec/spec02?building=MS>http://www.osm.utoronto.ca/cgi-bin/class_spec/spec02?building=MS</a>
+<li> All rooms here will be free of charge, courtesy of the University of Toronto Computer Science Student Union
+</ul>
+</p>
+
+<p>
+See the <a href="http://to.pm.org/TorontoYAPC2005Budget.xls">budget spreadsheet</a> for more details. (MS Excel format, but easily opened in Gnumeric.)
+</p>
+
+<h4>Selected Photos</h4>
+<p>
+
+<h5>University of St. Michael's College</h5>
+<a href="Images/stmikes/IMG_0001_SamSobaraRes.JPG">Dorm (on left) and driveway to University of St. Michael's College</a>
+<br>
+<a href="Images/stmikes/IMG_0002_BrennanHall.JPG">Central Courtyard of University of St. Michael's College</a>
+<br>
+<a href="Images/stmikes/IMG_0003_CarrHall.JPG">A building on St. Michael's campus (venue rooms within)</a>
+<br>
+<a href="Images/stmikes/IMG_0007_AlumniHall.JPG">Yet Another building (venue rooms within)</a>
+<br>
+<a href="Images/stmikes/IMG_0008_Alumni100.JPG">One possible venue room</a>
+<br>
+<a href="Images/stmikes/IMG_0009_Alumni100b.JPG">Same room, seen from the front</a>
+<br>
+<a href="Images/stmikes/IMG_0012_Quadrangle.JPG">Central Quadrangle of St. Michael's campus</a>
+<br>
+<a href="Images/stmikes/IMG_0018_SamSobaraHall3.JPG">Main assembly room (seats 380 in theatre mode) -- way too big, and blurry</a>
+</p>
+
+<h5>University Toronto Main Campus and the Medical Sciences Building</h5>
+<p>
+
+<a href=http://www.city.toronto.on.ca/toronto_images/images/queenpark2.jpg>
+Queen's Park -- the Ontario Provincial Parliament, a 3 minute walk from MedSci
+</a><br>
+
+<a href=http://www.city.toronto.on.ca/toronto_images/images/queenpark.jpg>
+A view of the city looking south from Queen's Park (right next to MedSci)
+</a><br>
+
+<a href=http://www.city.toronto.on.ca/toronto_images/images/uoft.jpg>
+University College, one of the grand old buildings of the University of Toronto -- this faces the MedSci building across the Front Lawn
+</a><br>
+
+<a href=http://p.vtourist.com/1354632.jpg>
+Hart House -- one of the grand old buildings facing MedSci across the Front Lawn
+</a><br>
+
+<a href=http://www.city.toronto.on.ca/toronto_images/images/convocation_hall.jpg>
+Convocation Hall -- immediately facing MedSci across the main entrance road into the University
+</a><br>
+
+<a href=http://www.osm.utoronto.ca/room_pics/MS-2158.html>
+Main lecture hall at MedSci (500 seats)
+</a><br>
+<a href=http://www.osm.utoronto.ca/room_pics/MS-2172.html>
+140 seat room at MedSci
+</a><br>
+<a href=http://www.osm.utoronto.ca/room_pics/MS-2173.html>
+109 seat room at MedSci
+</a><br>
+<a href=http://www.osm.utoronto.ca/room_pics/MS-3153.html>
+264 seat room at MedSci
+</a><br>
+<a href=http://www.osm.utoronto.ca/room_pics/MS-3154.html>
+288 seat room at MedSci
+</a><br>
+<a href=http://www.osm.utoronto.ca/room_pics/MS-3163.html>
+115 seat room at MedSci
+</a><br>
+<a href=http://www.osm.utoronto.ca/room_pics/MS-3171.html>
+109 seat room at MedSci
+</a><br>
+<a href=http://www.osm.utoronto.ca/room_pics/MS-3264.html>
+30 seat room at MedSci (for terminal room or conference organizers' room)
+</a><br>
+<a href=http://www.osm.utoronto.ca/room_pics/MS-3268.html>
+22 seat room at MedSci (for terminal room or conference organizers' room)
+</a><br>
+<a href=http://www.osm.utoronto.ca/room_pics/MS-4171.html>
+83 seat room at MedSci
+</a><br>
+<a href=http://www.osm.utoronto.ca/room_pics/MS-4279.html>
+83 seat room at MedSci
+</a><br>
+
+<h2>Catering</h2>
+<p>
+
+The following catering is available from the college.  We assume that something similar for similar prices could be had through catering services on main campus if the MedSci / CSSU option is chosen.
+</p>
+
+
+<p>
+Continental Breakfast $5.87
+Morning break (coffee, tea) $1.50
+Afternoon Break (Coffee, tea, cookie, soft drink) $2.50
+Lunch, deli buffet, $9.50
+Dinner $25
+- plated 3 course, salad, main, dessert, coffee, tea
+</p>
+
+
+<p>If we have more than 250 attendees (this is our plan!) we will hold
+the dinner at another facility. Options under consideration include
+dinner on a <a href="BoatCruises.html">Toronto Island cruise boat</a>. 
+</p>
+
+<p>
+<img src="Images/cityview.jpg"> <img src="Images/pier4a.jpg">
+</p>
+
+
+<h2>Accommodation</h2>
+<p>
+The Sam Sobara residence is only steps away from the meeting rooms. The
+building is new and very comfortable.
+CDN$55 per night (includes tax), a/c, single occupancy. In-room wired
+Internet (ethernet) at $10 per week. Check-in desk open 6am to midnight
+7 days a week.
+
+<p>
+This residence can be used regardless of whether the conference takes
+place at MedSci or at St. Michael's.  If it is at MedSci then there are
+a great many other excellent residences even closer to MedSci to choose
+from, and rates can be compared between them all.  Even if this is chosen
+and the conference is at MedSci, the walking distance between here and MedSci
+is about 5 minutes.
+
+</p>
+
+<p>The University of Toronto is in the middle of
+downtown Toronto. There are over a hundred hotels nearby in either walking or
+short trip distance. We will investigate if a group rate can be
+negotiated at an appropriate one nearby (e.g. 15 minute walk from the
+venue).
+</p>
+
+
+<h2>Equipment: A/V Network</h2>
+<p>Wired Internet in all rooms, and wireless throughout all of MedSci. If we choose St. Michael's then we will need to install our own Access Points. LCD
+projectors,3, @ $250 per day at St. Michael's, free in many rooms of MedSci.
+P/A system will be provided by the college at a nominal cost or included in
+the price of the rooms if at St. Michael's, free in most rooms of MedSci.
+</p>
+
+<h2>Currency Considerations</h2>
+<h3>The Exchange Rate</h3>
+<ul>
+<li>The exchange rate is currently at about 1.31: that is, one dollar US 
+equals about $1.31 Canadian.
+</li></ul>
+<h3>Using credit and debit cards</h3>
+<p>
+
+US Credit and debit cards generally Just Work.  Most banks are on the Cirrus and Plus networks for debit cards.  
+</p>
+
+<ul>
+<li>Credit cards: You'll be billed your bank's US dollar equivalent to
+the CDN dollar amount of your purchase. Keep in mind that the exchange
+rate varies day to day.
+</li><li>Debit cards: You might want to confirm that your debit card
+works by making a withdrawal through some convenient ATM in Toronto. If
+your card works at the ATM, it should work as a debit card. (But note
+that it would have to be a very strange debit card for it not to work.)
+</li></ul>
+<h3>Using bank cards for ATM (aka Bank Machine) withdrawals</h3>
+<ul>
+<li>You'll be offered various amounts, usually in multiples of $20. Your total
+withdrawal, plus network charge, will be converted to US dollars and
+charged to your account.
+</li><li>Note that "white label" ATMs (found in convenience stores)
+charge an additional 'service charge'. Try to use a 'bank' ATM if you
+want to avoid paying for this service (recommended banks are CIBC,
+Royal, Scotiabank, TD/Canada Trust, Bank of Montreal).
+</li></ul>
+<h3>Using USD$ within Canada</h3>
+<ul>
+<li>In most places of business you'll see some kind of exchange rate
+posted. The rate won't be as high as the official rate, so given an
+official rate of 1.31, you might see a rate of 1.2 or 1.25.
+</li><li>"U.S. money accepted at par" is not a good deal. :)
+</li><li>You can expect to get both American and Canadian coins as change; the exchange rate doesn't apply to coins.
+</li><li>If you plan to use US money in a taxi, be sure to negotiate the exchange rate before you start your trip.
+</li></ul>
+<h3>Traveller's Cheques</h3>
+<ul>
+<li>Ask before you use them -- some businesses have a stamp for the
+'Payee' section of the cheque. Make sure the person accepting the
+travellers cheques understands that it's US dollars and not CDN
+dollars.
+</li><li>They really aren't necessary in this day and age of ATM machines, though.
+</li></ul>
+<h2>Transportation</h2>
+<ul>
+<li><a href="ToTO.html">Travelling to Toronto</a>
+</li>
+<li><a href="InTO.html">Travelling in Toronto</a>
+</li></ul>
+<h2>Toronto Attractions</h2>
+<ul>
+<li><a href="TorontoAttractions.html">Toronto Attractions</a> and a <a href="TorontoAttractionsMap.html">Map of Downtown Toronto</a>
+</li></ul>
+<p>One of the biggest attractions to the city is just the atmosphere of
+it all. It is a city of neighbourhoods, and the "main streets" of each
+will dazzle you with everything that's going on.
+</p>
+
+
+<h2>Planned fun activities</h2>
+<p>
+
+Possibilities include:
+</p>
+
+
+<ul>
+<li>Toronto Islands BBQ
+</li><li>Evening Boat Cruise
+</li><li>Toronto International Caravan, a large festival
+</li><li>Other touristy events (see above)
+</li></ul>
+<h2>Conference Team</h2>
+
+<p>Toronto.pm has a <a
+href="ConferenceTeam.html">large crew</a> of people
+who are willing to put in considerable time and effort to organizer,
+produce and execute a YAPC::NA 2005 here in Toronto. More remarkably,
+many of our team are from <b>outside</b> Toronto, but eager to
+participate. Toronto.pm has been active building good
+relationships with other nearby Perl Monger groups, such as Ottawa.pm,
+Montreal.pm, KW.pm (Kitchener/Waterloo, Ontario) and Buffalo.pm. Many
+people from these other groups have pledged their support.
+</p>
+
+<p>&nbsp;</p></td>
+</tr>
+</tbody></table>
+
+<p align=center>
+<img src=Images/yapc2005mooselogo_big.png>
+</p>
+
+</body></html>

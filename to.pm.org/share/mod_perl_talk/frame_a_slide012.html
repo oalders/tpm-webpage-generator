@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/2000/REC-xhtml1-20000126/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>An Introduction to Mod_perl - Benefits of mod_perl over CGI</title>
+		<base target="_top">
+		<link rel="Stylesheet" href="styles.css" type="text/css">
+		<link rev="Start" href="index.html" title="An Introduction to Mod_perl">
+		<link rev="Contents" href="toc.html" title="Table of Contents">
+		<link rev="Prev" href="slide011.html" title="Why program Apache API handlers in Perl?  Why not use C? (Expanded Answer)">
+		<link rev="Next" href="slide013.html" title="Fixing A Common Misconception">
+	</head>
+
+	<body>
+		<table height="100%" width="100%">
+			<tr>
+				<td valign="top" width="100%">
+					<h1>Benefits of mod_perl over CGI</h1>
+					<ul>
+						<li>Essentially, its good points are the opposites of all of the criticism of CGI
+						<li>It's fast -- it is loaded when Apache is loaded, because it is part of Apache! You only need to &quot;load&quot; the Perl interpreter once.
+						<li>It's fast -- it caches compiled Perl op-codes for any given piece of Perl you run through it
+						<li>It's fast -- since it's always around, it can &quot;hold onto&quot; database connections, saving time
+						<li>It's more resource-predictable (but still it can have some problems, specifically memory usage due to caching)
+						<li>While not itself particularly easy to program, there are many &quot;web toolkits&quot; that build on it that make &quot;CGI-ish&quot; programming much easier
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</body>
+
+</html>

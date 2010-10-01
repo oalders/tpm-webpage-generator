@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/2000/REC-xhtml1-20000126/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>An Introduction to Mod_perl - Why program Apache API handlers in Perl? Why not use C? (Expanded Answer)</title>
+		<base target="_top">
+		<link rel="Stylesheet" href="styles.css" type="text/css">
+		<link rev="Start" href="index.html" title="An Introduction to Mod_perl">
+		<link rev="Contents" href="toc.html" title="Table of Contents">
+		<link rev="Prev" href="slide010.html" title="Where does mod_perl come in?">
+		<link rev="Next" href="slide012.html" title="Benefits of mod_perl over CGI ">
+	</head>
+
+	<body>
+		<table height="100%" width="100%">
+			<tr>
+				<td valign="top" width="100%">
+					<h1>Why program Apache API handlers in Perl? Why not use C? (Expanded Answer)</h1>
+					<ul>
+						<li>If you want to ask this question, you're in the wrong lecture
+						<li>This question mainly falls into 2 parts:
+						<ul>
+							<li>Why program the Apache API at all?
+							<li>Why use C over Perl?
+						</ul>
+						<li>Why program the Apachi API? To fix all the problems that CGI had, and to gain new abilities (already discussed)
+						<li>Why program it in Perl rather than C?
+						<ul>
+							<li>So that you don't have to recompile your Apache httpd binary every time you want to change a printf
+							<li>Because Perl is a &quot;nicer&quot; language then C in general
+							<li>Because so much of web programming involves manipulating HTTP and HTML, both of which are text, and Perl kicks butt at text manipulation
+							<li>Because Perl is great for access to databases, too, via the DBI
+							<li>Because of CPAN in general
+						</ul>
+						<li>Basically, the same reasons you'd want to program in Perl in any possible situation
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</body>
+
+</html>

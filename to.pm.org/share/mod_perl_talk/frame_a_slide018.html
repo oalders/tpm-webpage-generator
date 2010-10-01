@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/2000/REC-xhtml1-20000126/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>An Introduction to Mod_perl - Apache::PerlRun</title>
+		<base target="_top">
+		<link rel="Stylesheet" href="styles.css" type="text/css">
+		<link rev="Start" href="index.html" title="An Introduction to Mod_perl">
+		<link rev="Contents" href="toc.html" title="Table of Contents">
+		<link rev="Prev" href="slide017.html" title="PerlHandler">
+		<link rev="Next" href="slide019.html" title="Apache::Registry (first example)">
+	</head>
+
+	<body>
+		<table height="100%" width="100%">
+			<tr>
+				<td valign="top" width="100%">
+					<h1>Apache::PerlRun</h1>
+					<ul>
+						<li>This is a wrapper for quick-and-dirty Perl/CGI scripts that &quot;aren't well behaved&quot;
+						<ul>
+							<li>don't use strict
+							<li>are careless with closures
+							<li>are prone to memory leaks
+							<li>aren't careful with filehandles (e.g. closing them afterwards)
+						</ul>
+						<li>If you don't consciously program Perl carefully, then this is for you
+						<li>It &quot;speeds up&quot; the Perl/CGI program because you don't have to load the Perl interpreter and spawn a new process
+						<li>However, no other speed-up that is possible through mod_Perl is implemented
+						<ul>
+							<li>It loads your code once, runs it, and promptly drops it like the radioactive waste it is
+						</ul>
+						<li>I wanted to create an Apache::PerlRun example, but I just can't code that badly
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</body>
+
+</html>

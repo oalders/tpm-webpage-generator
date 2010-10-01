@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/2000/REC-xhtml1-20000126/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>Code: apache_registry_test</title>
+		<link rel="Stylesheet" href="styles.css" type="text/css">
+	</head>
+
+	<body class="codepage">
+		<blockquote>
+			<p class="codepage"><tt>#!/usr/bin/perl -w<br>
+			<br>
+			use strict;<br>
+			use CGI;<br>
+			<br>
+			my $cgi = CGI-&gt;new();<br>
+			<br>
+			print $cgi-&gt;header('text/html');<br>
+			<br>
+			print qq{<br>
+			&lt;HTML&gt;<br>
+			<br>
+			&lt;HEAD&gt;<br>
+			<br>
+			&lt;TITLE&gt;<br>
+			Testing a Perl CGI program run through mod_perl's Apache::Registry<br>
+			&lt;/TITLE&gt;<br>
+			<br>
+			&lt;/HEAD&gt;<br>
+			<br>
+			&lt;BODY&gt;<br>
+			<br>
+			&lt;H1&gt;<br>
+			Testing a Perl CGI program run through mod_perl's Apache::Registry<br>
+			&lt;/H1&gt;<br>
+			};<br>
+			<br>
+			foreach my $i( 0 .. 9 ) {<br>
+			&nbsp; &nbsp; print &quot;The public number is : $i\n&lt;br&gt;&quot;<br>
+			}<br>
+			<br>
+			print qq{<br>
+			<br>
+			&lt;/BODY&gt;<br>
+			<br>
+			&lt;/HTML&gt;<br>
+			};<br>
+			<br>
+			exit 0;<br>
+			 </tt></p>
+		</blockquote>
+	</body>
+
+</html>

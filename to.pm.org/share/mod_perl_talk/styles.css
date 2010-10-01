@@ -1,0 +1,64 @@
+body, ul, ol, p		{
+	background-color: #FFFFFF;
+	color: #222222;
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+}
+
+tt, pre			{
+	font-family: Monaco, Courier, monospace;
+	font-size: 20pt;
+	font-weight: normal;
+}
+
+table.navigation	{
+	background-color: #660000;
+}
+
+td.navigation		{
+	color: #FFFFFF;
+	vertical-align: top;
+	font-size: 20pt;
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, table	{
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+}
+
+body, p		{ font-size: 20pt }
+h1		{ font-size: 36pt }
+h2		{ font-size: 32pt }
+h3		{ font-size: 20pt }
+ul, li, ol	{ font-size: 26pt }
+li		{ padding-bottom: 8pt }
+
+.codepage	{ background-color: #FFFFFF }
+
+.indexpage	{ text-align: center }
+p.indexpage	{ font-size: 42pt }
+h1.indexpage	{ font-size: 58pt }
+h2.indexpage	{ font-size: 42pt }
+h3.indexpage	{ font-size: 28pt }
+
+a:visited, a:active	{
+	color: #222222;
+	text-decoration: none;
+}
+
+a:link			{
+	color: #222222;
+	text-decoration: underline;
+}
+
+a:hover				{
+	color: #660000;
+	text-decoration: underline;
+}
+
+a.td:link, a.td:visited, a.td:active	{
+	color: #FFFFFF;
+}
+
+a.td:hover		{
+	color: #DDDDDD;
+}

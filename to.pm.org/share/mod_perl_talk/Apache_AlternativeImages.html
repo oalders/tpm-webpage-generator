@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/2000/REC-xhtml1-20000126/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>Code: Apache_AlternativeImages</title>
+		<link rel="Stylesheet" href="styles.css" type="text/css">
+	</head>
+
+	<body class="codepage">
+		<blockquote>
+			<p class="codepage"><tt>package Apache::AlternativeImages;<br>
+			# Copyright (C) 1998-1999 Richard Dice. This file is part of the SINS<br>
+			# (SINS Is Not ShadNet) codebase, and is distributable under the GNU GPL v2.<br>
+			# See ShadNet/sys/cvs/COPYRIGHT for details<br>
+			<br>
+			use strict 'vars';<br>
+			use lib '.';<br>
+			use Apache::Constants ':response';<br>
+			use Apache::URI ();<br>
+			use File::Basename;<br>
+			<br>
+			#<br>
+			# This Perl transhandler implements the equivalent to what we have going<br>
+			# on with SINS::Template's 'path' attribute:&nbsp; that is, the ability to <br>
+			# have &quot;switchable&quot; /images/ directories<br>
+			#<br>
+			# Given a &quot;base&quot; /images/ directory (through the PerSetVar ImageBase<br>
+			# in the httpd.conf file), when an attempt is made to access a file<br>
+			# with an /images/... URI, first $ImageBase/theme is attempted for<br>
+			# that filename, then $ImageBase/default, then just plain $ImageBase<br>
+			#<br>
+			# 'theme' is meant to be a symlink under ImageBase to the image<br>
+			# directory of the chosen theme, much like as is done with the<br>
+			# /web/ShadNet/sys/cvs/templates/theme symlink<br>
+			#<br>
+			# --- appropriate modifications to httpd.conf ---<br>
+			# PerlSetVar&nbsp; &nbsp; &nbsp; &nbsp;ImageBase /web/ShadNet/sys/other/images<br>
+			# PerlTransHandler Apache::AlternativeImages<br>
+			#<br>
+			# # Alias /images/&nbsp; &nbsp; &nbsp; &nbsp;&quot;/web/ShadNet/sys/other/images/&quot;<br>
+			# --- end of appropriate modifications ---<br>
+			#<br>
+			sub handler {<br>
+			<br>
+			&nbsp; &nbsp; my $r&nbsp; &nbsp;= shift;<br>
+			&nbsp; &nbsp; my $uri = $r-&gt;uri;<br>
+			<br>
+			&nbsp; &nbsp; return DECLINED unless $uri =~ m|^/modperl_images/|;<br>
+			<br>
+			&nbsp; &nbsp; my $fullpathname = undef;<br>
+			<br>
+			&nbsp; &nbsp; my $ImageBase&nbsp; &nbsp; = $r-&gt;dir_config('ImageBase');<br>
+			&nbsp; &nbsp; my $filename&nbsp; &nbsp; &nbsp;= basename($uri);<br>
+			<br>
+			&nbsp; &nbsp; my @dir_attempts = (&quot;theme&quot;, &quot;default&quot;, &quot;&quot;);<br>
+			<br>
+			&nbsp; &nbsp; foreach my $testdir ( @dir_attempts ) {<br>
+			&nbsp; &nbsp; -f &quot;$ImageBase/$testdir/$filename&quot;<br>
+			&nbsp; &nbsp; &nbsp; &amp;&amp; ($fullpathname = &quot;$ImageBase/$testdir/$filename&quot;)<br>
+			&nbsp; &nbsp; &nbsp; &nbsp; &amp;&amp; last;<br>
+			&nbsp; &nbsp; }<br>
+			<br>
+			&nbsp; &nbsp; # couldn't find the file, so abort<br>
+			&nbsp; &nbsp; return DECLINED unless $fullpathname;<br>
+			<br>
+			&nbsp; &nbsp; # could find the file, so set the filename and return OK<br>
+			&nbsp; &nbsp; $fullpathname =~ s|//|/|g; # get rid of ugly // in the case of '' dir match<br>
+			&nbsp; &nbsp; $r-&gt;filename($fullpathname);<br>
+			&nbsp; &nbsp; return OK;<br>
+			}<br>
+			<br>
+			1;<br>
+			 </tt></p>
+		</blockquote>
+	</body>
+
+</html>

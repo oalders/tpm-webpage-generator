@@ -1,51 +1,35 @@
-BODY {
-	FONT-FAMILY: sans-serif; FONT-SIZE: 100%
+body {
+  font-family: "MS Verdana", "MS Arial", Helvetica, sans-serif;
+  font-size: 100%;
+  color: #000000;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
 }
-H1 {
-	FONT-FAMILY: sans-serif; FONT-SIZE: 150%
+
+h1 { font-size: 150%; }
+h2 { font-size: 130%; }
+h3 { font-size: 120%; }
+h4 { font-size: 100%; }
+
+li,ul,ol,p,div,blockquote,td { font-size: 100%; }
+
+td.side {
+  background-color: #0087d9;
+  color: #ffffff;
+  font-size: 110%;
+  vertical-align: text-top;
 }
-H2 {
-	FONT-FAMILY: sans-serif; FONT-SIZE: 130%
+
+td.venue {
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 120%;
+  text-align: center;
 }
-H3 {
-	FONT-FAMILY: sans-serif; FONT-SIZE: 120%
-}
-H4 {
-	FONT-FAMILY: sans-serif; FONT-SIZE: 100%
-}
-LI {
-	FONT-FAMILY: sans-serif; FONT-SIZE: 100%
-}
-UL {
-	FONT-FAMILY: sans-serif; FONT-SIZE: 100%
-}
-OL {
-	FONT-FAMILY: sans-serif; FONT-SIZE: 100%
-}
-P {
-	FONT-FAMILY: sans-serif; FONT-SIZE: 100%
-}
-DIV {
-	FONT-FAMILY: sans-serif; FONT-SIZE: 100%
-}
-P.moddate {
-	FONT-FAMILY: sans-serif; FONT-SIZE: 100%
-}
-BLOCKQUOTE {
-	FONT-FAMILY: sans-serif; FONT-SIZE: 100%
-}
-TD {
-	FONT-FAMILY: sans-serif; FONT-SIZE: 100%
-}
-TD.side {
-	BACKGROUND-COLOR: #0087d9; COLOR: #ffffff; FONT-FAMILY: sans-serif; FONT-SIZE: 110%; VERTICAL-ALIGN: text-top
-}
-TD.venue {
-	BACKGROUND-COLOR: #ffffff; COLOR: #000000; FONT-FAMILY: sans-serif; FONT-SIZE: 120%; TEXT-ALIGN: center
-}
-TD.header {
-	FONT-SIZE: 140%
-}
+
+td.header { font-size: 140%; }
+
 A {
 	COLOR: #0000ff; TEXT-DECORATION: underline
 }
@@ -72,4 +56,12 @@ A.sidehead:visited {
 }
 A.sidehead:hover {
 	COLOR: #ffffff; FONT-FAMILY: sans-serif; FONT-SIZE: 110%; FONT-WEIGHT: bold; TEXT-DECORATION: underline
+}
+
+.label {
+  font-weight: bold;
+}
+
+.borderless {
+  border: 0;
 }

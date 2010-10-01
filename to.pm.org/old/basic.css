@@ -1,0 +1,15 @@
+A:link, A:visited, A:active { text-decoration: none; }
+P {font-family: Arial,Helvetica,Sans-serif; color: #000000;}
+.pageHead { font-family: Arial,Helvetica,Sans-serif; font-weight: bold; color: #006699;
+            font-size: 200%; }
+.secHead { font-family: Arial,Helvetica,Sans-serif; font-weight: bold; color: #006699;
+           font-size: 115%; }
+.leftNav { font-family: Arial,Helvetica,Sans-serif; font-weight: bold; color: #FFFFFF;
+           font-size: large; }
+.topNav { font-family: Arial,Helvetica,Sans-serif; font-weight: bold; color: #FFFFFF;
+          font-size: smaller; }
+.secNav { font-family: Arial,Helvetica,Sans-serif; font-weight: bold; font-size: smaller;
+          color: #000000; }
+.normal { font-family: Arial,Helvetica,Sans-serif; color: #000000;}
+A.leftNav:hover { color: #FFCC00; }
+A.secNav:hover { color: #006699; }

@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/2000/REC-xhtml1-20000126/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>An Introduction to Mod_perl - The Apache Request Loop and API</title>
+		<base target="_top">
+		<link rel="Stylesheet" href="styles.css" type="text/css">
+		<link rev="Start" href="index.html" title="An Introduction to Mod_perl">
+		<link rev="Contents" href="toc.html" title="Table of Contents">
+		<link rev="Prev" href="slide014.html" title="The Apache web server">
+		<link rev="Next" href="slide016.html" title="mod_perl handlers">
+	</head>
+
+	<body>
+		<table height="100%" width="100%">
+			<tr>
+				<td valign="top" width="100%">
+					<h1>The Apache Request Loop and API</h1>
+					<ul>
+						<li>One the Apache parent forks off Apache children (which it manages, balances, reaps, etc.), the children wait
+						<li>When a request comes in, the parent will delegate the request to one of the waiting children
+						<li>Given a request, the child will go through a &quot;loop&quot; of stages to handling the request
+						<li>Here is a selection of relatively important stages in the request loop...
+						<ul>
+							<li>URI translation - does the file correspond to a file on the disk (figure out file and path), or something else?
+							<li>Access control - where is the request coming from?
+							<li>Authentication - who is the request coming from?
+							<li>Authorization - is this combination of who and where allowed access to the resource they are requesting?
+							<li>MIME type checking
+							<li>Response - it talks back to the browser
+							<li>Logging
+							<li>Clean-up - close file descriptors, close database connections, free memory, etc.
+							<li>(... wait for another request...)
+						</ul>
+						<li><a href="../mod_perl_talk_files/apache_request_loop.png">Here is the loop as a graphic</a>
+						<li>At each of these stages the Apache API provides callback hooks so that you can write your own module to define what should be done at that stage
+						<ul>
+							<li>e.g. Authenticate against a Microsoft NT domain server
+							<li>e.g. Log all transactions from all servers in a server farm to a database (rather than flat files on each individual machine)
+							<li>e.g. Define your own protocol (like BEEP) rather than HTTP, and parse for BEEP headers (rather than HTTP ones)
+						</ul>
+						<li>Try doing this with CGI ;-)
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</body>
+
+</html>

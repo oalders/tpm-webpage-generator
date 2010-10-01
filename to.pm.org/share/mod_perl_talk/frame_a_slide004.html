@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/2000/REC-xhtml1-20000126/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>An Introduction to Mod_perl - What do web servers really do?</title>
+		<base target="_top">
+		<link rel="Stylesheet" href="styles.css" type="text/css">
+		<link rev="Start" href="index.html" title="An Introduction to Mod_perl">
+		<link rev="Contents" href="toc.html" title="Table of Contents">
+		<link rev="Prev" href="slide003.html" title="Huh?">
+		<link rev="Next" href="slide005.html" title="The HTTP Request">
+	</head>
+
+	<body>
+		<table height="100%" width="100%">
+			<tr>
+				<td valign="top" width="100%">
+					<h1>What do web servers really do?</h1>
+					<ul>
+						<li>They &quot;listen&quot; for requests
+						<li>... and do something based on the request.
+						<li>Classically, what they do is they send back a document on the hard drive corresponding to the one mentioned in the URL
+						<li><a href="http://www.some_web_site.com/directory_a/directory_b/a_file.html">http://www.some_web_site.com/directory_a/directory_b/a_file.html</a>
+						<ul>
+							<li>(Prepend DocumentRoot to that, per the httpd.conf file... more later)
+						</ul>
+						<li><a href="../mod_perl_talk_files/html_request.png">A simple HTTP transaction diagram</a>
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</body>
+
+</html>

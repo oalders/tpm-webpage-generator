@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/2000/REC-xhtml1-20000126/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>An Introduction to Mod_perl - Installing mod_perl</title>
+		<base target="_top">
+		<link rel="Stylesheet" href="styles.css" type="text/css">
+		<link rev="Start" href="index.html" title="An Introduction to Mod_perl">
+		<link rev="Contents" href="toc.html" title="Table of Contents">
+		<link rev="Prev" href="slide025.html" title="PerlTransHandler">
+		<link rev="Next" href="slide027.html" title="Now that it's installed, what do I do?">
+	</head>
+
+	<body>
+		<table height="100%" width="100%">
+			<tr>
+				<td valign="top" width="100%">
+					<h1>Installing mod_perl</h1>
+					<ul>
+						<li>There's more than one way to do it -- I'll talk about the easiest one :-)
+						<li>Including SSL support via mod_ssl and OpenSSL
+						<li>Including mod_python, mod_php, mod_frontpage, etc.
+						<li>Linked statically or dynamically
+						<li>I will demonstrate the easiest version
+						<li>Get Apache tarball at <a href="http://www.apache.org/dist/httpd/">http://www.apache.org/dist/httpd/</a>
+						<li>Get mod_perl tarball at <a href="http://perl.apache.org/dist/">http://perl.apache.org/dist/</a>
+						<li>Untar both, cd into mod_perl directory, and build them together like a Perl module
+						<ul>
+							<li>For the love of God, use a <a href="../mod_perl_talk_files/makepl_args.mod_perl">makepl_args.mod_perl file!</a>
+						</ul>
+						<li>verifying that it's actually installed
+						<ul>
+							<li>Start up the web server and check out error_log
+							<li>Or telnet into the web server and issue a head command
+						</ul>
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</body>
+
+</html>

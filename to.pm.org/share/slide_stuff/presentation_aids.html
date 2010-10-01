@@ -1,0 +1,194 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 FINAL//EN">
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+		<title>Toronto Perl Mongers - Talks</title>
+		<csactions>
+			<csaction name="6CA277B0" class="Open Alert Window" type="ONEVENT" val0="You are about to download the makeslides tarball">
+			<csaction name="697270B0" class="Goto Link" type="ONEVENT" val0="makeslides-package.tar.gz" val1>
+		</csactions>
+		<csscriptdict>
+			<script><!--
+function CSClickReturn () {
+	var bAgent = window.navigator.userAgent; 
+	var bAppName = window.navigator.appName;
+	if ((bAppName.indexOf("Explorer") >= 0) && (bAgent.indexOf("Mozilla/3") >= 0) && (bAgent.indexOf("Mac") >= 0))
+		return true; // dont follow link
+	else return false; // dont follow link
+}
+CSStopExecution = false;
+
+function CSAction(array) { 
+	return CSAction2(CSAct, array);
+}
+function CSAction2(fct, array) { 
+	var result;
+	for (var i=0;i<array.length;i++) {
+		if(CSStopExecution) return false; 
+		var actArray = fct[array[i]];
+		if(actArray == null) return false; 
+		var tempArray = new Array;
+		for(var j=1;j<actArray.length;j++) {
+			if((actArray[j] != null) && (typeof(actArray[j]) == "object") && (actArray[j].length == 2)) {
+				if(actArray[j][0] == "VAR") {
+					tempArray[j] = CSStateArray[actArray[j][1]];
+				}
+				else {
+					if(actArray[j][0] == "ACT") {
+						tempArray[j] = CSAction(new Array(new String(actArray[j][1])));
+					}
+				else
+					tempArray[j] = actArray[j];
+				}
+			}
+			else
+				tempArray[j] = actArray[j];
+		}			
+		result = actArray[0](tempArray);
+	}
+	return result;
+}
+CSAct = new Object;
+
+function CSOpenAlert(action) { alert(action[1]); }
+function CSGotoLink(action) {
+	if (action[2].length) {
+		var hasFrame=false;
+		for(i=0;i<parent.frames.length;i++) { if (parent.frames[i].name==action[2]) { hasFrame=true; break;}}
+		if (hasFrame==true)
+			parent.frames[action[2]].location = action[1];
+		else
+			window.open (action[1],action[2],"");
+	}
+	else location = action[1];
+}
+
+// --></script>
+		</csscriptdict>
+		<csactiondict>
+			<script><!--
+CSAct[/*CMP*/ '6CA277B0'] = new Array(CSOpenAlert,'You are about to download the makeslides tarball');
+CSAct[/*CMP*/ '697270B0'] = new Array(CSGotoLink,/*URL*/ 'makeslides-package.tar.gz','');
+
+// --></script>
+		</csactiondict>
+		<link rel="stylesheet" type="text/css" href="../../basic.css" title="style1">
+	</head>
+
+	<body bgcolor="#ffcc00" link="#006699" vlink="purple" text="black" topmargin="25" leftmargin="0" marginwidth="0" marginheight="25">
+		<center>
+			<table id="Table1" border="0" cellspacing="0" cellpadding="0">
+				<tr>
+					<td colspan="5" align="right" bgcolor="black"><a href="../../contact.html"><span class="topNav">contact</span></a> <font face="arial,helvetica,sans-serif" size="2" color="white">&nbsp;&nbsp;|&nbsp;&nbsp;</font> <a href="../../index.html"><span class="topNav">home</span></a> <img src="../../images/spacer.gif" width="16" height="1" border="0"></td>
+					</TD></tr>
+				<tr>
+					<td width="2" bgcolor="black"><img height="1" width="2" src="../../images/spacer.gif" align="BOTTOM" border="0"></td>
+					<td valign="top" width="190" bgcolor="#006699">
+						<table id="Table2" border="0" cellspacing="0" cellpadding="0" width="180">
+							<tr>
+								<td width="186"><a href="../../index.html"><img height="165" width="167" src="../../images/logo.gif" align="right" border="0"></a></td>
+							</tr>
+							<tr valign="top" align="left">
+								<td width="186" align="right">&nbsp;<br>
+									<a href="../../about.html" class="leftNav">about us</a>&nbsp;&nbsp;</td>
+							</tr>
+							<tr valign="top" align="left">
+								<td width="186" align="right"><a href="../../maillist.html" class="leftNav">mailing list</a>&nbsp;&nbsp;</td>
+							</tr>
+							<tr valign="top" align="left" height="25">
+								<td width="186" height="25" align="right"><a href="../../sponsors.html" class="leftNav">sponsors</a>&nbsp;&nbsp;</td>
+							</tr>
+							<tr valign="top" align="left">
+								<td width="186" align="right"><a href="../../meetings.html" class="leftNav">meetings</a>&nbsp;&nbsp;</td>
+							</tr>
+							<!--<tr valign="top" align="left">
+								<td width="186" align="right"><a href="../../discus/messages/board-topics.html" class="leftNav">forums</a>&nbsp;&nbsp;</td>
+							</tr>-->
+							
+							<tr valign="top" align="left">
+								<td width="186" align="right"><a href="../../projects.html" class="leftNav">projects</a>&nbsp;&nbsp;</td>
+							</tr>
+							<tr valign="top" align="left">
+								<td width="186" align="right"><a href="../../talks.html" class="leftNav">talks</a>&nbsp;&nbsp;</td>
+							</tr>
+							<tr valign="top" align="left" height="25">
+								<td width="186" height="25" align="right"><img src="../../images/spacer.gif" height="25" width="1" border="0"></td>
+							</tr>
+							<!--<tr valign="top" align="left" height="25">
+								<td width="186" align="right" height="25"><a href="presentation_aids.html" class="leftNav">downloads</a>&nbsp;&nbsp;</td>
+							</tr>-->
+							<tr valign="top" align="left" height="25">
+								<td width="186" height="25" align="right"><img src="../../images/spacer.gif" height="25" width="1" border="0"></td>
+							</tr>
+						</table>
+					</td>
+					<td width="2" bgcolor="black"><img height="1" width="2" src="../../images/spacer.gif" align="BOTTOM" border="0"></td>
+					<td valign="top" width="480" bgcolor="white">
+						<table id="Table6" border="0" cellspacing="0" cellpadding="0" width="100%">
+							<tr height="28">
+								<td width="100%" bgcolor="white" height="28"><br>
+									&nbsp;&nbsp;&nbsp;<span class="pageHead">Presentation Aids</span></td>
+							</tr>
+							<tr>
+								<td width="100%" bgcolor="white"><font size="2" face="Arial,Verdana,Helvetica,sans-serif">&nbsp;</font>
+									<table id="Table8" border="0" cellspacing="5" cellpadding="10" width="97%" bgcolor="#fdf2c7">
+										<tr bgcolor="white">
+											<td width="100%"><a href="makeslides-package.tar.gz" csclick="6CA277B0,697270B0" onclick="CSAction(new Array(/*CMP*/'6CA277B0',/*CMP*/'697270B0'));return CSClickReturn();"><span class="sechead">makeslides</span></a>
+												<p><span class="secnav">Used to create HTML-based slideshows for presentations. Written by Chris (pudge) Nandor, <a href="http://www.macperl.com/" target="_blank">MacPerl</a> maintainer, <a href="http://slashcode.com/" target="_blank">Slashcode</a> co-author and admin for <a href="http://use.perl.org" target="_blank">http://use.perl.org</a>. Richard Dice added a bunch of documentation and some code changes :-)</span></td>
+										</tr>
+										<tr bgcolor="#fdf2c7">
+											<td width="100%"></td>
+										</tr>
+										<tr bgcolor="white">
+											<td width="100%"></td>
+										</tr>
+										<tr>
+											<td width="100%"></td>
+										</tr>
+										<tr bgcolor="white">
+											<td width="100%"></td>
+										</tr>
+										<tr>
+											<td width="100%"></td>
+										</tr>
+										<tr bgcolor="white">
+											<td width="100%"></td>
+										</tr>
+										<tr>
+											<td width="100%" bgcolor="#fdf2c7"></td>
+										</tr>
+										<tr>
+											<td width="100%" bgcolor="white"></td>
+										</tr>
+										<tr>
+											<td width="100%"></td>
+										</tr>
+										<tr>
+											<td width="100%" bgcolor="white"></td>
+										</tr>
+										<tr>
+											<td width="100%"></td>
+										</tr>
+										<tr>
+											<td width="100%" bgcolor="white"></td>
+										</tr>
+										<tr>
+											<td width="100%"></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</td>
+					<td width="2" bgcolor="black"><img height="1" width="2" src="../../images/spacer.gif" align="BOTTOM" border="0"></td>
+				</tr>
+				<tr>
+					<td colspan="5" bgcolor="black"><font size="2" face="Arial,Verdana,Helvetica,sans-serif">&nbsp;</font></td>
+				</tr>
+			</table>
+		</center>
+		<p>&nbsp;
+	</body>
+
+</html>
