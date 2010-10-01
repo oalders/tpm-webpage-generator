@@ -8,14 +8,13 @@ clean:
 
 # Install the generated copies onto to.pm.org - you'll need the tpm
 # password to be able to do this.
+test-install:
+	rsync -avz -n -e ssh to.pm.org/ to.pm.org:httpdocs/
+
+# Install the generated copies onto to.pm.org - you'll need the tpm
+# password to be able to do this.
 install:
-	scp -r to.pm.org/index.html \
-	       to.pm.org/tpm.css \
-	       to.pm.org/sponsors.html \
-	       to.pm.org/reviews.html \
-	       to.pm.org/reviews/ \
-	       to.pm.org/20?? \
-	       tpm@to.pm.org:httpdocs/
+	rsync -avz -e ssh to.pm.org/ to.pm.org:httpdocs/
 
 # Install the TPM-Website module which contains the build-tpm-site program.
 # Note: this requires cpanm, which is probably a nice thing to have anyway -
