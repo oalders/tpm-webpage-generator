@@ -3,7 +3,7 @@
   <details>
     <topic>TBA</topic>
     <datetime>2010-10-28T18:45</datetime>
-    <venue>TBA</venue>
+    <venue>Nexient</venue>
     <synopsis>
       <p>
         TBA
@@ -16,6 +16,16 @@
     <description>
       <p>
         Postponed Lightning Talk.
+      </p>
+    </description>
+  </talk>
+  <talk>
+    <speaker>Tom Legrady</speaker>
+    <title>Pittsburgh Perl Workshop 2010</title>
+    <description>
+      <p>
+        What happened at the <a href="http://pghpw.org/ppw2010/">Pittsburgh
+        Perl Workshop 2010</a>.
       </p>
     </description>
   </talk>
