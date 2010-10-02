@@ -34,10 +34,23 @@
   <talk>
     <speaker>Olaf Alders</speaker>
     <title>Getting Started with Dist::Zilla</title>
+    <description>
+      <p>(Added from mailing list post after the talk)</p>
+
+<p>Also, the sample Dist::Zilla .dzil configuration is posted here:</p>
+
+<p><a href="http://github.com/oalders/dzil-defaults/">http://github.com/oalders/dzil-defaults/</a></p>
+    </description>
   </talk>
   <talk>
     <speaker>Olaf Alders</speaker>
     <title>Mangling CPAN with Plack::App::Proxy</title>
+    <description>
+      <p>(Added from mailing list post after the talk)</p>
+<p>I've posted last night's slides:  <a href="http://www.slideshare.net/oalders/mangling">http://www.slideshare.net/oalders/mangling</a>  </p>
+
+<p>If you're interested in Plack at all, I'd suggest you check out the repo and try it out. You should be up and running in just a few minutes.  Let me know if you run into any problems with it.</p>
+    </description>
   </talk>
   <talk>
     <speaker>Tom Legrady</speaker>
