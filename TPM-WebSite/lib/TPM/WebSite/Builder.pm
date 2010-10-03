@@ -64,15 +64,37 @@ sub _generate_meetings {
         for my $meeting ( @{ $year->{meetings} } ) {
             my $dir = dir( $root_dir, $meeting->filename->dir );
             File::Path::make_path( $dir->stringify );
+            my $file = $meeting->filename->stringify;
             $template_processor->process(
                 'meeting.tt',
                 {   meeting      => $meeting,
                     generated_at => $generated_at,
                 },
-                $meeting->filename->stringify
+                $file
             ) || croak $template_processor->error;
+
+            # rsync cares about file timestamps, so set the "new"
+            # HTML file to look like it was created when we last
+            # updated the meeting.
+            $self->_touch( file( $root_dir, $file ), $meeting->updated_at );
         }
     }
+
+    return;
+}
+
+# in:
+#   filename
+#   timestamp
+# out:
+#   nothing
+#
+# dies if timestamp can't be set
+sub _touch {
+    my ( $self, $filename, $timestamp ) = @_;
+
+    utime $timestamp, $timestamp, $filename
+        or croak "failed to set time on $filename to $timestamp ($!)\n";
 
     return;
 }

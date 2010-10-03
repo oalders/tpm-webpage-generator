@@ -22,7 +22,7 @@ has updated_at => ( is => 'rw', isa => 'Int' );
 has _topic  => ( is => 'rw', isa => 'Str' );
 has _loaded => ( is => 'rw', isa => 'Bool' );
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub BUILD {
     my $self = shift;
@@ -87,7 +87,7 @@ sub filename {
     my @localtime = localtime $self->timestamp;
     my $year      = strftime( '%Y', @localtime );
     my $month     = strftime( '%m', @localtime );
-    my $day       = strftime( '%d', @localtime );
+    my $day       = strftime( '%d', @localtime ); # 1 .. 31, not Sub .. Sat!
 
     # XXX As we are running on Linux the file function will generate
     # a legitimate URL fragment.
@@ -261,6 +261,22 @@ by the Free Software Foundation; or the Artistic License.
 
 See http://dev.perl.org/licenses/ for more information.
 
+=head1 HISTORY
+
+This is for all the modules - Builder & Meeting
+
+=over 4
+
+=item v0.01
+
+Initial cut at the module.
+
+=item v0.02
+
+Touch the generated meeting HTML files so that they have a timestamp
+which matches their source XML.
+
+=back
 
 =cut
 
