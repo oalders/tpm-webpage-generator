@@ -33,8 +33,7 @@
         [%- PROCESS display_meeting meeting=meeting -%] 
 		  </div>
 			<div id="page-footer">
-        Content updated [% date.format(meeting.updated_at, '%a %e %b %Y %R %Z')  | html %],
-        HTML generated at [% date.format(generated_at, '%a %e %b %Y %R %Z') | html %].
+        Meeting data most recently updated: [% date.format(meeting.updated_at, '%a %e %b %Y %R %Z')  | html %],
           <a href="http://validator.w3.org/check?uri=http%3A%2F%2Fto.pm.org%2F[% meeting.filename | html %]">Validate</a>
 			</div>
 		</div>
