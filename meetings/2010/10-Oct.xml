@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <meeting>
   <details>
-    <topic>TBA</topic>
+    <topic>The Perl Debugger for Power Users</topic>
     <datetime>2010-10-28T18:45</datetime>
     <venue>Nexient</venue>
     <synopsis>
       <p>
-        TBA
+        A talk about the Perl debugger sandwiched between a couple
+        of short presentations.
       </p>
     </synopsis>
   </details>
@@ -16,6 +17,18 @@
     <description>
       <p>
         Postponed Lightning Talk.
+      </p>
+    </description>
+  </talk>
+  <talk>
+    <speaker>Stuart Watt</speaker>
+    <title>The Perl Debugger for Power Users</title>
+    <description>
+      <p>
+        Tricks for power users who want to get the most out of Perl's
+        debugger.  This might touch on performance exploration using
+        <a href="http://search.cpan.org/~timb/Devel-NYTProf-4.05/lib/Devel/NYTProf.pm"
+        >Devel::NYTProf</a>.
       </p>
     </description>
   </talk>
