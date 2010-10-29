@@ -30,6 +30,10 @@
         <a href="http://search.cpan.org/~timb/Devel-NYTProf-4.05/lib/Devel/NYTProf.pm"
         >Devel::NYTProf</a>.
       </p>
+      <p>
+	Other interesting modules mentioned included: Devel::Leak, Devel::Size,
+	Devel::Cycle, Smart::Comments.
+      </p>
     </description>
   </talk>
   <talk>
