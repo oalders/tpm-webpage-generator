@@ -4,6 +4,9 @@
 
 use common::sense;
 use TPM::WebSite::Builder;
+use Devel::Comments -ENV;
+
+### <here> starting <now>
 
 my $builder = TPM::WebSite::Builder->new(
     root_dir      => '.',
@@ -11,6 +14,9 @@ my $builder = TPM::WebSite::Builder->new(
 );
 
 $builder->run();
+
+### <here> finishing <now>
+
 exit 0;
 
 __END__

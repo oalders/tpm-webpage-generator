@@ -12,8 +12,9 @@ use File::Find::Rule;
 use POSIX 'strftime';
 use TPM::WebSite::Meeting;
 use File::Path;
+use Devel::Comments -ENV;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 has root_dir => ( is => 'ro' );
 has run_timestamp => ( is => 'ro', isa => 'Int' );

@@ -9,6 +9,7 @@ use English '-no_match_vars';
 use Path::Class;
 use File::stat;
 use Moose;
+use Devel::Comments -ENV ;
 
 has venue      => ( is => 'rw', isa => 'Str' );
 has timestamp  => ( is => 'rw', isa => 'Int' );
@@ -55,6 +56,8 @@ sub load_file {
         or croak "failed to parse and process $file_name ($EVAL_ERROR)";
 
     $self->_loaded(1);
+
+    #### Loaded meeting from: $file_name
 
     return;
 }

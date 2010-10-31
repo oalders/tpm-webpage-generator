@@ -1,7 +1,7 @@
 # By default build the site from the files found under the current 
 # directory.
 default:
-	perl -MDevel::Comments $(shell which build-tpm-site)
+	SMART_COMMENTS='###' $(shell which build-tpm-site)
 
 clean:
 	rm -rf to.pm.org/index.html to.pm.org/20??/*

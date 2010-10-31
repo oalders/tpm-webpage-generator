@@ -24,6 +24,7 @@ WriteMakefile(
         'common::sense'    => 0,
         'File::Basename'   => 0,
         'File::Path'       => 0,
+	'Devel::Comments'  => 0, # developing with 1.1.2 as of Oct 2010
     },
     dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean => { FILES    => 'TPM::WebSite-*' },
