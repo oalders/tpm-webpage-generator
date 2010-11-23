@@ -14,15 +14,13 @@
     <speaker>J. Bobby Lopez</speaker>
     <title>VMWare</title>
     <description>
-      <p>
-	<ul>
-          <li>Quick VMware Intro (Free Products)</li>
-          <li>Installation Summary - VMware Server 2.0</li>
-          <li>Installation Summary - VMware ESXi 4.0</li>
-          <li>General VM Configuration Guidelines</li>
-          <li>Basic VM management with VI Perl Toolkit</li>
-        </ul>
-      </p>
+      <ul>
+        <li>Quick VMware Intro (Free Products)</li>
+        <li>Installation Summary - VMware Server 2.0</li>
+        <li>Installation Summary - VMware ESXi 4.0</li>
+        <li>General VM Configuration Guidelines</li>
+        <li>Basic VM management with VI Perl Toolkit</li>
+      </ul>
     </description>
   </talk>
   <talk>
