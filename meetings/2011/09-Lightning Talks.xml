@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<meeting>
+  <details>
+    <topic>Lightning Talks</topic>
+    <datetime>2011-09-29T18:45</datetime>
+    <venue>Global Learning</venue>
+    <leader label="Emcee">TBA</leader>
+		<synopsis>
+	<p>
+		Short, 5 to 15 minute talks from a variety of people, on any
+		subject as long as it's got at least a tangent to Perl.
+	</p>
+    <p>
+      The order of talks listed here does not imply any order of
+      presentation.
+    </p>
+  </synopsis>
+  </details>
+</meeting>
