@@ -16,8 +16,15 @@
   <talk>
     <speaker>TBA</speaker>
     <title>Google Summer of Code</title>
-		<description>
-			<p>Preparation for participation in Google Summer of Code.</p>
-		</description>
-	</talk>
+    <description>
+      <p>Preparation for participation in Google Summer of Code.</p>
+    </description>
+  </talk>
+  <talk>
+    <speaker>Olaf et al.</speaker>
+    <title>Freshwater Perl Planning</title>
+    <description>
+      <p>Planning for Freshwater Perl event.</p>
+    </description>
+  </talk>
 </meeting>
